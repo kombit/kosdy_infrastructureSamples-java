@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="SecurityTokenService"
+                  targetNamespace="http://schemas.microsoft.com/ws/2008/06/identity/securitytokenservice"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:tns="http://schemas.microsoft.com/ws/2008/06/identity/securitytokenservice"
+                  xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:trust="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+
+    <wsp:Policy wsu:Id="CertificateWSTrustBinding_IWSTrust13Sync_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:AsymmetricBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:InitiatorToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:InitiatorToken>
+
+                        <sp:RecipientToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Never">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10/>
+                                        <sp:RequireIssuerSerialReference/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:RecipientToken>
+
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256Sha256/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Lax/>
+                            </wsp:Policy>
+                        </sp:Layout>
+
+                        <sp:ProtectTokens/>
+                        <sp:IncludeTimestamp/>
+                        <sp:OnlySignEntireHeadersAndBody/>
+                    </wsp:Policy>
+                </sp:AsymmetricBinding>
+
+                <sp:Wss11 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:MustSupportRefThumbprint/>
+                    </wsp:Policy>
+                </sp:Wss11>
+                <sp:Trust13 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:MustSupportIssuedTokens/>
+                        <sp:RequireClientEntropy/>
+                        <sp:RequireServerEntropy/>
+                    </wsp:Policy>
+                </sp:Trust13>
+                <wsaw:UsingAddressing/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+    <wsp:Policy wsu:Id="Input_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <sp:Body/>
+                    <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+    <wsdl:types>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Message"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/Message">
+            <xs:complexType name="MessageBody">
+                <xs:sequence>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="RequestSecurityToken" type="trust:RequestSecurityTokenType"/>
+            <xs:complexType name="RequestSecurityTokenType">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax"/>
+                </xs:choice>
+                <xs:attribute name="Context" type="xs:anyURI" use="optional"/>
+                <xs:anyAttribute namespace="##other" processContents="lax"/>
+            </xs:complexType>
+            <xs:element name="RequestSecurityTokenResponse" type="trust:RequestSecurityTokenResponseType"/>
+            <xs:complexType name="RequestSecurityTokenResponseType">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax"/>
+                </xs:choice>
+                <xs:attribute name="Context" type="xs:anyURI" use="optional"/>
+                <xs:anyAttribute namespace="##other" processContents="lax"/>
+            </xs:complexType>
+            <xs:element name="RequestSecurityTokenResponseCollection"
+                        type="trust:RequestSecurityTokenResponseCollectionType"/>
+            <xs:complexType name="RequestSecurityTokenResponseCollectionType">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="unbounded" ref="trust:RequestSecurityTokenResponse"/>
+                </xs:sequence>
+                <xs:anyAttribute namespace="##other" processContents="lax"/>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="IWSTrust13Sync_Trust13Issue_InputMessage">
+        <wsdl:part name="message" element="trust:RequestSecurityToken"/>
+    </wsdl:message>
+    <wsdl:message name="IWSTrust13Sync_Trust13Issue_OutputMessage">
+        <wsdl:part name="Trust13IssueResult" element="trust:RequestSecurityTokenResponseCollection"/>
+    </wsdl:message>
+
+    <wsdl:portType name="IWSTrust13Sync">
+        <wsdl:operation name="Trust13Issue">
+            <wsdl:input wsaw:Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue"
+                        message="tns:IWSTrust13Sync_Trust13Issue_InputMessage"/>
+            <wsdl:output wsaw:Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTRC/IssueFinal"
+                         message="tns:IWSTrust13Sync_Trust13Issue_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CertificateWSTrustBinding_IWSTrust13Sync" type="tns:IWSTrust13Sync">
+        <wsp:PolicyReference URI="#CertificateWSTrustBinding_IWSTrust13Sync_policy"/>
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Trust13Issue">
+            <soap12:operation soapAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue" style="document"/>
+            <wsdl:input>
+                <wsp:PolicyReference URI="#Input_policy"/>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="SecurityTokenService">
+        <wsdl:port name="CertificateWSTrustBinding_IWSTrust13Sync"
+                   binding="tns:CertificateWSTrustBinding_IWSTrust13Sync">
+            <soap12:address location="https://adgangsstyring.eksterntest-stoettesystemerne.dk/runtime/services/kombittrust/14/certificatemixed"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>https://adgangsstyring.eksterntest-stoettesystemerne.dk/runtime/services/kombittrust/14/certificatemixed</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

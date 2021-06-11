@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified" 
+
+    xmlns="http://www.w3.org/2001/XMLSchema" 
+
+    xmlns:oio="urn:oio:definitions:1.0.0" 
+    oio:mapping="urn:oio:sts:MPD:3.0.0"
+
+    xmlns:sd="urn:oio:sagdok:3.0.0"
+
+	xmlns:sag="urn:oio:sts:sagdok:sag:1.2.4.0"
+    targetNamespace="urn:oio:sts:sagdok:sag:1.2.4.0"
+    >
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<include schemaLocation="Sag.xsd"/>
+    
+    <element name="RegistreringBesked" type="sag:RegistreringBeskedType" oio:definition="urn:oio:sts:sagregistreringbesked:ADD:1.0.0"/>
+    <complexType name="RegistreringBeskedType" oio:definition="urn:oio:sts:sagregistreringbesked:ADD:1.0.0">
+        <sequence>
+            <element ref="sd:UUIDIdentifikator" oio:content="uuid"/>
+            <element name="Registrering" type="sag:RegistreringType" oio:content="registrering"/>
+        </sequence>
+    </complexType>
+</schema>

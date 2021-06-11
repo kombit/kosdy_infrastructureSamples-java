@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <properties>
+        <property name="pattern">%d [%-6p] %c (line:%L) - %m%n</property>
+    </properties>
+
+    <Appenders>
+        <Console name="consoleAppender" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+        </Console>
+
+        <RollingFile name="fileAppender" fileName="server.log" filePattern="server.%i.log.gz">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <!-- Uncomment to see SOAP message responses in the terminal -->
+    <!--<Loggers>
+        <Root level="ERROR">
+            <AppenderRef ref="consoleAppender"/>
+        </Root>
+        <Logger name="org.apache.cxf.services" level="TRACE" additivity="false">
+            <AppenderRef ref="consoleAppender"/>
+        </Logger>
+    </Loggers>-->
+</Configuration>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+    xmlns="http://www.w3.org/2001/XMLSchema" 
+    xmlns:oio="urn:oio:definitions:1.0.0"
+
+    xmlns:sd="urn:oio:sagdok:3.0.0"
+    xmlns:gd="urn:oio:sts:generelledefinitioner:1.2.4.0"
+    xmlns:go="urn:oio:sts:generelleoperationer:1.2.4.0"
+
+    xmlns:di="urn:oio:sts:sagdok:dokumentindeks:1.2.4.0"
+    xmlns:sag="urn:oio:sts:sagdok:sag:1.2.4.0"
+
+	xmlns:si="urn:oio:sts:sagdok:sagindeks:1.2.4.0"
+    xmlns:sdi="urn:oio:sts:sagdok:sagdokumentindeks:1.2.4.0"
+    targetNamespace="urn:oio:sts:sagdok:sagdokumentindeks:1.2.4.0"
+
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified" 
+
+    oio:mapping="urn:oio:sagdok:MPD:3.0.0"
+    >
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<import namespace="urn:oio:sts:generelledefinitioner:1.2.4.0" schemaLocation="GenerelleDefinitioner.xsd"/>
+	<import namespace="urn:oio:sts:generelleoperationer:1.2.4.0" schemaLocation="GenerelleOperationer.xsd"/>
+	<import namespace="urn:oio:sts:sagdok:sag:1.2.4.0" schemaLocation="SagOperationer.xsd"/>
+    <import namespace="urn:oio:sts:sagdok:dokumentindeks:1.2.4.0" schemaLocation="DokumentIndeksOperationer.xsd"/>
+    <import namespace="urn:oio:sts:sagdok:sagindeks:1.2.4.0" schemaLocation="SagIndeksOperationer.xsd"/>
+
+
+	<element name="FjernSagDokumentIndeksInput" type="sdi:FjernSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfjerninput:ASDD:1.0.0"/>
+	<element name="FjernSagDokumentIndeksOutput" type="sd:MultipleOutputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfjernoutput:ASDD:1.0.0"/>
+
+	<element name="ImporterSagDokumentIndeksInput" type="sdi:ImporterSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksimporterinput:ASDD:1.0.0"/>
+	<element name="ImporterSagDokumentIndeksOutput" type="sd:MultipleOutputType" oio:definition="urn:oio:sagdok:sagdokumentindeksimporteroutput:ASDD:1.0.0"/>
+
+	<element name="RetSagDokumentIndeksInput" type="sdi:RetSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksretinput:ASDD:1.0.0"/>
+	<element name="RetSagDokumentIndeksOutput" type="sd:MultipleOutputType" oio:definition="urn:oio:sagdok:sagdokumentindeksretoutput:ASDD:1.0.0"/>
+
+	<element name="OpdaterSagDokumentIndeksInput" type="sdi:OpdaterSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksopdaterinput:ASDD:1.0.0"/>
+	<element name="OpdaterSagDokumentIndeksOutput" type="sd:MultipleOutputType" oio:definition="urn:oio:sagdok:sagdokumentindeksopdateroutput:ASDD:1.0.0"/>
+
+	<element name="FremsoegSagDokumentIndeksInput" type="sdi:FremsoegSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfremsoeginput:ASDD:1.0.0"/>
+	<element name="FremsoegSagDokumentIndeksOutput" type="sdi:FremsoegSagDokumentIndeksOutputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfremsoegoutput:ASDD:1.0.0"/>
+
+	<complexType name="FjernSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfjerninput:ASDD:1.0.0">
+		<sequence>
+			<choice>
+				<element name="SagUuid" type="sd:UnikIdType" minOccurs="0" maxOccurs="unbounded" oio:content="saguuid"/>
+			</choice>
+		    <element name="SoegUdtryk" type="sdi:SoegUdtrykType" minOccurs="0" maxOccurs="1" oio:content="fremsoegsoeginput"/>
+			<element name="EfterladSagsloeseDokumenter" type="boolean" minOccurs="0" oio:content="efterladsagsloesedokumenter"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="ImporterSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksimporterinput:ASDD:1.0.0">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<element name="DokumentIndeks" type="di:DokumentIndeksType" minOccurs="0" maxOccurs="unbounded" oio:content="dokumentindeksimportinput"/>
+			<element name="SagIndeks" type="sag:SagType" minOccurs="0" maxOccurs="unbounded" oio:content="sagindeksimportinput"/>
+		</choice>
+	</complexType>
+
+	<complexType name="RetSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksretinput:ASDD:1.0.0">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<element name="RetDokumentIndeks" type="di:RetInputType" minOccurs="0" maxOccurs="unbounded" oio:content="dokumentindeksretinput"/>
+			<element name="RetSagIndeks" type="sag:RetInputType" minOccurs="0" maxOccurs="unbounded" oio:content="sagindeksretinput"/>
+		</choice>
+	</complexType>
+
+	<complexType name="OpdaterSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksretinput:ASDD:1.0.0">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<element name="OpdaterDokumentIndeks" type="sdi:OpdaterDokumentIndeksInputType" minOccurs="0" maxOccurs="unbounded" oio:content="dokumentindeksopdaterinput"/>
+			<element name="OpdaterSagIndeks" type="sdi:OpdaterSagIndeksInputType" minOccurs="0" maxOccurs="unbounded" oio:content="sagindeksopdaterinput"/>
+		</choice>
+	</complexType>
+
+	<complexType name="OpdaterDokumentIndeksInputType" oio:definition="urn:oio:sagdok:dokumentindeksopdaterinput:ADD:2.0.0">
+		<complexContent>
+			<extension base="di:RetInputType">
+				<sequence>
+					<element name="Tidspunkt" type="dateTime" oio:content="tidspunkt"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="OpdaterSagIndeksInputType" oio:definition="urn:oio:sagdok:dokumentindeksopdaterinput:ADD:2.0.0">
+		<complexContent>
+			<extension base="sag:RetInputType">
+				<sequence>
+					<element name="Tidspunkt" type="dateTime" oio:content="tidspunkt"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="FremsoegSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfremsoeginput:ASDD:1.0.0">
+		<sequence>
+	        <element name="SagUuid" type="string" minOccurs="0" maxOccurs="unbounded" oio:content="saguuid"/>
+	        <element name="DokumentUuid" type="string" minOccurs="0" maxOccurs="unbounded" oio:content="dokumentuuid"/>
+			<element name="SoegUdtryk" type="sdi:SoegUdtrykType" minOccurs="0" maxOccurs="1" oio:content="fremsoegsoeginput"/>
+			<element name="Filter" type="sdi:FremsoegFilterSagDokumentIndeksInputType" minOccurs="0" maxOccurs="1" oio:content="fremsoegfilterinput"/>
+			<element name="Sortering" type="sdi:FremsoegSorteringSagDokumentIndeksInputType" minOccurs="0" maxOccurs="1" oio:content="fremsoegsorteringinput"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="FremsoegSagDokumentIndeksOutputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfremsoegoutput:ASDD:1.0.0">
+		<complexContent>
+			<extension base="sd:BasicOutputType">
+				<sequence>
+					<element name="Antal" type="sdi:AntalType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="SagFiltreretOejebliksbillede" type="sag:FiltreretOejebliksbilledeType" oio:definition="sagfiltreretoejebliksbillede" minOccurs="0" maxOccurs="unbounded"/>
+		            <element name="DokumentFiltreretOejebliksbillede" type="di:FiltreretOejebliksbilledeType" oio:content="dokumentfiltreretoejebliksbillede" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+    <simpleType name="AndOrType">
+      <restriction base="string">
+        <enumeration value="AND"/>
+        <enumeration value="OR"/>
+      </restriction>
+    </simpleType>
+
+	<complexType name="SoegUdtrykType" oio:definition="urn:oio:sagdok:sagdokumentindeksfremsoegsoeginput:ASDD:1.0.0">
+		<sequence>
+		  <!-- no operation = AND -->
+	      <element name="operation" type="sdi:AndOrType" minOccurs="0" maxOccurs="1" oio:content="operation"/>
+  		  <choice minOccurs="1" maxOccurs="unbounded">
+			  <element name="SoegDokument" type="di:SoegInputType" minOccurs="0" maxOccurs="unbounded" oio:content="soegdokument"/>
+			  <element name="SoegSag" type="sag:SoegInputType" minOccurs="0" maxOccurs="unbounded" oio:content="soegsag"/>
+ 			  <element name="NOT" type="sdi:SoegUdtrykType" minOccurs="0" maxOccurs="unbounded" oio:content="soeginverteret"/>
+  		      <element name="SoegUdtryk" type="sdi:SoegUdtrykType" minOccurs="0" maxOccurs="unbounded" oio:content="soegudtryk"/>
+			  <element name="SoegSagsloeseDokumenter" type="di:SoegInputType" minOccurs="0" maxOccurs="unbounded" oio:content="soegsagsloesedokumenter"/>
+  		  </choice>
+		</sequence>
+	</complexType>
+
+	<complexType name="AntalType">
+		<sequence>
+			<element name="Element" oio:content="element">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="sager"/>
+						<enumeration value="dokumenter"/>
+						<enumeration value="journalnotater"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Antal" type="integer" oio:content="antal"/>
+			<element name="Paginering" type="go:PagineringType" minOccurs="0" oio:content="paginering"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="DokumentVisFilterType">
+      <restriction base="string">
+        <enumeration value="egenskaber"/>
+        <enumeration value="varianter"/>
+        <enumeration value="fremdrift"/>
+        <enumeration value="dokument"/>
+        <enumeration value="klasse"/>
+        <enumeration value="aktoer"/>
+        <enumeration value="part"/>
+        <enumeration value="itsystem"/>
+        <enumeration value="sikkerhedsprofil"/>
+      </restriction>
+    </simpleType>
+
+	<complexType name="DokumentVisType">
+		<sequence>
+            <element name="Vis" type="sdi:DokumentVisFilterType" oio:content="type"/>
+		</sequence>
+	</complexType>
+
+  	<complexType name="DokumentSorteringType">
+		<sequence>
+            <element name="Element" type="sdi:DokumentSorteringFilterType" oio:content="element"/>
+            <element name="Retning" type="sdi:SorteringFilterRetningType" oio:content="retning"/>
+            <element name="Prioritet" type="integer" oio:content="prioritet"/>
+		</sequence>
+	</complexType>
+
+    <simpleType name="DokumentSorteringFilterType">
+      <restriction base="string">
+		<enumeration value="Bruger"/>
+		<enumeration value="StsRegistreringstidspunkt"/>
+		<enumeration value="Registreringstidspunkt"/>
+		<enumeration value="BrugervendtNoegle"/>
+		<enumeration value="ItSystem-Systemnavn"/>
+		<enumeration value="Fremdrift"/>
+		<enumeration value="Titel"/>
+		<enumeration value="Foelsomhed"/>
+		<enumeration value="Major"/>
+		<enumeration value="Minor"/>
+	  </restriction>
+    </simpleType>	
+
+    <simpleType name="DokumentInkluderFilterType">
+      <restriction base="string">
+        <enumeration value="dokument"/>
+      </restriction>
+    </simpleType>
+
+    <simpleType name="SagVisFilterType">
+      <restriction base="string">
+        <enumeration value="egenskaber"/>
+        <enumeration value="fremdrift"/>
+        <enumeration value="sagsarkiv"/>
+        <enumeration value="sagsklasse"/>
+        <enumeration value="sagsaktoer"/>
+        <enumeration value="sagspart"/>
+        <enumeration value="sagsrelation"/>
+        <enumeration value="sagsgenstand"/>
+        <enumeration value="journalpost"/>
+        <enumeration value="journalpost-journalnote"/>
+        <enumeration value="itsystem"/>
+        <enumeration value="sikkerhedsprofil"/>
+      </restriction>
+    </simpleType>
+
+	<complexType name="SagVisType">
+		<sequence>
+            <element name="Vis" type="sdi:SagVisFilterType" oio:content="type"/>
+		</sequence>
+	</complexType>
+
+  	<complexType name="SagSorteringType">
+		<sequence>
+            <element name="Element" type="sdi:SagSorteringFilterType" oio:content="element"/>
+            <element name="Retning" type="sdi:SorteringFilterRetningType" oio:content="retning"/>
+            <element name="Prioritet" type="integer" oio:content="prioritet"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="SagSorteringFilterType">
+		<restriction base="string">
+			<enumeration value="Bruger"/>
+			<enumeration value="StsRegistreringstidspunkt"/>
+			<enumeration value="Registreringstidspunkt"/>
+			<enumeration value="BrugervendtNoegle"/>
+			<enumeration value="ItSystem-Systemnavn"/>
+			<enumeration value="Fremdrift"/>
+			<enumeration value="Titel"/>
+			<enumeration value="Foelsomhed"/>
+			<enumeration value="Sagklasse-BrugervendtNoegle"/>
+			<enumeration value="Livscyklus"/>
+		</restriction>
+	</simpleType>
+
+    <simpleType name="SagInkluderFilterType">
+      <restriction base="string">
+        <enumeration value="sagsrelation"/>
+        <enumeration value="journalpost"/>
+      </restriction>
+    </simpleType>
+
+	<simpleType name="SorteringFilterRetningType">
+		<restriction base="string">
+			<enumeration value="Stigende"/>
+			<enumeration value="Faldende"/>
+		</restriction>
+	</simpleType>
+
+	<!-- Elements of the output data to be delivered. An empty filter means that no data will be returned -->
+	<complexType name="FremsoegFilterSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfremsoegfilterinput:ASDD:1.0.0">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<element name="DokumentVis" type="sdi:DokumentVisType" minOccurs="0" maxOccurs="unbounded" oio:content="dokumentvis"/>
+			<element name="SagVis" type="sdi:SagVisType" minOccurs="0" maxOccurs="unbounded" oio:content="sagvis"/>
+			<element name="DokumentInkluder" type="sdi:DokumentInkluderFilterType" minOccurs="0" maxOccurs="unbounded" oio:content="dokumentinkluder"/>
+			<element name="SagInkluder" type="sdi:SagInkluderFilterType" minOccurs="0" maxOccurs="unbounded" oio:content="saginkluder"/>
+		</choice>
+	</complexType>
+
+	<complexType name="FremsoegSorteringSagDokumentIndeksInputType" oio:definition="urn:oio:sagdok:sagdokumentindeksfremsoegsorteringinput:ASDD:1.0.0">
+		<choice minOccurs="0" maxOccurs="unbounded">
+            <element name="SagSortering" type="sdi:SagSorteringType" minOccurs="0" maxOccurs="unbounded" oio:content="sagsortering"/>
+            <element name="DokumentSortering" type="sdi:DokumentSorteringType" minOccurs="0" maxOccurs="unbounded" oio:content="dokumentsortering"/>
+		</choice>
+	</complexType>
+
+</schema>
+

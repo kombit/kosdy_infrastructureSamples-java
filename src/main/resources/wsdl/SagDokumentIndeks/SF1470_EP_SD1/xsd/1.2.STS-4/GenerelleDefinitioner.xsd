@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+
+  xmlns="http://www.w3.org/2001/XMLSchema"
+
+  xmlns:oio="urn:oio:definitions:1.0.0" 
+  oio:mapping="urn:oio:generelledefinitioner:MPD:4.0.0"   
+
+  xmlns:sd="urn:oio:sagdok:3.0.0"
+
+  xmlns:gd="urn:oio:sts:generelledefinitioner:1.2.4.0"
+  targetNamespace="urn:oio:sts:generelledefinitioner:1.2.4.0"
+  >
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+
+	<complexType name="RelationType" oio:definition="urn:oio:sagdok:relation:ADD:2.0.0">
+		<sequence>
+			<element name="Virkning" minOccurs="0" type="sd:VirkningType" oio:content="referenceid"/>
+			<element name="Rolle" minOccurs="0" type="sd:UnikIdType" oio:content="rolle"/>
+			<element name="Type" minOccurs="0" type="sd:UnikIdType" oio:content="type"/>
+			<element name="Indeks" minOccurs="0" oio:content="indeks">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ReferenceID" minOccurs="0" type="sd:UnikIdType" oio:content="referenceid"/>
+			<element name="LokalUdvidelseListe" minOccurs="0" type="gd:LokalUdvidelseListeType" oio:content="lokaludvidelseliste"/>
+		</sequence>
+	</complexType>
+
+	<element name="LokalUdvidelseListe" type="gd:LokalUdvidelseListeType" oio:content="lokaludvidelseliste"/>
+	<complexType name="LokalUdvidelseListeType" oio:definition="urn:oio:sagdok:lokaludvidelseliste:ADD:1.0.0">
+		<sequence>
+			<any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded" oio:content="any"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="LokalUdvidelseType" oio:definition="urn:oio:sagdok:lokaludvidelse:ADD:1.0.0">
+		<sequence>
+			<element name="Virkning" minOccurs="0" type="sd:VirkningType" oio:content="referenceid"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="RegistreringType" oio:definition="urn:oio:sagdok:registrering:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:RegistreringType">
+				<sequence>
+					<element name="StsTidspunkt" minOccurs="0" type="dateTime" oio:content="ststidspunkt"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="BeloebType">
+		<restriction base="string">
+			<pattern value="-?[0-9]+(\.[0-9]+)?"/>
+		</restriction>
+	</simpleType>
+
+</schema>

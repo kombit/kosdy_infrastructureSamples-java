@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified" 
+
+    xmlns="http://www.w3.org/2001/XMLSchema" 
+
+    xmlns:oio="urn:oio:definitions:1.0.0" 
+    oio:mapping="urn:oio:sagdok:MPD:3.0.0"
+
+    xmlns:sd="urn:oio:sagdok:3.0.0"
+    xmlns:gd="urn:oio:sts:generelledefinitioner:1.2.4.0"
+    xmlns:go="urn:oio:sts:generelleoperationer:1.2.4.0"
+
+    xmlns:di="urn:oio:sts:sagdok:dokumentindeks:1.2.4.0"
+    targetNamespace="urn:oio:sts:sagdok:dokumentindeks:1.2.4.0"
+    >
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<import namespace="urn:oio:sts:generelledefinitioner:1.2.4.0" schemaLocation="GenerelleDefinitioner.xsd"/>
+	<import namespace="urn:oio:sts:generelleoperationer:1.2.4.0" schemaLocation="GenerelleOperationer.xsd"/>
+    <include schemaLocation="DokumentIndeks.xsd"/>
+
+	<element name="ImportInput" type="di:ImportInputType" oio:definition="urn:oio:sagdok:dokumentimportinput:ADD:2.0.0"/>
+	<element name="ImportOutput" type="sd:BasicOutputType" oio:definition="urn:oio:sagdok:dokumentimportoutput:ASDD:2.0.0"/>
+
+	<element name="OpretInput" type="di:OpretInputType" oio:definition="urn:oio:sagdok:dokumentopretinput:ADD:2.0.0"/>
+	<element name="OpretOutput" type="sd:OpretOutputType" oio:definition="urn:oio:sagdok:dokumentopretoutput:ADD:2.0.0"/>
+
+	<element name="RetInput" type="di:RetInputType" oio:definition="urn:oio:sagdok:dokumentretinput:ADD:2.0.0"/>
+	<element name="RetOutput" type="sd:BasicOutputType" oio:definition="urn:oio:sagdok:dokumentretoutput:ASDD:1.0.0"/>
+
+	<element name="PassiverInput" type="sd:UuidNoteInputType" oio:definition="urn:oio:sagdok:dokumentpassiverinput:ASDD:1.0.0"/>
+	<element name="PassiverOutput" type="sd:BasicOutputType" oio:definition="urn:oio:sagdok:dokumentpassiveroutput:ASDD:1.0.0"/>
+
+	<element name="SletInput" type="sd:UuidNoteInputType" oio:definition="urn:oio:sagdok:dokumentsletinput:ASDD:1.0.0"/>
+	<element name="SletOutput" type="sd:BasicOutputType" oio:definition="urn:oio:sagdok:dokumentsletoutput:ASDD:1.0.0"/>
+
+	<element name="LaesInput" type="go:LaesIndeksInputType" oio:definition="urn:oio:sagdok:dokumentlaesinput:ASDD:1.0.0"/>
+	<element name="LaesOutput" type="di:LaesOutputType" oio:definition="urn:oio:sagdok:dokumentlaesoutput:ADD:2.0.0"/>
+
+	<element name="ListInput" type="go:ListIndeksInputType" oio:definition="urn:oio:sagdok:dokumentlistinput:ASDD:1.0.0"/>
+	<element name="ListOutput" type="di:ListOutputType" oio:definition="urn:oio:sagdok:dokumentlistoutput:ADD:2.0.0"/>
+
+	<element name="SoegInput" type="di:SoegInputType" oio:definition="urn:oio:sagdok:dokumentsoeginput:ADD:2.0.0"/>
+	<element name="SoegOutput" type="sd:SoegOutputType" oio:definition="urn:oio:sagdok:dokumentsoegoutput:ASDD:1.0.0"/>
+
+    <element name="FjernInput" type="sd:UuidNoteInputType" oio:definition="urn:oio:sagdok:dokumentsletinput:ASDD:1.0.0"/>
+    <element name="FjernOutput" type="sd:BasicOutputType" oio:definition="urn:oio:sagdok:dokumentsletoutput:ASDD:1.0.0"/>
+
+	<element name="KasserInput" type="di:KasserInputType" oio:definition="urn:oio:sts:sagimportinput:ADD:2.0.0"/>
+	<element name="KasserOutput" type="sd:BasicOutputType" oio:definition="urn:oio:sts:sagimportoutput:ASDD:2.0.0"/>
+
+	<complexType name="KasserInputType" oio:definition="urn:oio:sts:dokumentimportinput:ADD:2.0.0">
+		<sequence>
+			<element name="Kasser" type="di:FiltreretOejebliksbilledeType" oio:definition="urn:oio:sts:dokumentlaesresultat:ADD:2.0.0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="ImportInputType" oio:definition="urn:oio:sagdok:dokumentimportinput:ADD:2.0.0">
+		<sequence>
+			<element name="DokumentIndeks" type="di:DokumentIndeksType" oio:content="dokumentindeks"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="OpretInputType" oio:definition="urn:oio:sts:sagopretinput:ADD:2.0.0">
+        <complexContent>
+            <extension base="sd:OpretInputType">
+				<sequence>
+					<element name="AttributListe" type="di:AttributListeType" minOccurs="0" oio:content="attributter"/>
+					<element name="TilstandListe" type="di:TilstandListeType" minOccurs="0" oio:content="tilstande"/>
+					<element name="RelationListe" type="di:RelationListeType" minOccurs="0" oio:content="relationer"/>
+					<element name="VariantListe" type="di:VariantListeType" minOccurs="0" oio:content="varianter"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RetInputType" oio:definition="urn:oio:sts:sagretinput:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:RetInputType">
+				<sequence>
+					<element name="AttributListe" type="di:AttributListeType" minOccurs="0" oio:content="attributter"/>
+					<element name="TilstandListe" type="di:TilstandListeType" minOccurs="0" oio:content="tilstande"/>
+					<element name="RelationListe" type="di:RelationListeType" minOccurs="0" oio:content="relationer"/>
+					<element name="VariantListe" type="di:VariantListeType" minOccurs="0" oio:content="varianter"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="LaesOutputType" oio:definition="urn:oio:sts:saglaesoutput:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:BasicOutputType">
+				<sequence>
+					<element name="FiltreretOejebliksbillede" type="di:FiltreretOejebliksbilledeType" minOccurs="0" maxOccurs="1" oio:definition="urn:oio:sts:dokumentlaesresultat:ADD:2.0.0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="ListOutputType" oio:definition="urn:oio:sts:dokumentlistoutput:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:BasicOutputType">
+				<sequence>
+					<element name="FiltreretOejebliksbillede" type="di:FiltreretOejebliksbilledeType" minOccurs="0" maxOccurs="unbounded" oio:definition="urn:oio:sts:dokumentlaesresultat:ADD:2.0.0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="FiltreretOejebliksbilledeType" oio:definition="urn:oio:sts:dokumentfiltreretoejebliksbillede:ADD:1.0.0">
+		<sequence>
+			<element name="ObjektType" type="sd:SagDokObjektType" oio:content="objekt"/>
+			<element name="Registrering" type="di:RegistreringType" minOccurs="0" maxOccurs="unbounded" oio:content="registrering"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="SoegInputType" oio:definition="urn:oio:sts:dokumentsoeginput:ADD:1.0.0">
+		<complexContent>
+			<extension base="go:SoegIndeksInputType">
+				<sequence>
+		            <element name="AttributListe" type="di:AttributListeType" oio:content="soegattributter"/>
+		            <element name="TilstandListe" type="di:TilstandListeType" oio:content="soegtilstande"/>
+		            <element name="RelationListe" type="di:RelationListeType" oio:content="soegrelationer"/>
+                    <element name="VariantListe" type="di:VariantListeType" oio:content="varianter"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Søgeelement til di:AttributListeType.LokalUdvidelseListe, der giver mulighed for intervalsøgning -->
+	<element name="SoegEgenskaberLokalUdvidelse" type="di:SoegEgenskaberLokalUdvidelseType"/>
+	<complexType name="SoegEgenskaberLokalUdvidelseType" oio:definition="urn:oio:sagdi:soegegenskaberlokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element name="BrevDatoInterval" type="go:SoegTidIntervalType" minOccurs="0" oio:content="brevdatointerval"/>
+		</sequence>
+	</complexType>
+
+</schema>

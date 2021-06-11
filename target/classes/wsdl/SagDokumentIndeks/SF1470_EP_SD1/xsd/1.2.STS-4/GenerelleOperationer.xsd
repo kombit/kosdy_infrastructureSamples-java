@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+
+	xmlns="http://www.w3.org/2001/XMLSchema"
+
+	xmlns:oio="urn:oio:definitions:1.0.0"
+	oio:mapping="urn:oio:generelleoperationer:MPD:4.0.0"
+
+    xmlns:sd="urn:oio:sagdok:3.0.0"
+  	xmlns:gd="urn:oio:sts:generelledefinitioner:1.2.4.0"
+
+	xmlns:go="urn:oio:sts:generelleoperationer:1.2.4.0"
+	targetNamespace="urn:oio:sts:generelleoperationer:1.2.4.0"
+	>
+
+	<import namespace="urn:oio:sts:generelledefinitioner:1.2.4.0" schemaLocation="GenerelleDefinitioner.xsd"/>
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+
+    <complexType name="LaesIndeksInputType" oio:definition="urn:oio:sagdok:laesinput:ADD:1.0.0">
+    	<complexContent>
+    	    <extension base="sd:LaesInputType">
+		        <sequence>
+		            <element name="StsRegistreringFraFilter" type="sd:TidspunktType" minOccurs="0" oio:content="kilderegistreringfrafilter"/>
+		            <element name="StsRegistreringTilFilter" type="sd:TidspunktType" minOccurs="0" oio:content="kilderegistreringtilfilter"/>
+		        </sequence>
+    	    </extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="ListIndeksInputType" oio:definition="urn:oio:sagdok:laesinput:ADD:1.0.0">
+    	<complexContent>
+    	    <extension base="sd:ListInputType">
+		        <sequence>
+		            <element name="StsRegistreringFraFilter" type="sd:TidspunktType" minOccurs="0" oio:content="stsregistreringfrafilter"/>
+		            <element name="StsRegistreringTilFilter" type="sd:TidspunktType" minOccurs="0" oio:content="stsregistreringtilfilter"/>
+		        </sequence>
+    	    </extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="PagineringType" oio:definition="urn:oio:sagdok:pagenering:ADD:1.0.0">
+       <sequence>
+            <element ref="sd:FoersteResultatReference" minOccurs="0" oio:content="foersteresultat"/>
+            <element ref="sd:MaksimalAntalKvantitet" minOccurs="0" oio:content="maksimalantalresultater"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="SoegIndeksInputType" oio:definition="urn:oio:sagdok:laesinput:ADD:1.0.0">
+    	<complexContent>
+    	    <extension base="sd:SoegInputType">
+		        <sequence>
+		            <element name="SoegStsFraTidspunkt" type="sd:TidspunktType" minOccurs="0" oio:content="soegstsfratidspunkt"/>
+		            <element name="SoegStsTilTidspunkt" type="sd:TidspunktType" minOccurs="0" oio:content="soegststiltidspunkt"/>
+		        </sequence>
+    	    </extension>
+    	</complexContent>
+    </complexType>
+
+	<complexType name="SoegTidIntervalType" oio:definition="urn:oio:sagdok:soegtidinterval:ADD:1.0.0">
+		<sequence>
+			<element name="FraTidspunkt" type="sd:TidspunktType" oio:content="soegfratidspunkt"/>
+			<element name="TilTidspunkt" type="sd:TidspunktType" oio:content="soegtiltidspunkt"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="SoegBeloebIntervalType" oio:definition="urn:oio:sagdok:soegbeloebinterval:ADD:1.0.0">
+		<sequence>
+			<element name="FraBeloeb" type="gd:BeloebType" oio:content="soegfrabeloeb"/>
+			<element name="TilBeloeb" type="gd:BeloebType" oio:content="soegtilbeloeb"/>
+		</sequence>
+	</complexType>
+
+</schema>

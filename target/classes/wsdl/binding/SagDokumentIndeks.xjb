@@ -1,0 +1,34 @@
+<jaxb:bindings
+xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+xmlns:annox="http://annox.dev.java.net"
+version="2.0">
+    <jaxb:bindings schemaLocation="../SagDokumentIndeks/SF1470_EP_SD1/xsd/1.2.STS-4/SagIndeks.xsd" node="/xs:schema">
+        <jaxb:bindings node="xs:complexType[@name='EgenskaberType']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="SagIndeksEgenskaber"/>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='SagsaktoerLokalUdvidelseType']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="SagsaktoerLokalUdvidelse"/>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='SagsklasseLokalUdvidelseType']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="SagsklasseLokalUdvidelse"/>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='SagspartLokalUdvidelseType']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="SagspartLokalUdvidelse"/>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='SagsitsystemRelationType']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="SagsitsystemRelation"/>
+            </annox:annotate>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

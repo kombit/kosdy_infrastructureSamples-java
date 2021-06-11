@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dk.kombit</groupId>
+    <artifactId>Kombit.InfrastructureSamples</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <cxf.version>3.3.6</cxf.version>
+
+        <resources>${basedir}/src/main/resources</resources>
+        <!-- TODO: Add WSDL files here-->
+        <wsdl.Klasse>wsdl/Klasse/Klasse.wsdl</wsdl.Klasse>
+        <wsdl.SagDokumentIndeks>wsdl/SagDokumentIndeks/wsdl/token/SagDokumentIndeksService.wsdl</wsdl.SagDokumentIndeks>
+        <wsdl.Organisation>wsdl/Organisation/Organisation_1.wsdl</wsdl.Organisation>
+        <wsdl.Virksomhed>wsdl/Virksomhed/Virksomhed.wsdl</wsdl.Virksomhed>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-client</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-security</artifactId>
+            <version>${cxf.version}</version>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>stax</groupId>
+                    <artifactId>stax-api</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <groupId>javax.xml.stream</groupId>
+                    <artifactId>stax-api</artifactId>
+                </exclusion>
+            </exclusions>
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-features-logging</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.2.6.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.13.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-fluent-api</artifactId>
+            <version>3.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+            <!-- Generates classes from WSDL files -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
+                            <!-- TODO: Add WSDL files here-->
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${resources}/${wsdl.SagDokumentIndeks}</wsdl>
+                                    <wsdlLocation>classpath:${wsdl.SagDokumentIndeks}</wsdlLocation>
+                                    <bindingFiles>
+                                        <bindingFile>${basedir}/src/main/resources/wsdl/binding/SagDokumentIndeks.xjb</bindingFile>
+                                    </bindingFiles>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${resources}/${wsdl.Organisation}</wsdl>
+                                    <wsdlLocation>classpath:${wsdl.Organisation}</wsdlLocation>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${resources}/${wsdl.Virksomhed}</wsdl>
+                                    <wsdlLocation>classpath:${wsdl.Virksomhed}</wsdlLocation>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${resources}/${wsdl.Klasse}</wsdl>
+                                    <wsdlLocation>classpath:${wsdl.Klasse}</wsdlLocation>
+                                </wsdlOption>
+                            </wsdlOptions>
+                            <defaultOptions>
+                                <extraargs>
+                                    <extraarg>-xjc-Xfluent-api</extraarg>
+                                    <extraarg>-xjc-Xinheritance</extraarg>
+                                    <extraarg>-xjc-Xannotate</extraarg>
+                                </extraargs>
+                            </defaultOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-fluent-api</artifactId>
+                        <version>3.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-namespace-prefix</artifactId>
+                        <version>1.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics</artifactId>
+                        <version>1.11.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics-annotate</artifactId>
+                        <version>1.1.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
