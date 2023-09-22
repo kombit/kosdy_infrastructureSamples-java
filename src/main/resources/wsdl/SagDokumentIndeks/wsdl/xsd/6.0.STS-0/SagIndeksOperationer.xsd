@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?><schema xmlns:si="urn:oio:sts:sagdok:sagindeks:6" xmlns:sd="urn:oio:sagdok:3.0.0" xmlns:sag="urn:oio:sts:sagdok:sag:6" xmlns:oio="urn:oio:definitions:1.0.0" xmlns:go="urn:oio:sts:generelleoperationer:6" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" oio:mapping="urn:oio:sts:MPD:3.0.0" targetNamespace="urn:oio:sts:sagdok:sagindeks:6">
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<import namespace="urn:oio:sts:generelleoperationer:6" schemaLocation="GenerelleOperationer.xsd"/>
+	<import namespace="urn:oio:sts:sagdok:sag:6" schemaLocation="SagOperationer.xsd"/>
+	<include schemaLocation="SagIndeks.xsd"/>
+
+	<element name="LaesInput" oio:definition="urn:oio:sagdok:dokumentlaesinput:ASDD:1.0.0" type="go:LaesIndeksInputType"/>
+
+	<element name="ListInput" oio:definition="urn:oio:sagdok:dokumentlistinput:ASDD:1.0.0" type="go:ListIndeksInputType"/>
+
+	<element name="FjernInput" oio:definition="urn:oio:sts:sagfjerninput:ADD:2.0.0" type="sd:UuidNoteInputType"/>
+	<element name="FjernOutput" oio:definition="urn:oio:sts:sagfjernoutput:ADD:2.0.0" type="sd:BasicOutputType"/>
+
+	<element name="KasserInput" oio:definition="urn:oio:sts:sagimportinput:ADD:2.0.0" type="si:KasserInputType"/>
+	<element name="KasserOutput" oio:definition="urn:oio:sts:sagimportoutput:ASDD:2.0.0" type="sd:BasicOutputType"/>
+
+	<complexType name="KasserInputType" oio:definition="urn:oio:sts:sagimportinput:ADD:2.0.0">
+		<sequence>
+			<element name="Kasser" oio:definition="urn:oio:sts:saglaesresultat:ADD:2.0.0" type="sag:FiltreretOejebliksbilledeType"/>
+		</sequence>
+	</complexType>
+
+	<!-- Søgeelement til sag:AttributListeType.LokalUdvidelseListe, der giver mulighed for intervalsøgning -->
+	<element name="SoegEgenskaberLokalUdvidelse" type="si:SoegEgenskaberLokalUdvidelseType"/>
+	<complexType name="SoegEgenskaberLokalUdvidelseType" oio:definition="urn:oio:sagdi:soegegenskaberlokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="OprettetTidspunktInterval" oio:content="oprettettidspunktinterval" type="go:OprettetTidspunktIntervalType"/>
+			<element minOccurs="0" name="SenestAendretInterval" oio:content="senestaendretinterval" type="go:SenestAendretIntervalType"/>
+		</sequence>
+	</complexType>
+
+</schema>

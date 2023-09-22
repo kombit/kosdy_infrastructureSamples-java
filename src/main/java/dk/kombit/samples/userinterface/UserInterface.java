@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 public class UserInterface {
 
     /**
-     * The showUserInterface method is responible for showing the console based interface
+     * The showUserInterface method is responsible for showing the console based interface
      *
      * @param sagDokumentIndeks
      * @param klassifikation

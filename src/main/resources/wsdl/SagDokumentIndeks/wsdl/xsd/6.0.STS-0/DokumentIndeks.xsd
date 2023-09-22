@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8'?><schema xmlns:sd="urn:oio:sagdok:3.0.0" xmlns:oio="urn:oio:definitions:1.0.0" xmlns:gd="urn:oio:sts:generelledefinitioner:6" xmlns:di="urn:oio:sts:sagdok:dokumentindeks:6" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:oio:sts:sagdok:dokumentindeks:6">
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<import namespace="urn:oio:sts:generelledefinitioner:6" schemaLocation="GenerelleDefinitioner.xsd"/>
+
+	<complexType name="DokumentIndeksType" oio:definition="urn:oio:sagdi:dokument:ADD:3.0.0">
+		<complexContent>
+			<extension base="sd:SagDokObjektType">
+				<sequence>
+					<element maxOccurs="unbounded" name="Registrering" oio:content="registreringer" type="di:RegistreringType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RegistreringType" oio:definition="urn:oio:sagdi:dokumentregistreringindeks:ADD:3.0.0">
+		<complexContent>
+			<extension base="gd:RegistreringType">
+				<sequence>
+					<element name="AttributListe" oio:content="attributter" type="di:AttributListeType"/>
+					<element name="TilstandListe" oio:content="tilstande" type="di:TilstandListeType"/>
+					<element name="RelationListe" oio:content="relationer" type="di:RelationListeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="AttributListeType" oio:definition="urn:oio:sagdi:dokumentattributliste:ADD:3.0.0">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Egenskaber" oio:content="egenskaber" type="di:EgenskaberType"/>
+			<element minOccurs="0" oio:content="lokaludvidelseliste" ref="gd:LokalUdvidelseListe"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="TilstandListeType" oio:definition="urn:oio:sagdi:dokumenttilstandliste:ADD:3.0.0">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Fremdrift" oio:content="fremdrift" type="di:FremdriftType"/>
+			<element minOccurs="0" oio:content="lokaludvidelseliste" ref="gd:LokalUdvidelseListe"/>
+		</sequence>
+	</complexType>
+
+    <complexType name="RelationListeType" oio:definition="urn:oio:sagdi:dokumentrelationliste:ADD:2.0.0">
+        <sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Dokumentrelation" oio:content="dokumentrelation" type="gd:RelationType"/>
+
+			<element maxOccurs="unbounded" minOccurs="0" name="Dokumentaktoer" oio:content="dokumentaktoer" type="gd:RelationType"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Dokumentpart" oio:content="dokumentpart" type="gd:RelationType"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Dokumentklasse" oio:content="dokumentklasse" type="gd:RelationType"/>
+			<element minOccurs="0" oio:content="lokaludvidelseliste" ref="gd:LokalUdvidelseListe"/>
+        </sequence>
+    </complexType>
+
+
+	<!-- Element til gd:RelationType.LokalUdvidelseListe for Dokumentaktoer i di:RelationListeType -->
+	<element name="DokumentaktoerLokalUdvidelse" oio:content="DokumentaktoerLokalUdvidelse" type="di:DokumentaktoerLokalUdvidelseType"/>
+	<complexType name="DokumentaktoerLokalUdvidelseType" oio:definition="urn:oio:sagdok:dokumentaktoerlokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="BrugervendtNoegle" oio:content="brugervendtnoegle" type="sd:BrugervendtNoegleTekst"/>
+			<element minOccurs="0" name="FuldtNavn" oio:content="fuldtnavn">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="CVR-Nr" oio:content="cvrnr">
+				<simpleType>
+					<restriction base="string">
+						<pattern value="[0-9]{8}"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Element til gd:RelationType.LokalUdvidelseListe for Dokumentpart i di:RelationListeType -->
+	<element name="DokumentpartLokalUdvidelse" type="di:DokumentpartLokalUdvidelseType"/>
+	<complexType name="DokumentpartLokalUdvidelseType" oio:definition="urn:oio:sagdi:dokumentpartlokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="BrugervendtNoegle" oio:content="brugervendtnoegle" type="sd:BrugervendtNoegleTekst"/>
+			<element minOccurs="0" name="FuldtNavn" oio:content="fuldtnavn">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Element til gd:RelationType.LokalUdvidelseListe for Dokumentklasse i di:RelationListeType -->
+	<element name="DokumentklasseLokalUdvidelse" type="di:DokumentklasseLokalUdvidelseType"/>
+	<complexType name="DokumentklasseLokalUdvidelseType" oio:definition="urn:oio:sagdi:dokumentklasselokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="Klassetitel" oio:content="klassetitel">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="BrugervendtNoegle" oio:content="brugervendtnoegle" type="sd:BrugervendtNoegleTekst"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Soegeord" oio:content="soegeord" type="di:SoegeordType"/>
+		</sequence>
+	</complexType>
+    <complexType name="SoegeordType" oio:definition="urn:oio:sagdi:klassesoegeord:ADD:3.0.0">
+        <sequence>
+            <element minOccurs="0" name="SoegeordIdentifikator" oio:content="soegeordidentifikator" type="string"/>
+            <element minOccurs="0" name="Beskrivelse" oio:content="beskrivelse" type="string"/>
+            <element minOccurs="0" name="SoegeordKategori" oio:content="soegeordskategori" type="string"/>
+        </sequence>
+    </complexType>
+
+	<!-- Element til di:RelationListeType.LokalUdvidelseListe
+	     Bemærk, at der her er tale om en ny relation som lokaludvidelse til DokumentIndeksType, ikke om lokaludvidelse
+	     af en eksisterende relation -->
+	<element name="Sikkerhedsprofil" oio:content="sikkerhedsprofil" type="di:SikkerhedsprofilRelationType"/>
+	<complexType name="SikkerhedsprofilRelationType" oio:definition="urn:oio:sagdi:sikkerhedsprofilrelation:ADD:2.0.0">
+		<complexContent>
+			<extension base="gd:RelationType"/>
+		</complexContent>
+	</complexType>
+
+	<!-- Element til di:RelationListeType.LokalUdvidelseListe, kan angives 0 til flere gange
+	     Bemærk, at der her er tale om en ny relation som lokaludvidelse til DokumentIndeksType, ikke om lokaludvidelse
+	     af en eksisterende relation -->
+	<element name="DokumentitsystemRelation" type="di:DokumentitsystemRelationType"/>
+	<complexType name="DokumentitsystemRelationType" oio:definition="urn:oio:sagdi:dokumentitsystemrelation:ADD:2.0.0">
+		<complexContent>
+			<extension base="gd:RelationType">
+				<sequence>
+					<element minOccurs="0" name="SystemNavn" oio:content="systemnavn" type="string"/>
+					<element minOccurs="0" name="SystemURI" oio:content="systemuri" type="string"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="Type">
+		<restriction base="string">
+		    <enumeration value="Faktura"/>
+			<enumeration value="Brev, indgaaende"/>
+			<enumeration value="Brev, udgaaende"/>
+			<enumeration value="Brev"/>
+			<enumeration value="Internt Notat"/>
+			<enumeration value="Eksternt Notat"/>
+		    <enumeration value="Rapport"/>
+		    <enumeration value="Dagsorden"/>
+			<enumeration value="Plan"/>
+			<enumeration value="Andet"/>
+		</restriction>
+	</simpleType>
+
+    <complexType name="EgenskaberType" oio:definition="urn:oio:sagdi:dokumentegenskaber:ADD:2.0.0">
+        <sequence>
+			<element minOccurs="0" name="Virkning" oio:content="virkning" type="sd:VirkningType"/>
+            <element minOccurs="0" name="BrugervendtNoegle" oio:content="brugervendtnoegle" type="sd:BrugervendtNoegleTekst"/>
+            <element minOccurs="0" name="Titel" oio:content="titel">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="1"/>
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+            <element minOccurs="0" name="Beskrivelse" oio:content="beskrivelse">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="4096"/>
+					</restriction>
+				</simpleType>
+			</element>
+            <element minOccurs="0" name="BrevDato" oio:content="brevdato" type="date"/>
+            <element minOccurs="0" name="OffentlighedUndtaget" oio:content="offentlighedundtaget" type="sd:OffentlighedUndtagetType"/>
+            <element minOccurs="0" name="VersionIdentifikator" oio:content="major" type="integer"/>
+            <element minOccurs="0" name="UnderversionIdentifikator" oio:content="minor" type="integer"/>
+            <element minOccurs="0" name="Kassationskode" oio:content="kassationskode">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="50"/>
+					</restriction>
+				</simpleType>
+			</element>
+            <element minOccurs="0" name="Dokumentnummer" oio:content="dokumentnummer">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="1"/>
+						<maxLength value="50"/>
+					</restriction>
+				</simpleType>
+			</element>
+            <element minOccurs="0" name="Foelsomhed" oio:content="foelsomhed" type="di:FoelsomhedType"/>
+            <element minOccurs="0" name="Type" oio:content="type" type="di:Type"/>
+        </sequence>
+    </complexType>
+    <simpleType name="FoelsomhedType">
+      <restriction base="string">
+	      <enumeration value="IKKE_FORTROLIGE_DATA"/>
+	      <enumeration value="FORTROLIGE_PERSONOPLYSNINGER"/>
+	      <enumeration value="FOELSOMME_PERSONOPLYSNINGER"/>
+	      <enumeration value="VIP_SAGER"/>
+      </restriction>
+    </simpleType>
+    
+	<complexType name="FremdriftType" oio:definition="urn:oio:sagdi:dokumentfremdrift:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="Virkning" oio:content="virkning" type="sd:VirkningType"/>
+			<element minOccurs="0" name="FremdriftStatusKode" oio:content="fremdriftstatus" type="di:FremdriftStatusKodeType"/>
+		</sequence>
+	</complexType>
+    
+    <simpleType name="FremdriftStatusKodeType" oio:definition="urn:oio:sagdi:dokumentfremdriftstatus:DT:2.0.0">
+        <restriction base="string">
+            <enumeration value="Modtaget"/>
+            <enumeration value="Fordelt"/>
+            <enumeration value="Underudarbejdelse"/>
+            <enumeration value="Underreview"/>
+            <enumeration value="Publiceret"/>
+            <enumeration value="Endeligt"/>
+            <enumeration value="Afleveret"/>
+        </restriction>
+    </simpleType>
+
+
+</schema>

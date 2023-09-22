@@ -4,7 +4,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
 xmlns:annox="http://annox.dev.java.net"
 version="2.0">
-    <jaxb:bindings schemaLocation="../SagDokumentIndeks/SF1470_EP_SD1/xsd/1.2.STS-4/SagIndeks.xsd" node="/xs:schema">
+    <jaxb:bindings schemaLocation="../SagDokumentIndeks/wsdl/xsd/6.0.STS-0/SagIndeks.xsd" node="/xs:schema">
         <jaxb:bindings node="xs:complexType[@name='EgenskaberType']">
             <annox:annotate target="class">
                 <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="SagIndeksEgenskaber"/>

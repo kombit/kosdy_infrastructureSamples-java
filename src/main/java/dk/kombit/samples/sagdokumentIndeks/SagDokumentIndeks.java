@@ -1,55 +1,54 @@
 package dk.kombit.samples.sagdokumentIndeks;
 
+import java.util.List;
+
+import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.Holder;
+import javax.xml.ws.soap.SOAPFaultException;
+
+import oio.sagdok._3_0.AktoerTypeKodeType;
+import oio.sagdok._3_0.LivscyklusKodeType;
+import oio.sagdok._3_0.MultipleOutputType;
+import oio.sagdok._3_0.StandardReturType;
+import oio.sagdok._3_0.TidspunktType;
+import oio.sagdok._3_0.UnikIdType;
+import oio.sagdok._3_0.UnikReturType;
+import oio.sagdok._3_0.VirkningType;
+import oio.sts.generelledefinitioner._6.LokalUdvidelseListeType;
+import oio.sts.generelledefinitioner._6.RelationType;
+import oio.sts.sagdok.sag._6.AttributListeType;
+import oio.sts.sagdok.sag._6.EgenskaberType;
+import oio.sts.sagdok.sag._6.FremdriftStatusKodeType;
+import oio.sts.sagdok.sag._6.FremdriftType;
+import oio.sts.sagdok.sag._6.RegistreringType;
+import oio.sts.sagdok.sag._6.RelationListeType;
+import oio.sts.sagdok.sag._6.SagType;
+import oio.sts.sagdok.sag._6.TilstandListeType;
+import oio.sts.sagdok.sagdokumentindeks._6.FjernSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.FremsoegFilterSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.FremsoegSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.FremsoegSagDokumentIndeksOutputType;
+import oio.sts.sagdok.sagdokumentindeks._6.ImporterSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.SagVisFilterType;
+import oio.sts.sagdok.sagdokumentindeks._6.SagVisType;
+import oio.sts.sagdok.sagindeks._6.FoelsomhedType;
+import oio.sts.sagdok.sagindeks._6.SagsaktoerLokalUdvidelseType;
+import oio.sts.sagdok.sagindeks._6.SagsitsystemRelationType;
+import oio.sts.sagdok.sagindeks._6.SagsklasseLokalUdvidelseType;
+import oio.sts.sagdok.sagindeks._6.SagspartLokalUdvidelseType;
+
 import dk.kombit.samples.klassifikation.Klasse;
 import dk.kombit.samples.organisation.Organisation;
 import dk.kombit.samples.organisation.Virksomhed;
 import dk.kombit.samples.utils.ClientProperties;
 import dk.kombit.samples.utils.SoapUtils;
 import dk.kombit.xml.schemas.requestheader._1.RequestHeaderType;
-import dk.serviceplatformen.xml.schemas.serviceplatformfault._1.ServiceplatformFault;
-import dk.serviceplatformen.xml.wsdl.soap11.sagdokument.sagdokumentindeks._5.FjernRequestType;
-import dk.serviceplatformen.xml.wsdl.soap11.sagdokument.sagdokumentindeks._5.FjernResponseType;
-import dk.serviceplatformen.xml.wsdl.soap11.sagdokument.sagdokumentindeks._5.FremsoegRequestType;
-import dk.serviceplatformen.xml.wsdl.soap11.sagdokument.sagdokumentindeks._5.FremsoegResponseType;
-import dk.serviceplatformen.xml.wsdl.soap11.sagdokument.sagdokumentindeks._5.ImporterRequestType;
-import dk.serviceplatformen.xml.wsdl.soap11.sagdokument.sagdokumentindeks._5.ImporterResponseType;
-import dk.serviceplatformen.xml.wsdl.soap11.sagdokument.sagdokumentindeks._5.SagDokumentIndeksPortType;
-import dk.serviceplatformen.xml.wsdl.soap11.sagdokument.sagdokumentindeks._5.SagDokumentIndeksService;
-import oio.sagdok._3_0.AktoerTypeKodeType;
-import oio.sagdok._3_0.LivscyklusKodeType;
-import oio.sagdok._3_0.StandardReturType;
-import oio.sagdok._3_0.TidspunktType;
-import oio.sagdok._3_0.UnikIdType;
-import oio.sagdok._3_0.UnikReturType;
-import oio.sagdok._3_0.VirkningType;
-import oio.sts.generelledefinitioner._1_2_4.LokalUdvidelseListeType;
-import oio.sts.generelledefinitioner._1_2_4.RelationType;
-import oio.sts.sagdok.sag._1_2_4.AttributListeType;
-import oio.sts.sagdok.sag._1_2_4.EgenskaberType;
-import oio.sts.sagdok.sag._1_2_4.FremdriftStatusKodeType;
-import oio.sts.sagdok.sag._1_2_4.FremdriftType;
-import oio.sts.sagdok.sag._1_2_4.RegistreringType;
-import oio.sts.sagdok.sag._1_2_4.RelationListeType;
-import oio.sts.sagdok.sag._1_2_4.SagType;
-import oio.sts.sagdok.sag._1_2_4.TilstandListeType;
-import oio.sts.sagdok.sagdokumentindeks._1_2_4.FjernSagDokumentIndeksInputType;
-import oio.sts.sagdok.sagdokumentindeks._1_2_4.FremsoegFilterSagDokumentIndeksInputType;
-import oio.sts.sagdok.sagdokumentindeks._1_2_4.FremsoegSagDokumentIndeksInputType;
-import oio.sts.sagdok.sagdokumentindeks._1_2_4.ImporterSagDokumentIndeksInputType;
-import oio.sts.sagdok.sagdokumentindeks._1_2_4.SagVisFilterType;
-import oio.sts.sagdok.sagdokumentindeks._1_2_4.SagVisType;
-import oio.sts.sagdok.sagindeks._1_2_4.FoelsomhedType;
-import oio.sts.sagdok.sagindeks._1_2_4.SagsaktoerLokalUdvidelseType;
-import oio.sts.sagdok.sagindeks._1_2_4.SagsitsystemRelationType;
-import oio.sts.sagdok.sagindeks._1_2_4.SagsklasseLokalUdvidelseType;
-import oio.sts.sagdok.sagindeks._1_2_4.SagspartLokalUdvidelseType;
+
+import dk.stoettesystemerne.sagsogdokumentindeks.SagDokumentIndeksPortType;
+import dk.stoettesystemerne.sagsogdokumentindeks.SagDokumentIndeksService6;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Holder;
-import java.util.List;
 
 /**
  * Class for handling requests to SagDokumentIndeks
@@ -61,9 +60,10 @@ public class SagDokumentIndeks {
     private final SagDokumentIndeksPortType sagDokumentIndeksPort;
 
     public SagDokumentIndeks() {
-        sagDokumentIndeksPort = new SagDokumentIndeksService().getSagDokumentIndeksPort();
+        sagDokumentIndeksPort = new SagDokumentIndeksService6().getSagDokumentIndeks();
         BindingProvider bindingProvider = (BindingProvider) sagDokumentIndeksPort;
         bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, ClientProperties.getInstance().getSagdokumentIndeksEndpointUrl());
+
     }
 
     private static SagDokumentIndeks sagDokumentIndeks;
@@ -87,9 +87,9 @@ public class SagDokumentIndeks {
      * ses input variables defined in ConfigVariables.
      *
      * @param sagUuid The UUID of the imported case
-     * @return Status code and status text to the console
+     * @return Status code and status text to the console and returns output so it can be used in testing the method
      */
-    public void importer(String sagUuid) {
+    public MultipleOutputType importer(String sagUuid) {
 
         // Class instances
         Virksomhed virksomhed = Virksomhed.getVirksomhed();
@@ -137,7 +137,7 @@ public class SagDokumentIndeks {
 
         // Now we are ready to import the case
 
-        ImporterRequestType importerRequest = new ImporterRequestType().withImporterSagDokumentIndeksInput(
+        ImporterSagDokumentIndeksInputType importerRequest =
                 new ImporterSagDokumentIndeksInputType().withDokumentIndeksOrSagIndeks(
                         new SagType().withUUIDIdentifikator(sagUuid)
                                 .withRegistrering(
@@ -153,9 +153,10 @@ public class SagDokumentIndeks {
                                                                 .withVirkning(createVirkningNowToEternity(ClientProperties.getInstance().getAktoerRef()))
                                                 ).withLokalUdvidelseListe(
                                                         new LokalUdvidelseListeType().withAny(
-                                                                new oio.sts.sagdok.sagindeks._1_2_4.EgenskaberType().withFoelsomhed(
+                                                                new oio.sts.sagdok.sagindeks._6.EgenskaberType().withFoelsomhed(
                                                                         FoelsomhedType.IKKE_FORTROLIGE_DATA
                                                                 ).withVirkning(createVirkningNowToEternity(ClientProperties.getInstance().getAktoerRef()))
+                                                                .withOprettetTidspunkt(SoapUtils.getXmlCalender(ClientProperties.getInstance().getSagOprettet()))
                                                         )
                                                 )
                                         ).withTilstandListe(
@@ -214,7 +215,8 @@ public class SagDokumentIndeks {
                                                                 ClientProperties.getInstance().getAktoerRef(),
                                                                 new SagspartLokalUdvidelseType().withFuldtNavn(ClientProperties.getInstance().getPrimaerPartNavn())
                                                         )
-                                                ).withSagsklasse(
+                                                )
+                                                        .withSagsklasse(
                                                         // The primary class (primaer klasse)
                                                         createRelationWithUdvidelse(
                                                                 ClientProperties.getInstance().getPrimaerKlasseRolleUuid(), // Constant
@@ -236,15 +238,6 @@ public class SagDokumentIndeks {
                                                                 new SagsklasseLokalUdvidelseType().withBrugervendtNoegle(ClientProperties.getInstance().getKleHandlingsfacet())
                                                                         .withFacettitel(ClientProperties.getInstance().getHandlingsKlasseFacetTitel())
                                                                         .withKlassetitel(facetKlasseTitel)
-                                                        )
-                                                ).withSagsarkiv(
-                                                        //The archive (Behandlingsarkiv)
-                                                        createRelation(
-                                                                ClientProperties.getInstance().getBehandlingsarkivRolleUuid(), // Constant
-                                                                ClientProperties.getInstance().getArkivTypeUuid(), // Constant
-                                                                ClientProperties.getInstance().getAnvenderSystemUuid(), // IT-system data
-                                                                null,
-                                                                ClientProperties.getInstance().getAktoerRef()
                                                         )
                                                 ).withLokalUdvidelseListe(
                                                         //The master IT-system (IT-System Master)
@@ -276,92 +269,94 @@ public class SagDokumentIndeks {
                                                 )
                                         )
                                 )
-                )
         );
 
         Holder<RequestHeaderType> requestHeader = SoapUtils.getRequestHeader();
 
-        ImporterResponseType importerResponse;
+        MultipleOutputType importerResponse;
         try {
             importerResponse = sagDokumentIndeksPort.importer(requestHeader, importerRequest);
-        } catch (ServiceplatformFault serviceplatformFault) {
+
+        } catch (SOAPFaultException serviceplatformFault) {
             SoapUtils.logError(serviceplatformFault, LOGGER);
-            return;
+            return null;
         }
 
         System.out.println("Importing Case...");
-        logUnikResponses(importerResponse.getImporterSagDokumentIndeksOutput().getUnikRetur());
-        logStandardResponses(importerResponse.getImporterSagDokumentIndeksOutput().getStandardRetur());
+        logUnikResponses(importerResponse.getUnikRetur());
+        logStandardResponses(importerResponse.getStandardRetur());
+
+        return importerResponse;
     }
 
     /**
      * Searches for a case in the SagDokumentIndeks
      * Outputs status code and status text
-     * Outputs case number if a case is found in the SagDokumentIndeks
+     * Outputs case number if a case is found in the SagDokumentIndeks and returns output so it can be used in testing the method
      *
      * @param uuid
      */
-    public void fremsoeg(String uuid) {
-        FremsoegRequestType fremsoegRequest = new FremsoegRequestType().withFremsoegSagDokumentIndeksInput(
-                new FremsoegSagDokumentIndeksInputType().withSagUuid(uuid).withFilter(
+    public FremsoegSagDokumentIndeksOutputType fremsoeg(String uuid) {
+        FremsoegSagDokumentIndeksInputType fremsoegRequest = new FremsoegSagDokumentIndeksInputType().withSagUuid(uuid).withFilter(
                         // The filter allows us to see egenskaber of the case (Sag) which mean we can get the case number below
                         new FremsoegFilterSagDokumentIndeksInputType().withDokumentVisOrSagVisOrDokumentInkluder(
                                 new SagVisType().withVis(
                                         SagVisFilterType.EGENSKABER
                                 )
                         )
-                )
-        );
+                );
 
         Holder<RequestHeaderType> requestHeader = SoapUtils.getRequestHeader();
 
-        FremsoegResponseType fremsoegResponse;
+        FremsoegSagDokumentIndeksOutputType fremsoegResponse;
         try {
             fremsoegResponse = sagDokumentIndeksPort.fremsoeg(requestHeader, fremsoegRequest);
-        } catch (ServiceplatformFault serviceplatformFault) {
+        } catch (SOAPFaultException serviceplatformFault) {
             SoapUtils.logError(serviceplatformFault, LOGGER);
-            return;
+            return null;
         }
 
         System.out.println("Searching for case by UUID...");
-        logStandardResponse(fremsoegResponse.getFremsoegSagDokumentIndeksOutput().getStandardRetur());
+        logStandardResponse(fremsoegResponse.getStandardRetur());
         // The case number (Sagsnummer) is only printed if a case is found
-        if(fremsoegResponse.getFremsoegSagDokumentIndeksOutput().getAntal() != null
-                && fremsoegResponse.getFremsoegSagDokumentIndeksOutput().getAntal().size() > 0)
+        if(fremsoegResponse.getAntal() != null
+                && fremsoegResponse.getAntal().size() > 0)
         {
             // The case number (Sagsnummer) is retrieved from the returned XML
-            String sagsNummer = fremsoegResponse.getFremsoegSagDokumentIndeksOutput().getSagFiltreretOejebliksbillede().get(0).getRegistrering().get(0).
+            String sagsNummer = fremsoegResponse.getSagFiltreretOejebliksbillede().get(0).getRegistrering().get(0).
                     getAttributListe().getEgenskaber().get(0).getSagsnummer();
             System.out.println(" *Case Number: " + sagsNummer + "\n");
         }
+
+        return fremsoegResponse;
     }
 
     /**
      * Removes a case in the SagDokumentIndeks
-     * Outputs status code and status text
+     * Outputs status code and status text and returns output so it can be used in testing the method
      *
      * @param uuid
      */
-    public void fjern(String uuid) {
-        FjernRequestType fjernRequest = new FjernRequestType().withFjernSagDokumentIndeksInput(
-                new FjernSagDokumentIndeksInputType().withSagUuid(
+    public MultipleOutputType fjern(String uuid) {
+        FjernSagDokumentIndeksInputType fjernRequest = new FjernSagDokumentIndeksInputType().withSagUuid(
                         new UnikIdType().withUUIDIdentifikator(uuid)
-                )
-        );
+                );
 
         Holder<RequestHeaderType> requestHeader = SoapUtils.getRequestHeader();
 
-        FjernResponseType fjernResponse;
+        MultipleOutputType fjernResponse;
         try {
             fjernResponse = sagDokumentIndeksPort.fjern(requestHeader, fjernRequest);
-        } catch (ServiceplatformFault serviceplatformFault) {
+        } catch (SOAPFaultException serviceplatformFault) {
             SoapUtils.logError(serviceplatformFault, LOGGER);
-            return;
+            return null;
         }
 
         System.out.println("Removing case...");
-        logStandardResponses(fjernResponse.getFjernSagDokumentIndeksOutput().getStandardRetur());
-        logUnikResponses(fjernResponse.getFjernSagDokumentIndeksOutput().getUnikRetur());
+        logStandardResponses(fjernResponse.getStandardRetur());
+        logUnikResponses(fjernResponse.getUnikRetur());
+
+        return fjernResponse;
     }
 
     /**
