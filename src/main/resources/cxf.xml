@@ -69,24 +69,17 @@
     </bean>
 
     <!-- TODO: Make a client like this for each port (change name and applies-to). Name must in the form "{namespace}portname" -->
-    <jaxws:client name="{http://serviceplatformen.dk/xml/wsdl/soap11/SagDokument/SagDokumentIndeks/5/}SagDokumentIndeksPort"
+    <jaxws:client name="{http://stoettesystemerne.dk/sagsogdokumentindeks}SagDokumentIndeks"
                   createdFromAPI="true">
         <jaxws:properties>
-            <entry key="security.sts.applies-to" value="http://sagdokument.serviceplatformen.dk/service/sagdokumentindeks/5"/>
+            <entry key="security.sts.applies-to" value="http://entityid.kombit.dk/service/sdi/sagdokumentindeks/6"/>
         </jaxws:properties>
     </jaxws:client>
-
-   <!-- <jaxws:client name="{http://serviceplatformen.dk/xml/wsdl/soap11/Klassifikation/Klasse/5/}KlassePort"
-                  createdFromAPI="true">
-        <jaxws:properties>
-            <entry key="security.sts.applies-to" value="http://klassifikation.serviceplatformen.dk/service/klassifikation/5"/>
-        </jaxws:properties>
-    </jaxws:client> -->
 
     <jaxws:client name="{http://stoettesystemerne.dk/klassifikation}Klasse"
                   createdFromAPI="true" bus="soap12bus">
         <jaxws:properties>
-            <entry key="security.sts.applies-to" value="http://entityid.kombit.dk/service/klassifikation/6"/>
+            <entry key="security.sts.applies-to" value="http://entityid.kombit.dk/service/klassifikation/7"/>
         </jaxws:properties>
     </jaxws:client>
 

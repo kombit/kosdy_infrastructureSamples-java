@@ -1,15 +1,17 @@
 package dk.kombit.samples.utils;
 
-import dk.kombit.xml.schemas.requestheader._1.RequestHeaderType;
-import dk.serviceplatformen.xml.schemas.serviceplatformfault._1.ServiceplatformFault;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+import java.util.UUID;
 import org.slf4j.Logger;
 
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.soap.SOAPFault;
 import javax.xml.ws.Holder;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
-import java.util.UUID;
+import javax.xml.ws.soap.SOAPFaultException;
+
+import dk.kombit.xml.schemas.requestheader._1.RequestHeaderType;
 
 public final class SoapUtils {
 
@@ -20,15 +22,13 @@ public final class SoapUtils {
         return new Holder<>(requestHeaderType);
     }
 
-    public static void logError(ServiceplatformFault fault, Logger logger) {
-        fault.getFaultInfo()
-             .getErrorList()
-             .getError()
-             .forEach(errorType -> logger.error(
+    public static void logError(SOAPFaultException fault, Logger logger) {
+        SOAPFault errorType = fault.getFault();
+        logger.error(
                      "Error code: {}\nError text: {}\n",
-                     errorType.getErrorCode(),
-                     errorType.getErrorText()
-             ));
+                     errorType.getFaultCode(),
+                     errorType.getFaultString()
+        );
         logger.error("Unable to complete program. See error(s) above");
     }
 
