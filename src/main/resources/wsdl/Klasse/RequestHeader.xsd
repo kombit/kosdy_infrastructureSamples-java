@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:tns="http://kombit.dk/xml/schemas/RequestHeader/1/"
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            elementFormDefault="qualified"
-            version="1.0"
-            targetNamespace="http://kombit.dk/xml/schemas/RequestHeader/1/">
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified"
+			version="1.0"
+			targetNamespace="http://kombit.dk/xml/schemas/RequestHeader/1/">
 
 	<xsd:element name="RequestHeader" type="tns:RequestHeaderType" />
 	<xsd:complexType name="RequestHeaderType">

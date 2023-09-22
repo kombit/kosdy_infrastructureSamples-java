@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?><schema xmlns:si="urn:oio:sts:sagdok:sagindeks:6" xmlns:sd="urn:oio:sagdok:3.0.0" xmlns:oio="urn:oio:definitions:1.0.0" xmlns:gd="urn:oio:sts:generelledefinitioner:6" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:oio:sts:sagdok:sagindeks:6">
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<import namespace="urn:oio:sts:generelledefinitioner:6" schemaLocation="GenerelleDefinitioner.xsd"/>
+
+	<!-- Element til sag:AttributListeType.LokalUdvidelseListe, kan angives 0 til flere gange -->
+	<element name="SagIndeksEgenskaber" type="si:EgenskaberType"/>
+	<complexType name="EgenskaberType" oio:definition="urn:oio:sagdok:sagattributlistelokaludvidelseindeks:ADD:2.0.0">
+	    <complexContent>
+		    <extension base="gd:LokalUdvidelseType">
+				<sequence>
+					<element minOccurs="0" name="Sagsstatus" oio:content="sagsstatus">
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="255"/>
+							</restriction>
+						</simpleType>
+					</element>
+					<element minOccurs="0" name="Sagskategori" oio:content="sagskategori">
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="255"/>
+							</restriction>
+						</simpleType>
+					</element>
+					<element minOccurs="0" name="Foelsomhed" oio:content="foelsomhed" type="si:FoelsomhedType"/>
+		            <element minOccurs="0" name="Lokation" oio:content="lokation">
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="255"/>
+							</restriction>
+						</simpleType>
+					</element>
+					<element minOccurs="0" name="OprettetTidspunkt" oio:content="oprettidspunkt" type="dateTime"/>
+				</sequence>
+		    </extension>
+	    </complexContent>
+	</complexType>
+
+    <simpleType name="FoelsomhedType">
+      <restriction base="string">
+	      <enumeration value="IKKE_FORTROLIGE_DATA"/>
+	      <enumeration value="FORTROLIGE_PERSONOPLYSNINGER"/>
+	      <enumeration value="FOELSOMME_PERSONOPLYSNINGER"/>
+	      <enumeration value="VIP_SAGER"/>
+      </restriction>
+    </simpleType>
+
+	<!-- Element til gd:RelationType.LokalUdvidelseListe for Sagsaktoer i sag:RelationListeType -->
+	<element name="SagsaktoerLokalUdvidelse" oio:content="SagsaktoerLokalUdvidelse" type="si:SagsaktoerLokalUdvidelseType"/>
+	<complexType name="SagsaktoerLokalUdvidelseType" oio:definition="urn:oio:sagdok:sagaktoerlokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="BrugervendtNoegle" oio:content="brugervendtnoegle" type="sd:BrugervendtNoegleTekst"/>
+			<element minOccurs="0" name="FuldtNavn" oio:content="fuldtnavn">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="CVR-Nummer" oio:content="cvr-nummer">
+				<simpleType>
+					<restriction base="string">
+						<pattern value="[0-9]{8}"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Element til gd:RelationType.LokalUdvidelseListe for Sagsklasse i sag:RelationListeType -->
+	<element name="SagsklasseLokalUdvidelse" oio:content="sagsklasselokaludvidelse" type="si:SagsklasseLokalUdvidelseType"/>
+	<complexType name="SagsklasseLokalUdvidelseType" oio:definition="urn:oio:sagdok:sagklasselokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="Facettitel" oio:content="facettitel">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="Klassetitel" oio:content="klassetitel">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="BrugervendtNoegle" oio:content="brugervendtnoegle" type="sd:BrugervendtNoegleTekst"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Soegeord" oio:content="soegeord" type="si:SoegeordType"/>
+		</sequence>
+	</complexType>
+    <complexType name="SoegeordType" oio:definition="urn:oio:sagdok:klassesoegeord:ADD:3.0.0">
+        <sequence>
+            <element minOccurs="0" name="SoegeordIdentifikator" oio:content="soegeordidentifikator" type="string"/>
+			<element minOccurs="0" oio:content="beskrivelse" ref="sd:BeskrivelseTekst"/>
+            <element minOccurs="0" name="SoegeordKategoriTekst" oio:content="soegeordskategori" type="string"/>
+        </sequence>
+    </complexType>
+
+	<!-- Element til gd:RelationType.LokalUdvidelseListe for Sagspart i sag:RelationListeType -->
+	<element name="SagspartLokalUdvidelse" oio:content="sagspartlokaludvidelse" type="si:SagspartLokalUdvidelseType"/>
+	<complexType name="SagspartLokalUdvidelseType" oio:definition="urn:oio:sagdok:sagpartlokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="BrugervendtNoegle" oio:content="brugervendtnoegle" type="sd:BrugervendtNoegleTekst"/>
+			<element minOccurs="0" name="FuldtNavn" oio:content="fuldtnavn">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Element til gd:RelationType.LokalUdvidelseListe for Sagsgenstande i sag:RelationListeType -->
+	<element name="SagsgenstandeLokalUdvidelse" type="si:SagsgenstandeLokalUdvidelseType"/>
+	<complexType name="SagsgenstandeLokalUdvidelseType" oio:definition="urn:oio:sagdok:sagsgenstandelokaludvidelse:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="Tekstfelt" oio:content="tekstfelt">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="1024"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Element til sag:RelationListeType.LokalUdvidelseListe
+	     Bemærk, at der her er tale om en ny relation som lokaludvidelse til SagType, ikke om lokaludvidelse af en
+	     eksisterende relation -->
+	<element name="Sikkerhedsprofil" oio:content="sikkerhedsprofil" type="si:SikkerhedsprofilRelationType"/>
+	<complexType name="SikkerhedsprofilRelationType" oio:definition="urn:oio:sagdok:sikkerhedsprofilrelation:ADD:2.0.0">
+	  <complexContent>
+	    <extension base="gd:RelationType"/>
+	  </complexContent>
+	</complexType>
+
+	<!-- Element til sag:RelationListeType.LokalUdvidelseListe, kan angives 0 til flere gange
+	     Bemærk, at der her er tale om en ny relation som lokaludvidelse til SagType, ikke om lokaludvidelse af en
+	     eksisterende relation -->
+	<element name="SagsitsystemRelation" type="si:SagsitsystemRelationType"/>
+	<complexType name="SagsitsystemRelationType" oio:definition="urn:oio:sagdok:sagsitsystemrelation:ADD:2.0.0">
+	  <complexContent>
+	    <extension base="gd:RelationType">
+			<sequence>
+				<element minOccurs="0" name="SystemNavn" oio:content="systemnavn">
+					<simpleType>
+						<restriction base="string">
+							<minLength value="1"/>
+							<maxLength value="255"/>
+						</restriction>
+					</simpleType>
+				</element>
+				<element minOccurs="0" name="SystemURI" oio:content="systemuri">
+					<simpleType>
+						<restriction base="string">
+							<maxLength value="255"/>
+						</restriction>
+					</simpleType>
+				</element>
+			</sequence>
+	    </extension>
+	  </complexContent>
+	</complexType>
+</schema>

@@ -1,26 +1,28 @@
 package dk.kombit.samples.klassifikation;
 
+import java.util.List;
+
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.Holder;
+
+import oio.sagdok._3_0.ListInputType;
+import oio.sagdok._3_0.SoegOutputType;
+
 import dk.kombit.samples.utils.ClientProperties;
 import dk.kombit.samples.utils.SoapUtils;
 import dk.kombit.xml.schemas.requestheader._1.RequestHeaderType;
 
 import dk.stoettesystemerne.klassifikation.KlassePortType;
-import dk.stoettesystemerne.klassifikation.KlasseService6;
-import dk.stoettesystemerne.klassifikation.klasse._6.AttributListeType;
-import dk.stoettesystemerne.klassifikation.klasse._6.EgenskabType;
-import dk.stoettesystemerne.klassifikation.klasse._6.ListOutputType;
-import dk.stoettesystemerne.klassifikation.klasse._6.RelationListeType;
-import dk.stoettesystemerne.klassifikation.klasse._6.SoegInputType;
-import dk.stoettesystemerne.klassifikation.klasse._6.TilstandListeType;
+import dk.stoettesystemerne.klassifikation.KlasseService7;
+import dk.stoettesystemerne.klassifikation.klasse._7.AttributListeType;
+import dk.stoettesystemerne.klassifikation.klasse._7.EgenskabType;
+import dk.stoettesystemerne.klassifikation.klasse._7.ListOutputType;
+import dk.stoettesystemerne.klassifikation.klasse._7.RelationListeType;
+import dk.stoettesystemerne.klassifikation.klasse._7.SoegInputType;
+import dk.stoettesystemerne.klassifikation.klasse._7.TilstandListeType;
 import net.shibboleth.utilities.java.support.collection.Pair;
-import oio.sagdok._3_0.ListInputType;
-import oio.sagdok._3_0.SoegOutputType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Holder;
-import java.util.List;
 
 public class Klasse {
 
@@ -29,7 +31,7 @@ public class Klasse {
     private final KlassePortType klassePort;
 
     public Klasse() {
-        klassePort = new KlasseService6().getKlasse();
+        klassePort = new KlasseService7().getKlasse();
         BindingProvider bindingProvider = (BindingProvider) klassePort;
         bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, ClientProperties.getInstance().getKlassifikationEndpointUrl());
     }
@@ -56,9 +58,9 @@ public class Klasse {
      * Next LIST is used to get the full Klasse object based on the Klasse UUID found by searching.
      *
      * @param brugervendtNoegle Key (brugervendt nøgle) to search for
-     * @return Prints the result to the console
+     * @return Prints the result to the console and returns output so it can be used in testing the method
      */
-    public void soegKlasse(String brugervendtNoegle){
+    public SoegOutputType soegKlasse(String brugervendtNoegle){
 
         System.out.println("\nSearch for class with key: " + brugervendtNoegle + " with the following result:");
 
@@ -69,14 +71,14 @@ public class Klasse {
 
         // Check if status == 20 (OK)
         if (!soegOutput.getStandardRetur().getStatusKode().toString().equals("20"))
-            return;
+            return null;
 
         // Check if any UUID was found
         var uuids = soegOutput.getIdListe().getUUIDIdentifikator();
         if (uuids == null || uuids.isEmpty())
         {
             System.out.println("No result for " + brugervendtNoegle);
-            return;
+            return null;
         }
 
         // Call List with the found UUID(s)
@@ -84,7 +86,7 @@ public class Klasse {
 
         // Print output (klassetitel) in the console
         // This examples assumes that only one object is returned
-        var klasseUUID = listOutput.getFiltreretOejebliksbillede().get(0).getObjektType().getUUIDIdentifikator();
+        var klasseUUID = listOutput.getFiltreretOejebliksbillede().get(0).getObjektID().getUUIDIdentifikator();
         var klasseTitel = listOutput.getFiltreretOejebliksbillede().get(0).getRegistrering().get(0).getAttributListe().getEgenskab().get(0).getTitelTekst();
         var klasseBrugervendtNoegle = listOutput.getFiltreretOejebliksbillede().get(0).getRegistrering().get(0).getAttributListe().getEgenskab().get(0).getBrugervendtNoegleTekst();
 
@@ -104,7 +106,7 @@ public class Klasse {
         } else {
             System.out.println("\n* Gyldig fra: N/A" + "\n* Gyldig til: N/A");
         }
-
+        return soegOutput;
     }
 
     /**
@@ -132,7 +134,7 @@ public class Klasse {
         var listOutput = list(uuids);
 
         // This examples assumes that only one object is returned
-        var klasseUUID = listOutput.getFiltreretOejebliksbillede().get(0).getObjektType().getUUIDIdentifikator();
+        var klasseUUID = listOutput.getFiltreretOejebliksbillede().get(0).getObjektID().getUUIDIdentifikator();
         var klasseTitel = listOutput.getFiltreretOejebliksbillede().get(0).getRegistrering().get(0).getAttributListe().getEgenskab().get(0).getTitelTekst();
 
         return new Pair<>(klasseUUID, klasseTitel);

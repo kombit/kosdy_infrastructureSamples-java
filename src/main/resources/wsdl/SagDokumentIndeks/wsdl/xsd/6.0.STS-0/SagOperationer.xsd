@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?><schema xmlns:sd="urn:oio:sagdok:3.0.0" xmlns:sag="urn:oio:sts:sagdok:sag:6" xmlns:oio="urn:oio:definitions:1.0.0" xmlns:go="urn:oio:sts:generelleoperationer:6" xmlns:gd="urn:oio:sts:generelledefinitioner:6" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" oio:mapping="urn:oio:sts:MPD:3.0.0" targetNamespace="urn:oio:sts:sagdok:sag:6">
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<import namespace="urn:oio:sts:generelledefinitioner:6" schemaLocation="GenerelleDefinitioner.xsd"/>
+	<import namespace="urn:oio:sts:generelleoperationer:6" schemaLocation="GenerelleOperationer.xsd"/>
+	<include schemaLocation="Sag.xsd"/>
+
+	<element name="ImportInput" oio:definition="urn:oio:sts:sagimportinput:ADD:2.0.0" type="sag:ImportInputType"/>
+	<element name="ImportOutput" oio:definition="urn:oio:sts:sagimportoutput:ASDD:2.0.0" type="sd:BasicOutputType"/>
+
+	<element name="OpretInput" oio:definition="urn:oio:sts:sagopretinput:ADD:2.0.0" type="sag:OpretInputType"/>
+	<element name="OpretOutput" oio:definition="urn:oio:sts:sagopretoutput:ADD:2.0.0" type="sd:OpretOutputType"/>
+
+	<element name="RetInput" oio:definition="urn:oio:sts:sagretinput:ADD:2.0.0" type="sag:RetInputType"/>
+	<element name="RetOutput" oio:definition="urn:oio:sts:sagretoutput:ASDD:1.0.0" type="sd:BasicOutputType"/>
+
+	<element name="PassiverInput" oio:definition="urn:oio:sts:sagpassiverinput:ASDD:1.0.0" type="sd:UuidNoteInputType"/>
+	<element name="PassiverOutput" oio:definition="urn:oio:sts:sagpassiveroutput:ASDD:1.0.0" type="sd:BasicOutputType"/>
+
+	<element name="SletInput" oio:definition="urn:oio:sts:sagsletinput:ASDD:1.0.0" type="sd:UuidNoteInputType"/>
+	<element name="SletOutput" oio:definition="urn:oio:sts:sagsletoutput:ASDD:1.0.0" type="sd:BasicOutputType"/>
+
+	<element name="LaesInput" oio:definition="urn:oio:sts:saglaesinput:ASDD:1.0.0" type="sd:LaesInputType"/>
+	<element name="LaesOutput" oio:definition="urn:oio:sts:saglaesoutput:ADD:2.0.0" type="sag:LaesOutputType"/>
+
+	<element name="ListInput" oio:definition="urn:oio:sts:saglistinput:ASDD:1.0.0" type="sd:ListInputType"/>
+	<element name="ListOutput" oio:definition="urn:oio:sts:saglistoutput:ADD:2.0.0" type="sag:ListOutputType"/>
+
+	<element name="SoegInput" oio:definition="urn:oio:sts:sagsoeginput:ADD:2.0.0" type="sag:SoegInputType"/>
+	<element name="SoegOutput" oio:definition="urn:oio:sts:sagsoegoutput:ASDD:1.0.0" type="sd:SoegOutputType"/>
+
+
+	<complexType name="ImportInputType" oio:definition="urn:oio:sts:sagimportinput:ADD:2.0.0">
+		<sequence>
+			<element name="Sag" oio:content="objekt" type="sag:SagType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="OpretInputType" oio:definition="urn:oio:sts:sagopretinput:ADD:2.0.0">
+        <complexContent>
+            <extension base="sd:OpretInputType">
+				<sequence>
+					<element minOccurs="0" name="AttributListe" oio:content="attributter" type="sag:AttributListeType"/>
+					<element minOccurs="0" name="TilstandListe" oio:content="tilstande" type="sag:TilstandListeType"/>
+					<element minOccurs="0" name="RelationListe" oio:content="relationer" type="sag:RelationListeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RetInputType" oio:definition="urn:oio:sts:sagretinput:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:RetInputType">
+				<sequence>
+					<element minOccurs="0" name="AttributListe" oio:content="attributter" type="sag:AttributListeType"/>
+					<element minOccurs="0" name="TilstandListe" oio:content="tilstande" type="sag:TilstandListeType"/>
+					<element minOccurs="0" name="RelationListe" oio:content="relationer" type="sag:RelationListeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="LaesOutputType" oio:definition="urn:oio:sts:saglaesoutput:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:BasicOutputType">
+				<sequence>
+					<element maxOccurs="1" minOccurs="0" name="FiltreretOejebliksbillede" oio:definition="urn:oio:sts:saglaesresultat:ADD:2.0.0" type="sag:FiltreretOejebliksbilledeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="ListOutputType" oio:definition="urn:oio:sts:saglistoutput:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:BasicOutputType">
+				<sequence>
+					<element maxOccurs="unbounded" minOccurs="0" name="FiltreretOejebliksbillede" oio:definition="urn:oio:sts:saglaesresultat:ADD:2.0.0" type="sag:FiltreretOejebliksbilledeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="FiltreretOejebliksbilledeType" oio:definition="urn:oio:sts:sagfiltreretoejebliksbillede:ADD:1.0.0">
+		<sequence>
+			<element name="ObjektType" oio:content="objekt" type="sd:SagDokObjektType"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Registrering" oio:content="registrering" type="sag:RegistreringType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="SoegInputType" oio:definition="urn:oio:sts:sagsoeginput:ADD:1.0.0">
+		<complexContent>
+			<extension base="go:SoegIndeksInputType">
+				<sequence>
+		            <element name="AttributListe" oio:content="soegattributter" type="sag:AttributListeType"/>
+		            <element name="TilstandListe" oio:content="soegtilstande" type="sag:TilstandListeType"/>
+		            <element name="RelationListe" oio:content="soegrelationer" type="sag:RelationListeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+</schema>

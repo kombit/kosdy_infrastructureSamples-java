@@ -15,6 +15,7 @@ import net.shibboleth.utilities.java.support.collection.Pair;
 import oio.sagdok._3_0.LaesInputType;
 import oio.sagdok._3_0.SoegOutputType;
 import oio.sagdok._3_0.UnikIdType;
+import oio.sagdok._3_0.UuidLabelInputType;
 import oio.sagdok._3_0.VirksomhedRelationType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,9 +58,9 @@ public class Organisation {
      * Finally the LAES operation in OrganisationService is used to read the full Organisation object
      *
      * @param myndighedCvr CVR for the authority
-     * @return Prints the output to the console
+     * @return Prints the output to the console and returns output so it can be used in testing the method
      */
-    public void getOrganisationByCvr (String myndighedCvr){
+    public String[] getOrganisationByCvr (String myndighedCvr){
 
         System.out.println("Searching for organization with CVR " + myndighedCvr + " with the following result: ");
 
@@ -74,6 +75,10 @@ public class Organisation {
         System.out.println(" *Virksomhed UUID: " + virksomhedUuid + "\n *Organisation UUID: " + organisation.getFirst() +
                 "\n *Organisation Name: " + organisation.getSecond() + "\n");
 
+        //The output is added to an Array that is returned to be used in testing the method
+        String output[] = {virksomhedUuid, organisation.getFirst(), organisation.getSecond()};
+
+        return output;
     }
 
     /**
@@ -126,7 +131,7 @@ public class Organisation {
         ).withRelationListe(
                 new RelationListeType().withVirksomhed(
                         new VirksomhedRelationType().withReferenceID(
-                                new UnikIdType().withUUIDIdentifikator(virksomhedUuid)
+                                new UuidLabelInputType().withUUIDIdentifikator(virksomhedUuid)
                         )
                 )
         );

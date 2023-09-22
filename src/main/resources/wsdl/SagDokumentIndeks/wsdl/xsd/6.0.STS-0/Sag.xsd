@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?><schema xmlns:sd="urn:oio:sagdok:3.0.0" xmlns:sag="urn:oio:sts:sagdok:sag:6" xmlns:oio="urn:oio:definitions:1.0.0" xmlns:gd="urn:oio:sts:generelledefinitioner:6" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" oio:mapping="urn:oio:sagdok:MPD:3.0.0" targetNamespace="urn:oio:sts:sagdok:sag:6">
+
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<import namespace="urn:oio:sts:generelledefinitioner:6" schemaLocation="GenerelleDefinitioner.xsd"/>
+	
+	<element name="Sag" type="sag:SagType"/>
+	<complexType name="SagType" oio:definition="urn:oio:sagdok:sag:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:SagDokObjektType">
+				<sequence>
+					<element maxOccurs="unbounded" name="Registrering" oio:content="registreringer" type="sag:RegistreringType"/>
+					<element minOccurs="0" name="UdenNotifikation" oio:content="udennotifikation" type="boolean"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="RegistreringType" oio:definition="urn:oio:sagdok:sagregistrering:ADD:2.0.0">
+		<complexContent>
+			<extension base="gd:RegistreringType">
+				<sequence>
+					<element name="AttributListe" oio:content="attributter" type="sag:AttributListeType"/>
+					<element name="TilstandListe" oio:content="tilstande" type="sag:TilstandListeType"/>
+					<element name="RelationListe" oio:content="relationer" type="sag:RelationListeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="AttributListeType" oio:definition="urn:oio:sagdok:sagattributliste:ADD:2.0.0">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Egenskaber" oio:content="egenskaber" type="sag:EgenskaberType"/>
+			<element minOccurs="0" oio:content="lokaludvidelseliste" ref="gd:LokalUdvidelseListe"/>
+		</sequence>
+	</complexType>
+	<complexType name="TilstandListeType" oio:definition="urn:oio:sagdok:sagtilstandliste:ADD:2.0.0">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Fremdrift" oio:content="fremdrift" type="sag:FremdriftType"/>
+			<element minOccurs="0" oio:content="lokaludvidelseliste" ref="gd:LokalUdvidelseListe"/>
+		</sequence>
+	</complexType>
+	<complexType name="RelationListeType" oio:definition="urn:oio:sagdok:sagrelationliste:ADD:2.0.0">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Sagsaktoer" oio:content="sagsaktoerer" type="gd:RelationType"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Sagsklasse" oio:content="sagsklassifikation" type="gd:RelationType"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Sagspart" oio:content="sagsparter" type="gd:RelationType"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Sagsrelation" oio:content="sagsrelation" type="gd:RelationType"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Sagsgenstande" oio:content="genstande" type="gd:RelationType"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="Journalpost" oio:content="journalposter" type="sag:JournalpostRelationType"/>
+			<element minOccurs="0" oio:content="lokaludvidelseliste" ref="gd:LokalUdvidelseListe"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="EgenskaberType" oio:definition="urn:oio:sagdok:sagegenskaber:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="Virkning" oio:content="virkning" type="sd:VirkningType"/>
+			<element minOccurs="0" name="BrugervendtNoegle" oio:content="brugervendtnoegle" type="sd:BrugervendtNoegleTekst"/>
+			<element minOccurs="0" name="AfleveretIndikator" oio:content="afleveret" type="boolean"/>
+			<element minOccurs="0" name="Beskrivelse" oio:content="beskrivelse">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="4096"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="HjemmelSpecifikation" oio:content="hjemmel">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="1024"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="Kassationskode" oio:content="kassationskode">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="50"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="OffentlighedUndtaget" oio:content="offentlighedundtaget" type="sd:OffentlighedUndtagetType"/>
+			<element minOccurs="0" name="PrincipielIndikator" oio:content="principiel" type="boolean"/>
+			<element minOccurs="0" name="Sagsnummer" oio:content="sagsnummer">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="1"/>
+						<maxLength value="50"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="Titel" oio:content="titel">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="1"/>
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<simpleType name="FremdriftStatusKodeType" oio:definition="urn:oio:sagdok:sagfremdriftstatus:DT:2.0.0">
+		<restriction base="string">
+			<enumeration value="Opstaaet"/>
+			<enumeration value="Oplyst"/>
+			<enumeration value="Afgjort"/>
+			<enumeration value="Afsluttet"/>
+		</restriction>
+	</simpleType>
+	<complexType name="FremdriftType" oio:definition="urn:oio:sagdok:sagfremdrift:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="Virkning" oio:content="virkning" type="sd:VirkningType"/>
+			<element minOccurs="0" name="FremdriftStatusKode" oio:content="fremdriftstatus" type="sag:FremdriftStatusKodeType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="JournalpostRelationType" oio:definition="urn:oio:sagdok:journalpostflerrelation:ADD:1.0.0">
+		<complexContent>
+			<extension base="gd:RelationType">
+				<sequence>
+					<element minOccurs="0" name="JournalpostEgenskaber" oio:content="egenskaber" type="sag:JournalpostEgenskaberType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="JournalpostEgenskaberType" oio:definition="urn:oio:sagdok:sagegenskaber:ADD:2.0.0">
+		<sequence>
+			<element minOccurs="0" name="Dokumenttitel" oio:content="titel">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" oio:content="offentlighedundtaget" ref="sd:OffentlighedUndtaget"/>
+			<element minOccurs="0" name="JournalnotatEgenskaber" oio:content="egenskaber" type="sag:JournalnotatEgenskaberType"/>
+		</sequence>
+	</complexType>
+	<complexType name="JournalnotatEgenskaberType" oio:definition="urn:oio:sagdok:journalpostflerrelation:ADD:1.0.0">
+		<sequence>
+			<element minOccurs="0" name="Titel" oio:content="titel">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="1"/>
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element minOccurs="0" name="Notat" oio:definition="urn:oio:sagdok:indeks:BDD:1.0.0" type="base64Binary"/>
+			<element minOccurs="0" name="Format" oio:content="format">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="50"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>
