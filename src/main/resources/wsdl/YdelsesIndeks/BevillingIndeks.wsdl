@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 
+  name="BevillingIndeksService" 
+
+  xmlns="http://www.w3.org/2001/XMLSchema" 
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+  xmlns:bi="urn:oio:sts:ydelse:bevillingindeks:6"
+  xmlns:wsp="http://www.w3.org/ns/ws-policy"
+  xmlns:tns="http://stoettesystemerne.dk/ydelsesindeks"
+  targetNamespace="http://stoettesystemerne.dk/ydelsesindeks"
+  xmlns:header="http://kombit.dk/xml/schemas/RequestHeader/1/"
+  >
+
+  <wsdl:import namespace="http://serviceplatformen.dk/xml/wsdl/soap11/Security/Policy"
+               location="../xsd/policies/OIOIDWS.wsdl"/>
+    
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		<xsd:import namespace="urn:oio:sts:ydelse:bevillingindeks:6" schemaLocation="../xsd/6.0.STS-0/BevillingIndeksOperationer.xsd"/>
+        <xsd:import namespace="urn:oio:sts:ydelse:bevillingindeks:6" schemaLocation="../xsd/6.0.STS-0/BevillingIndeksBesked.xsd"/>
+        <xsd:import namespace="urn:oio:sts:ydelse:bevillingindeks:6" schemaLocation="../xsd/6.0.STS-0/BevillingIndeks.xsd"/>
+        <xsd:import namespace="urn:oio:sts:generelledefinitioner:6" schemaLocation="../xsd/6.0.STS-0/GenerelleDefinitioner.xsd"/>
+        <xsd:import namespace="urn:oio:sts:generelleoperationer:6" schemaLocation="../xsd/6.0.STS-0/GenerelleOperationer.xsd"/>
+        <xsd:import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../xsd/common/SagDokObjekt.xsd"/>
+        <xsd:import namespace="http://kombit.dk/xml/schemas/RequestHeader/1/" schemaLocation="../xsd/common/RequestHeader.xsd" />
+      </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="BevillingOpretResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:OpretOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingLaesResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:LaesOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingSletResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:SletOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingLaesRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:LaesInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingOpretRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:OpretInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingSoegRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:SoegInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingSletRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:SletInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingImporterRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:ImportInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingPassiverResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:PassiverOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingListeResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:ListOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingRetResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:RetOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingListeRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:ListInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingRetRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:RetInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingSoegResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:SoegOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingImporterResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:ImportOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingPassiverRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:PassiverInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingFjernRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="bi:FjernInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BevillingFjernResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="bi:FjernOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BevillingPortType">
+    <wsdl:operation name="fjern">
+      <wsdl:input message="tns:BevillingFjernRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:BevillingFjernResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Bevilling" type="tns:BevillingPortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#ServiceplatformBindingPolicy"/>
+    <wsdl:operation name="fjern">
+      <soap12:operation soapAction="http://kombit.dk/sts/ydelseindeks/bevillingindeks/fjern" soapActionRequired="true"/>
+      <wsdl:input>
+        <soap12:header message="tns:BevillingFjernRequestMessage" part="header" use="literal"/>
+        <soap12:body parts="request" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:header message="tns:BevillingFjernResponseMessage" part="header" use="literal"/>
+        <soap12:body parts="response" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BevillingIndeksService_6">
+    <wsdl:port name="BevillingIndeks" binding="tns:Bevilling">
+      <soap12:address location="http://kombit.dk/sts/ydelseindeks/bevillingindeks"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

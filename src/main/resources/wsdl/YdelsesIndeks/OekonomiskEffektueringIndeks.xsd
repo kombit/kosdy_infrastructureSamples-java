@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+  elementFormDefault="qualified" 
+  attributeFormDefault="unqualified" 
+
+  xmlns="http://www.w3.org/2001/XMLSchema" 
+
+  xmlns:oio="urn:oio:definitions:1.0.0" 
+  oio:mapping="urn:oio:sagdok:MPD:3.0.0"
+
+  xmlns:sd="urn:oio:sagdok:3.0.0"
+  xmlns:gd="urn:oio:sts:generelledefinitioner:6"
+
+  xmlns:oef="urn:oio:sts:ydelse:oekonomiskeffektueringindeks:6"
+  targetNamespace="urn:oio:sts:ydelse:oekonomiskeffektueringindeks:6"
+  >
+	<import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../common/SagDokObjekt.xsd"/>
+	<import namespace="urn:oio:sts:generelledefinitioner:6" schemaLocation="GenerelleDefinitioner.xsd"/>
+
+	<complexType name="OekonomiskEffektueringIndeksType" oio:definition="urn:oio:sagdok:oef:ADD:2.0.0">
+		<complexContent>
+			<extension base="sd:SagDokObjektType">
+				<sequence>
+					<element name="Registrering" type="oef:RegistreringType" maxOccurs="unbounded" oio:content="registreringer"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RegistreringType" oio:definition="urn:oio:sagdok:oekonomiskeeffektueringregistrering:ADD:2.0.0">
+		<complexContent>
+			<extension base="gd:RegistreringType">
+				<sequence>
+					<element name="AttributListe" type="oef:AttributListeType" oio:content="attributter"/>
+					<element name="TilstandListe" type="oef:TilstandListeType" oio:content="tilstande"/>
+					<element name="RelationListe" type="oef:RelationListeType" oio:content="relationer"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="AttributListeType" oio:definition="urn:oio:sagdok:oekonomiskeeffektueringattributliste:ADD:2.0.0">
+		<sequence>
+			<element name="Egenskaber" type="oef:EgenskaberType" minOccurs="0" maxOccurs="unbounded" oio:content="egenskaber"/>
+			<element ref="gd:LokalUdvidelseListe" minOccurs="0" oio:content="lokaludvidelseliste"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="TilstandListeType" oio:definition="urn:oio:sagdok:oekonomiskeeffektueringtilstandliste:ADD:2.0.0">
+		<sequence>
+			<element ref="gd:LokalUdvidelseListe" minOccurs="0" oio:content="lokaludvidelseliste"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="RelationListeType" oio:definition="urn:oio:sagdok:oekonomiskeeffektueringrelationliste:ADD:2.0.0">
+		<sequence>
+			<element name="OekonomiskYdelseEffektueringRelation" minOccurs="0" type="oef:OekonomiskYdelseEffektueringRelationType" maxOccurs="unbounded" oio:content="oekonomiskydelseeffektuering"/>
+			<element name="Aktoer" type="oef:OekonomiskEffektueringIndeksAktoerRelationType" minOccurs="0" maxOccurs="unbounded" oio:content="aktoer"/>
+
+			<element name="ItSystem" type="oef:ItSystemRelationType" minOccurs="0" maxOccurs="unbounded" oio:content="afsender"/>
+			<element name="OekonomiskEffektueringPart" type="oef:OekonomiskEffektueringIndeksPartRelationType" minOccurs="0" maxOccurs="unbounded" oio:content="oekonomiskeffektueringpart"/>
+			<element ref="gd:LokalUdvidelseListe" minOccurs="0" oio:content="lokaludvidelseliste"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="OekonomiskYdelseEffektueringRelationType" oio:definition="urn:oio:sagdok:oekonomiskydelseeffektuering:ADD:2.0.0">
+		<complexContent>
+			<extension base="gd:RelationType"> <!-- Relation til klasse -->
+				<sequence>
+					<element name="YdelsesperiodeStartdato" minOccurs="0" type="dateTime" oio:content="ydelsesperiodestartdato"/>
+					<element name="YdelsesperiodeSlutdato" minOccurs="0" type="dateTime" oio:content="ydelsesperiodeslutdato"/>
+					<element name="Ydelsesbeloeb" minOccurs="0" type="gd:BeloebType" oio:content="ydelsesbeloeb"/>
+
+					<element name="Klassifikationsbeskrivelse" minOccurs="0" oio:content="klassifikationsbeskrivelse" >
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="255"/>
+							</restriction>
+						</simpleType>
+					</element>
+					
+					<!-- Reference til Bevilling UUID og Ydelse Id: urn:sts:bevilling:UUID:Ydelse:ID -->
+					<element name="BevilgetYdelseRef" minOccurs="0" type="oef:BevilgetYdelseRefType" oio:content="bevilgetydelseref"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="BevilgetYdelseRefType" oio:definition="urn:oio:sagdok:bevilgetydelseref:ADD:1.0.0">
+		<sequence>
+	        <element ref="sd:UUIDIdentifikator" oio:content="uuid"/>
+	        <element name="BevilgetYdelseId" type="string" oio:content="bevilgetydelseid"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="OekonomiskEffektueringIndeksAktoerRelationType" oio:definition="urn:oio:sagdok:oekonomiskeffektueringindeksaktoerrelation:ADD:1.0.0">
+		<complexContent>
+			<extension base="gd:RelationType">
+				<sequence>
+					<element name="BrugervendtNoegle" type="sd:BrugervendtNoegleTekst" minOccurs="0" oio:content="brugervendtnoegle"/>
+					<element name="FuldtNavn" minOccurs="0" oio:content="fuldnavn">
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="255"/>
+							</restriction>
+						</simpleType>
+					</element>
+					<element name="CVR-nr" minOccurs="0" oio:content="cvrnr" >
+						<simpleType>
+							<restriction base="string">
+								<pattern value="[0-9]{8}"/>
+							</restriction>
+						</simpleType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="ItSystemRelation" type="oef:ItSystemRelationType"/>
+	<complexType name="ItSystemRelationType" oio:definition="urn:oio:sagdok:itsystemrelation:ADD:2.0.0">
+	  <complexContent>
+	    <extension base="gd:RelationType">
+			<sequence>
+				<element name="SystemNavn" type="string" minOccurs="0" oio:content="systemnavn"/>
+				<element name="SystemURI" type="string" minOccurs="0" oio:content="systemuri"/>
+			</sequence>
+	    </extension>
+	  </complexContent>
+	</complexType>
+
+	<complexType name="OekonomiskEffektueringIndeksPartRelationType" oio:definition="urn:oio:sagdok:oekonomiskeffektueringindekspartrelation:ADD:1.0.0">
+		<complexContent>
+			<extension base="gd:RelationType">
+				<sequence>
+					<element name="BrugervendtNoegle" type="sd:BrugervendtNoegleTekst" minOccurs="0" oio:content="brugervendtnoegle"/>
+					<element name="FuldtNavn" minOccurs="0" oio:content="fuldtnavn">
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="255"/>
+							</restriction>
+						</simpleType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="EgenskaberType" oio:definition="urn:oio:sagdok:oekonomiskeeffektueringegenskaber:ADD:2.0.0">
+		<sequence>
+			<element name="Virkning" minOccurs="0" type="sd:VirkningType" oio:content="virkning"/>
+			<element name="BrugervendtNoegle" type="sd:BrugervendtNoegleTekst" minOccurs="0" oio:content="brugervendtnoegle"/>
+			<element name="Startdato" minOccurs="0" type="dateTime" oio:content="startdato"/>
+			<element name="Slutdato" minOccurs="0" type="dateTime" oio:content="slutdato"/>
+			<element name="SamletBruttobeloeb" minOccurs="0"  type="gd:BeloebType" oio:content="samletbruttobeloeb"/>
+			<element name="Dispositionsdato" minOccurs="0"  type="dateTime" oio:content="dispositionsdato"/>
+			<element name="BeloebEfterSkatATP" minOccurs="0" type="gd:BeloebType" oio:content="beloebefterskatatp"/>
+			<element name="BeloebSendtTilUdbetaling" minOccurs="0" type="gd:BeloebType" oio:content="beloebsendttiludbetaling"/>
+			<element name="BeloebUdbetalt" minOccurs="0"  type="gd:BeloebType" oio:content="beloebudbetalt"/>
+			<element name="Udbetalingsafdeling" minOccurs="0" oio:content="andet">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="1"/>
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SendtTilUdbetalingTekst" minOccurs="0" oio:content="sendttiludbetalingtekst">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="UdbetaltTekst" minOccurs="0" oio:content="udbetalttekst">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="255"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+</schema>

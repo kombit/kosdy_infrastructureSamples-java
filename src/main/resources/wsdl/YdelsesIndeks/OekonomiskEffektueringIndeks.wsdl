@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 
+  name="OekonomiskEffektueringIndeksService" 
+
+  xmlns="http://www.w3.org/2001/XMLSchema" 
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+  xmlns:oef="urn:oio:sts:ydelse:oekonomiskeffektueringindeks:6"
+  xmlns:wsp="http://www.w3.org/ns/ws-policy"
+  xmlns:tns="http://stoettesystemerne.dk/ydelsesindeks"
+  targetNamespace="http://stoettesystemerne.dk/ydelsesindeks"
+  xmlns:header="http://kombit.dk/xml/schemas/RequestHeader/1/"
+  >
+
+  <wsdl:import namespace="http://serviceplatformen.dk/xml/wsdl/soap11/Security/Policy"
+               location="../xsd/policies/OIOIDWS.wsdl"/>
+
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		<xsd:import namespace="urn:oio:sts:ydelse:oekonomiskeffektueringindeks:6" schemaLocation="../xsd/6.0.STS-0/OekonomiskEffektueringIndeksOperationer.xsd"/>
+        <xsd:import namespace="urn:oio:sts:ydelse:oekonomiskeffektueringindeks:6" schemaLocation="../xsd/6.0.STS-0/OekonomiskEffektueringIndeksBesked.xsd"/>
+        <xsd:import namespace="urn:oio:sts:ydelse:oekonomiskeffektueringindeks:6" schemaLocation="../xsd/6.0.STS-0/OekonomiskEffektueringIndeks.xsd"/>
+        <xsd:import namespace="urn:oio:sts:generelledefinitioner:6" schemaLocation="../xsd/6.0.STS-0/GenerelleDefinitioner.xsd"/>
+        <xsd:import namespace="urn:oio:sts:generelleoperationer:6" schemaLocation="../xsd/6.0.STS-0/GenerelleOperationer.xsd"/>
+        <xsd:import namespace="urn:oio:sagdok:3.0.0" schemaLocation="../xsd/common/SagDokObjekt.xsd"/>
+        <xsd:import namespace="http://kombit.dk/xml/schemas/RequestHeader/1/" schemaLocation="../xsd/common/RequestHeader.xsd" />
+      </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="OekonomiskEffektueringOpretResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:OpretOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringLaesResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:LaesOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringSletResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:SletOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringLaesRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:LaesInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringOpretRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:OpretInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringSoegRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:SoegInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringSletRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:SletInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringImporterRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:ImportInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringPassiverResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:PassiverOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringListeResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:ListOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringRetResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:RetOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringListeRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:ListInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringRetRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:RetInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringSoegResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:SoegOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringImporterResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:ImportOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringPassiverRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:PassiverInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringFjernRequestMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="request" element="oef:FjernInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OekonomiskEffektueringFjernResponseMessage">
+    <wsdl:part name="header" element="header:RequestHeader"/>
+    <wsdl:part name="response" element="oef:FjernOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OekonomiskEffektueringPortType">
+    <wsdl:operation name="fjern">
+      <wsdl:input message="tns:OekonomiskEffektueringFjernRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:OekonomiskEffektueringFjernResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OekonomiskEffektuering" type="tns:OekonomiskEffektueringPortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#ServiceplatformBindingPolicy"/>
+    <wsdl:operation name="fjern">
+      <soap12:operation soapAction="http://kombit.dk/sts/ydelseindeks/oekonomiskEffektuering/fjern" soapActionRequired="true"/>
+      <wsdl:input>
+        <soap12:header message="tns:OekonomiskEffektueringFjernRequestMessage" part="header" use="literal"/>
+        <soap12:body parts="request" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:header message="tns:OekonomiskEffektueringFjernResponseMessage" part="header" use="literal"/>
+        <soap12:body parts="response" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OekonomiskEffektueringIndeksService_6">
+    <wsdl:port name="OekonomiskEffektueringIndeks" binding="tns:OekonomiskEffektuering">
+      <soap12:address location="http://kombit.dk/sts/ydelseindeks/oekonomiskEffektuering"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
