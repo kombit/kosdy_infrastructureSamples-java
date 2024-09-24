@@ -19,6 +19,9 @@
         <wsdl.SagDokumentIndeks>wsdl/SagDokumentIndeks/wsdl/SagDokumentIndeksService_6.wsdl</wsdl.SagDokumentIndeks>
         <wsdl.Organisation>wsdl/Organisation/Organisation_1.wsdl</wsdl.Organisation>
         <wsdl.Virksomhed>wsdl/Virksomhed/Virksomhed.wsdl</wsdl.Virksomhed>
+        <wsdl.BevillingIndeks>wsdl/YdelsesIndeks/wsdl/BevillingIndeks.wsdl</wsdl.BevillingIndeks>
+        <wsdl.OekonomiskEffektueringIndeks>wsdl/YdelsesIndeks/wsdl/OekonomiskEffektueringIndeks.wsdl</wsdl.OekonomiskEffektueringIndeks>
+        <wsdl.YdelseIndeks>wsdl/YdelsesIndeks/wsdl/YdelseIndeks.wsdl</wsdl.YdelseIndeks>
     </properties>
 
     <dependencies>
@@ -128,6 +131,18 @@
                                     </bindingFiles>
                                 </wsdlOption>
                                 <wsdlOption>
+                                    <wsdl>${resources}/${wsdl.BevillingIndeks}</wsdl>
+                                    <wsdlLocation>classpath:${wsdl.BevillingIndeks}</wsdlLocation>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${resources}/${wsdl.OekonomiskEffektueringIndeks}</wsdl>
+                                    <wsdlLocation>classpath:${wsdl.OekonomiskEffektueringIndeks}</wsdlLocation>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${resources}/${wsdl.YdelseIndeks}</wsdl>
+                                    <wsdlLocation>classpath:${wsdl.YdelseIndeks}</wsdlLocation>
+                                </wsdlOption>
+                                <wsdlOption>
                                     <wsdl>${resources}/${wsdl.Organisation}</wsdl>
                                     <wsdlLocation>classpath:${wsdl.Organisation}</wsdlLocation>
                                 </wsdlOption>
@@ -139,6 +154,7 @@
                                     <wsdl>${resources}/${wsdl.Klasse}</wsdl>
                                     <wsdlLocation>classpath:${wsdl.Klasse}</wsdlLocation>
                                 </wsdlOption>
+
                             </wsdlOptions>
                             <defaultOptions>
                                 <extraargs>
