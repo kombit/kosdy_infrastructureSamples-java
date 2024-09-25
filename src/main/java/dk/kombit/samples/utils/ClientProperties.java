@@ -31,6 +31,7 @@ public class ClientProperties {
     private static final String KLASSIFIKATION_ENDPOINT_URL = "klassifikationEndpointUrl";
     private static final String ORGANISATION_ENDPOINT_URL = "organisationEndpointUrl";
     private static final String VIRKSOMHED_ENDPOINT_URL = "virksomhedEndpointUrl";
+    private static final String YDELSE_INDEKS_ENDPOINT_URL = "ydelsesIndeksEndpointUrl";
 
     //Variables used for the code examples - CAN be modified
 
@@ -154,6 +155,9 @@ public class ClientProperties {
     }
     public String getVirksomhedEndpointUrl (){
         return properties.getProperty(VIRKSOMHED_ENDPOINT_URL);
+    }
+    public String getYdelsesIndeksEndpointUrl (){
+        return properties.getProperty(YDELSE_INDEKS_ENDPOINT_URL);
     }
 
     public String getSagsNummer() {
