@@ -22,7 +22,7 @@ class KlasseTest {
      * Initializes properties before testing
      */
     @BeforeAll
-    private static void initProperties() {
+    public static void initProperties() {
         try{
             ClientProperties clientProperties = ClientProperties.getInstance();
 

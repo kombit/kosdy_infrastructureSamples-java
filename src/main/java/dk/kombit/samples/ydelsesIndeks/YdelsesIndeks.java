@@ -10,6 +10,7 @@ import oio.sts.ydelse.bevillingindeks._6.BevillingIndeksType;
 import oio.sts.ydelse.bevillingindeks._6.RegistreringType;
 import oio.sts.ydelse.oekonomiskeffektueringindeks._6.OekonomiskEffektueringIndeksType;
 import oio.sts.ydelse.ydelseindeks._6.ImporterYdelseIndeksInputType;
+import oio.sts.ydelse.ydelseindeks._6.OpdaterYdelseIndeksInputType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +45,7 @@ public class YdelsesIndeks {
         return ydelsesIndeks;
     }
 
-    public MultipleOutputType importer(Boolean udenNotofokation,
+    public MultipleOutputType importer(Boolean udenNotifikation,
                                        String uuidIdentifikatorBevilling,
                                        RegistreringType bevillingRegistrering,
                                        String uuidIdentifikatorOekonomiskEffektuering,
@@ -54,7 +55,7 @@ public class YdelsesIndeks {
         ImporterYdelseIndeksInputType importerYdelseIndeksInputType = new ImporterYdelseIndeksInputType()
                 .withBevillingIndeksOrOekonomiskEffektueringIndeks(new oio.sts.ydelse.bevillingindeks._6.ImportInputType()
                         .withBevillingIndeks(new BevillingIndeksType()
-                                .withUdenNotifikation(udenNotofokation)
+                                .withUdenNotifikation(udenNotifikation)
                                 .withUUIDIdentifikator(uuidIdentifikatorBevilling)
                                 .withRegistrering(bevillingRegistrering)), new oio.sts.ydelse.oekonomiskeffektueringindeks._6.ImportInputType()
                         .withOekonomiskEffektueringIndeks(new OekonomiskEffektueringIndeksType()
@@ -73,5 +74,45 @@ public class YdelsesIndeks {
                 .withBevillingIndeksOrOekonomiskEffektueringIndeks(oekonomiskEffektueringInputs);
 
         return ydelseIndeksPortType.importer(requestHeader, importerYdelseIndeksInputType);
+    }
+
+    public MultipleOutputType opdater(OpdaterYdelseIndeksInputType opdaterYdelseIndeksInputType) {
+        Holder<RequestHeaderType> requestHeader = SoapUtils.getRequestHeader();
+
+        return ydelseIndeksPortType.opdater(requestHeader, opdaterYdelseIndeksInputType);
+    }
+
+    OpdaterYdelseIndeksInputType createOpdaterYdelseIndeksInputTypeOekonomiskEffektuering(
+            oio.sts.ydelse.oekonomiskeffektueringindeks._6.AttributListeType attributListe,
+            oio.sts.ydelse.oekonomiskeffektueringindeks._6.RelationListeType relationListe,
+            oio.sts.ydelse.oekonomiskeffektueringindeks._6.TilstandListeType tilstandListe,
+            String uuidIdentifikator,
+            String noteTekst) {
+        oio.sts.ydelse.oekonomiskeffektueringindeks._6.RetInputType oekonomiskEffektueringRetInputType =
+                new oio.sts.ydelse.oekonomiskeffektueringindeks._6.RetInputType()
+                        .withAttributListe(attributListe)
+                        .withRelationListe(relationListe)
+                        .withTilstandListe(tilstandListe)
+                        .withUUIDIdentifikator(uuidIdentifikator)
+                        .withNoteTekst(noteTekst);
+        return new OpdaterYdelseIndeksInputType()
+                .withOpdaterBevillingIndeksOrOpdaterOekonomiskEffektueringIndeks(oekonomiskEffektueringRetInputType);
+    }
+
+    OpdaterYdelseIndeksInputType createOpdaterYdelseIndeksInputTypeBevilling(
+            oio.sts.ydelse.bevillingindeks._6.AttributListeType attributListe,
+            oio.sts.ydelse.bevillingindeks._6.RelationListeType relationListe,
+            oio.sts.ydelse.bevillingindeks._6.TilstandListeType tilstandListe,
+            String uuidIdentifikator,
+            String noteTekst) {
+        oio.sts.ydelse.bevillingindeks._6.RetInputType bebillingRetInputType =
+                new oio.sts.ydelse.bevillingindeks._6.RetInputType()
+                        .withAttributListe(attributListe)
+                        .withRelationListe(relationListe)
+                        .withTilstandListe(tilstandListe)
+                        .withUUIDIdentifikator(uuidIdentifikator)
+                        .withNoteTekst(noteTekst);
+        return new OpdaterYdelseIndeksInputType()
+                .withOpdaterBevillingIndeksOrOpdaterOekonomiskEffektueringIndeks(bebillingRetInputType);
     }
 }

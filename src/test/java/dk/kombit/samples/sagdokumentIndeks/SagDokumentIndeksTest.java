@@ -25,7 +25,7 @@ class SagDokumentIndeksTest {
      * Removes any existing case before testing to ensure test of Importer does not fail
      */
     @BeforeEach
-    private void cleanUp() {
+    public void cleanUp() {
         SagDokumentIndeks sagDokumentIndeks = SagDokumentIndeks.getSagDokumentIndeks();
         sagDokumentIndeks.fjern(ClientProperties.getInstance().getUuid());
     }
@@ -34,7 +34,7 @@ class SagDokumentIndeksTest {
      * Initializes properties before testing
      */
     @BeforeAll
-    private static void initProperties() {
+    public static void initProperties() {
         try{
             ClientProperties clientProperties = ClientProperties.getInstance();
 

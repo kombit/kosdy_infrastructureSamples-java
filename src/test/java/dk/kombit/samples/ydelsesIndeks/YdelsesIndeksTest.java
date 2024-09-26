@@ -1,18 +1,14 @@
-package dk.kombit.samples.organisation;
+package dk.kombit.samples.ydelsesIndeks;
 
 import dk.kombit.samples.utils.ClientProperties;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 /**
- * Test class for Organisation
+ * Test class for YdelsesIndeks
  * The Test uses the variables in client.properties to run the scenarios. This is done to ensure the test is
  * useable for all users despite different properties
  */
-class OrganisationTest {
-
+public class YdelsesIndeksTest {
     /**
      * Initializes properties before testing
      */
@@ -22,7 +18,7 @@ class OrganisationTest {
             ClientProperties clientProperties = ClientProperties.getInstance();
 
             // getResource only works with / in front of the String
-            String keyStoreFile = OrganisationTest.class.getResource('/' + clientProperties.getKeystoreFilename()).getFile();
+            String keyStoreFile = YdelsesIndeksTest.class.getResource('/' + clientProperties.getKeystoreFilename()).getFile();
 
             // Uncomment the line below to get more debugging info
             // System.setProperty("javax.net.debug", "ssl");
@@ -36,22 +32,5 @@ class OrganisationTest {
         } catch (NullPointerException e) {
             System.exit(0);
         }
-    }
-
-    /**
-     *  Test method for Organisation
-     *  The test ensures that scenarios 5 returns does not returns null values when searching for the Organisation.
-     */
-    @Test
-    @DisplayName("Organisation")
-    public void getOrganisationByCVR_ShouldPassWithoutReturningNull() {
-        //Arrange
-        Organisation organisation = Organisation.getOrganisation();
-        //Act
-        String[] organisationByCvr = organisation.getOrganisationByCvr(ClientProperties.getInstance().getMyndighedCvr());
-        //Assert
-        Assertions.assertNotNull(organisationByCvr[0]);
-        Assertions.assertNotNull(organisationByCvr[1]);
-        Assertions.assertNotNull(organisationByCvr[2]);
     }
 }
