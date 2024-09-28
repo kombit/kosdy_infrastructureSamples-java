@@ -2,6 +2,8 @@ package dk.kombit.samples.ydelsesIndeks;
 
 import dk.kombit.samples.utils.ClientProperties;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for YdelsesIndeks
@@ -33,4 +35,22 @@ public class YdelsesIndeksTest {
             System.exit(0);
         }
     }
+
+    @Test
+    @DisplayName("YdelsesIndeksImporter")
+    public void testYdelsesIndeksImporter() {
+        YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
+    }
+
+    @Test
+    @DisplayName("YdelsesIndeksOpdater")
+    public void testYdelsesIndeksOpdater() {}
+
+    @Test
+    @DisplayName("YdelsesIndeksOpdaterInkremental")
+    public void testYdelsesIndeksOpdaterInkremental() {}
+
+    @Test
+    @DisplayName("YdelsesIndeksFremsoeg")
+    public void testYdelsesIndeksFremsoeg() {}
 }

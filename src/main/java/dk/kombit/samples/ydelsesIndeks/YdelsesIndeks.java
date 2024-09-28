@@ -9,8 +9,7 @@ import oio.sagdok._3_0.MultipleOutputType;
 import oio.sts.ydelse.bevillingindeks._6.BevillingIndeksType;
 import oio.sts.ydelse.bevillingindeks._6.RegistreringType;
 import oio.sts.ydelse.oekonomiskeffektueringindeks._6.OekonomiskEffektueringIndeksType;
-import oio.sts.ydelse.ydelseindeks._6.ImporterYdelseIndeksInputType;
-import oio.sts.ydelse.ydelseindeks._6.OpdaterYdelseIndeksInputType;
+import oio.sts.ydelse.ydelseindeks._6.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -82,7 +81,13 @@ public class YdelsesIndeks {
         return ydelseIndeksPortType.opdater(requestHeader, opdaterYdelseIndeksInputType);
     }
 
-    OpdaterYdelseIndeksInputType createOpdaterYdelseIndeksInputTypeOekonomiskEffektuering(
+    public FremsoegYdelseIndeksOutputType fremsoeg(FremsoegYdelseIndeksInputType fremsoegYdelseIndeksInputType) {
+        Holder<RequestHeaderType> requestHeader = SoapUtils.getRequestHeader();
+
+        return ydelseIndeksPortType.fremsoeg(requestHeader, fremsoegYdelseIndeksInputType);
+    }
+
+    public OpdaterYdelseIndeksInputType createOpdaterYdelseIndeksInputTypeOekonomiskEffektuering(
             oio.sts.ydelse.oekonomiskeffektueringindeks._6.AttributListeType attributListe,
             oio.sts.ydelse.oekonomiskeffektueringindeks._6.RelationListeType relationListe,
             oio.sts.ydelse.oekonomiskeffektueringindeks._6.TilstandListeType tilstandListe,
@@ -99,7 +104,7 @@ public class YdelsesIndeks {
                 .withOpdaterBevillingIndeksOrOpdaterOekonomiskEffektueringIndeks(oekonomiskEffektueringRetInputType);
     }
 
-    OpdaterYdelseIndeksInputType createOpdaterYdelseIndeksInputTypeBevilling(
+    public OpdaterYdelseIndeksInputType createOpdaterYdelseIndeksInputTypeBevilling(
             oio.sts.ydelse.bevillingindeks._6.AttributListeType attributListe,
             oio.sts.ydelse.bevillingindeks._6.RelationListeType relationListe,
             oio.sts.ydelse.bevillingindeks._6.TilstandListeType tilstandListe,
@@ -114,5 +119,31 @@ public class YdelsesIndeks {
                         .withNoteTekst(noteTekst);
         return new OpdaterYdelseIndeksInputType()
                 .withOpdaterBevillingIndeksOrOpdaterOekonomiskEffektueringIndeks(bebillingRetInputType);
+    }
+
+    public FremsoegYdelseIndeksInputType createFremsoegYdelseIndeksInputTypeOekonomiskEffektuering(
+            Collection<String> oekonomiskEffektueringUuid,
+            FremsoegFilterYdelseIndeksInputType fremsoegFilterYdelseIndeksInputType,
+            SoegUdtrykType soegUdtrykType,
+            FremsoegSorteringYdelseIndeksInputType fremsoegSorteringYdelseIndeksInputType) {
+
+        return new FremsoegYdelseIndeksInputType()
+                .withOekonomiskEffektueringUuid(oekonomiskEffektueringUuid)
+                .withFilter(fremsoegFilterYdelseIndeksInputType)
+                .withSoegUdtryk(soegUdtrykType)
+                .withSortering(fremsoegSorteringYdelseIndeksInputType);
+    }
+
+    public FremsoegYdelseIndeksInputType createFremsoegYdelseIndeksInputTypeBevilling(
+            Collection<String> bevillingUuid,
+            FremsoegFilterYdelseIndeksInputType fremsoegFilterYdelseIndeksInputType,
+            SoegUdtrykType soegUdtrykType,
+            FremsoegSorteringYdelseIndeksInputType fremsoegSorteringYdelseIndeksInputType) {
+
+        return new FremsoegYdelseIndeksInputType()
+                .withBevillingUuid(bevillingUuid)
+                .withFilter(fremsoegFilterYdelseIndeksInputType)
+                .withSoegUdtryk(soegUdtrykType)
+                .withSortering(fremsoegSorteringYdelseIndeksInputType);
     }
 }
