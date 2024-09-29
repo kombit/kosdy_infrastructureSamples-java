@@ -1,9 +1,17 @@
 package dk.kombit.samples.ydelsesIndeks;
 
 import dk.kombit.samples.utils.ClientProperties;
+import oio.sagdok._3_0.MultipleOutputType;
+import oio.sts.ydelse.ydelseindeks._6.FremsoegYdelseIndeksInputType;
+import oio.sts.ydelse.ydelseindeks._6.FremsoegYdelseIndeksOutputType;
+import oio.sts.ydelse.ydelseindeks._6.OpdaterYdelseIndeksInputType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Test class for YdelsesIndeks
@@ -40,17 +48,54 @@ public class YdelsesIndeksTest {
     @DisplayName("YdelsesIndeksImporter")
     public void testYdelsesIndeksImporter() {
         YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
+
+        List<oio.sts.ydelse.bevillingindeks._6.ImportInputType> importInputTypesBevilling = new ArrayList<>();
+        List<oio.sts.ydelse.oekonomiskeffektueringindeks._6.ImportInputType> importInputTypesOekonomiskeffektuering = new ArrayList<>();
+
+        MultipleOutputType importerOutput = ydelsesIndeks.importer(importInputTypesBevilling, importInputTypesOekonomiskeffektuering);
+
+        Assert.isTrue(!importerOutput.getUnikRetur().isEmpty(), "UnikRetur indeholder elementer");
+        Assert.isTrue(!importerOutput.getStandardRetur().isEmpty(), "StandardRetur indeholder elementer");
     }
 
     @Test
     @DisplayName("YdelsesIndeksOpdater")
-    public void testYdelsesIndeksOpdater() {}
+    public void testYdelsesIndeksOpdater() {
+        YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
+
+        OpdaterYdelseIndeksInputType opdaterYdelseIndeksInputType = new OpdaterYdelseIndeksInputType();
+
+        MultipleOutputType opdaterOutput = ydelsesIndeks.opdater(opdaterYdelseIndeksInputType);
+
+        Assert.isTrue(!opdaterOutput.getUnikRetur().isEmpty(), "UnikRetur indeholder elementer");
+        Assert.isTrue(!opdaterOutput.getStandardRetur().isEmpty(), "StandardRetur indeholder elementer");
+    }
 
     @Test
     @DisplayName("YdelsesIndeksOpdaterInkremental")
-    public void testYdelsesIndeksOpdaterInkremental() {}
+    public void testYdelsesIndeksOpdaterInkremental() {
+        YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
+
+        OpdaterYdelseIndeksInputType opdaterYdelseIndeksInputType = new OpdaterYdelseIndeksInputType();
+
+        MultipleOutputType opdaterOutput = ydelsesIndeks.opdater(opdaterYdelseIndeksInputType);
+
+        Assert.isTrue(!opdaterOutput.getUnikRetur().isEmpty(), "UnikRetur indeholder elementer");
+        Assert.isTrue(!opdaterOutput.getStandardRetur().isEmpty(), "StandardRetur indeholder elementer");
+    }
 
     @Test
     @DisplayName("YdelsesIndeksFremsoeg")
-    public void testYdelsesIndeksFremsoeg() {}
+    public void testYdelsesIndeksFremsoeg() {
+        YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
+
+        FremsoegYdelseIndeksInputType fremsoegYdelseIndeksInputType = new FremsoegYdelseIndeksInputType();
+
+        FremsoegYdelseIndeksOutputType fremsoegOutput = ydelsesIndeks.fremsoeg(fremsoegYdelseIndeksInputType);
+
+        Assert.isTrue(!fremsoegOutput.getAntal().isEmpty(), "Antal indeholder elementer");
+        Assert.isTrue(fremsoegOutput.getStandardRetur() != null, "StandardRetur er ikke null");
+        Assert.isTrue(!fremsoegOutput.getBevillingFiltreretOejebliksbillede().isEmpty(), "BevillingFiltreretOejebliksbillede indeholder elementer");
+        Assert.isTrue(!fremsoegOutput.getOekonomiskEffektueringFiltreretOejebliksbillede().isEmpty(), "OekonomiskEffektueringFiltreretOejebliksbillede indeholder elementer");
+    }
 }
