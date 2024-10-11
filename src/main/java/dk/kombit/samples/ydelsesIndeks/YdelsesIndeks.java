@@ -8,16 +8,12 @@ import dk.stoettesystemerne.ydelsesindeks.YdelseIndeksService6;
 import oio.sagdok._3_0.*;
 import oio.sts.generelledefinitioner._6.LokalUdvidelseListeType;
 import oio.sts.ydelse.ydelseindeks._6.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Holder;
 import java.util.*;
 
 public class YdelsesIndeks {
-    private static final Logger LOGGER = LoggerFactory.getLogger(YdelsesIndeks.class);
-
     private final YdelseIndeksPortType ydelseIndeksPortType;
 
     public YdelsesIndeks() {
@@ -532,63 +528,4 @@ public class YdelsesIndeks {
         return ydelseIndeksPortType.fremsoeg(requestHeader, fremsoegYdelseIndeksInputType);
     }
 
-    public OpdaterYdelseIndeksInputType createOpdaterYdelseIndeksInputTypeOekonomiskEffektuering(
-            oio.sts.ydelse.oekonomiskeffektueringindeks._6.AttributListeType attributListe,
-            oio.sts.ydelse.oekonomiskeffektueringindeks._6.RelationListeType relationListe,
-            oio.sts.ydelse.oekonomiskeffektueringindeks._6.TilstandListeType tilstandListe,
-            String uuidIdentifikator,
-            String noteTekst) {
-        oio.sts.ydelse.oekonomiskeffektueringindeks._6.RetInputType oekonomiskEffektueringRetInputType =
-                new oio.sts.ydelse.oekonomiskeffektueringindeks._6.RetInputType()
-                        .withAttributListe(attributListe)
-                        .withRelationListe(relationListe)
-                        .withTilstandListe(tilstandListe)
-                        .withUUIDIdentifikator(uuidIdentifikator)
-                        .withNoteTekst(noteTekst);
-        return new OpdaterYdelseIndeksInputType()
-                .withOpdaterBevillingIndeksOrOpdaterOekonomiskEffektueringIndeks(oekonomiskEffektueringRetInputType);
-    }
-
-    public OpdaterYdelseIndeksInputType createOpdaterYdelseIndeksInputTypeBevilling(
-            oio.sts.ydelse.bevillingindeks._6.AttributListeType attributListe,
-            oio.sts.ydelse.bevillingindeks._6.RelationListeType relationListe,
-            oio.sts.ydelse.bevillingindeks._6.TilstandListeType tilstandListe,
-            String uuidIdentifikator,
-            String noteTekst) {
-        oio.sts.ydelse.bevillingindeks._6.RetInputType bebillingRetInputType =
-                new oio.sts.ydelse.bevillingindeks._6.RetInputType()
-                        .withAttributListe(attributListe)
-                        .withRelationListe(relationListe)
-                        .withTilstandListe(tilstandListe)
-                        .withUUIDIdentifikator(uuidIdentifikator)
-                        .withNoteTekst(noteTekst);
-        return new OpdaterYdelseIndeksInputType()
-                .withOpdaterBevillingIndeksOrOpdaterOekonomiskEffektueringIndeks(bebillingRetInputType);
-    }
-
-    public FremsoegYdelseIndeksInputType createFremsoegYdelseIndeksInputTypeOekonomiskEffektuering(
-            Collection<String> oekonomiskEffektueringUuid,
-            FremsoegFilterYdelseIndeksInputType fremsoegFilterYdelseIndeksInputType,
-            SoegUdtrykType soegUdtrykType,
-            FremsoegSorteringYdelseIndeksInputType fremsoegSorteringYdelseIndeksInputType) {
-
-        return new FremsoegYdelseIndeksInputType()
-                .withOekonomiskEffektueringUuid(oekonomiskEffektueringUuid)
-                .withFilter(fremsoegFilterYdelseIndeksInputType)
-                .withSoegUdtryk(soegUdtrykType)
-                .withSortering(fremsoegSorteringYdelseIndeksInputType);
-    }
-
-    public FremsoegYdelseIndeksInputType createFremsoegYdelseIndeksInputTypeBevilling(
-            Collection<String> bevillingUuid,
-            FremsoegFilterYdelseIndeksInputType fremsoegFilterYdelseIndeksInputType,
-            SoegUdtrykType soegUdtrykType,
-            FremsoegSorteringYdelseIndeksInputType fremsoegSorteringYdelseIndeksInputType) {
-
-        return new FremsoegYdelseIndeksInputType()
-                .withBevillingUuid(bevillingUuid)
-                .withFilter(fremsoegFilterYdelseIndeksInputType)
-                .withSoegUdtryk(soegUdtrykType)
-                .withSortering(fremsoegSorteringYdelseIndeksInputType);
-    }
 }
