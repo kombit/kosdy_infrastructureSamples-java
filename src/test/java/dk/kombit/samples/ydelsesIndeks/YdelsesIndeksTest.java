@@ -49,10 +49,10 @@ public class YdelsesIndeksTest {
     public void testYdelsesIndeksImporter() {
         YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
 
-        List<oio.sts.ydelse.bevillingindeks._6.ImportInputType> importInputTypesBevilling = new ArrayList<>();
-        List<oio.sts.ydelse.oekonomiskeffektueringindeks._6.ImportInputType> importInputTypesOekonomiskeffektuering = new ArrayList<>();
+        String uuidIdentifikatorBevilling ="ÆØÅ";
+        String uuidIdentifikatorOekonomiskEffektuering = "ÆØÅ";
 
-        MultipleOutputType importerOutput = ydelsesIndeks.importer(importInputTypesBevilling, importInputTypesOekonomiskeffektuering);
+        MultipleOutputType importerOutput = ydelsesIndeks.importer(uuidIdentifikatorBevilling, uuidIdentifikatorOekonomiskEffektuering);
 
         Assert.isTrue(!importerOutput.getUnikRetur().isEmpty(), "UnikRetur indeholder elementer");
         Assert.isTrue(!importerOutput.getStandardRetur().isEmpty(), "StandardRetur indeholder elementer");
@@ -63,9 +63,10 @@ public class YdelsesIndeksTest {
     public void testYdelsesIndeksOpdater() {
         YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
 
-        OpdaterYdelseIndeksInputType opdaterYdelseIndeksInputType = new OpdaterYdelseIndeksInputType();
+        String uuidIdentifikatorBevilling ="ÆØÅ";
+        String uuidIdentifikatorOekonomiskEffektuering = "ÆØÅ";
 
-        MultipleOutputType opdaterOutput = ydelsesIndeks.opdater(opdaterYdelseIndeksInputType);
+        MultipleOutputType opdaterOutput = ydelsesIndeks.opdater(uuidIdentifikatorBevilling, uuidIdentifikatorOekonomiskEffektuering);
 
         Assert.isTrue(!opdaterOutput.getUnikRetur().isEmpty(), "UnikRetur indeholder elementer");
         Assert.isTrue(!opdaterOutput.getStandardRetur().isEmpty(), "StandardRetur indeholder elementer");
@@ -76,9 +77,10 @@ public class YdelsesIndeksTest {
     public void testYdelsesIndeksOpdaterInkremental() {
         YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
 
-        OpdaterYdelseIndeksInputType opdaterYdelseIndeksInputType = new OpdaterYdelseIndeksInputType();
+        String uuidIdentifikatorBevilling ="ÆØÅ";
+        String uuidIdentifikatorOekonomiskEffektuering = "ÆØÅ";
 
-        MultipleOutputType opdaterOutput = ydelsesIndeks.opdater(opdaterYdelseIndeksInputType);
+        MultipleOutputType opdaterOutput = ydelsesIndeks.opdater(uuidIdentifikatorBevilling, uuidIdentifikatorOekonomiskEffektuering);
 
         Assert.isTrue(!opdaterOutput.getUnikRetur().isEmpty(), "UnikRetur indeholder elementer");
         Assert.isTrue(!opdaterOutput.getStandardRetur().isEmpty(), "StandardRetur indeholder elementer");
@@ -89,9 +91,10 @@ public class YdelsesIndeksTest {
     public void testYdelsesIndeksFremsoeg() {
         YdelsesIndeks ydelsesIndeks = YdelsesIndeks.getYdelsesIndeks();
 
-        FremsoegYdelseIndeksInputType fremsoegYdelseIndeksInputType = new FremsoegYdelseIndeksInputType();
+        String uuidIdentifikatorBevilling ="ÆØÅ";
+        String uuidIdentifikatorOekonomiskEffektuering = "ÆØÅ";
 
-        FremsoegYdelseIndeksOutputType fremsoegOutput = ydelsesIndeks.fremsoeg(fremsoegYdelseIndeksInputType);
+        FremsoegYdelseIndeksOutputType fremsoegOutput = ydelsesIndeks.fremsoeg(uuidIdentifikatorBevilling, uuidIdentifikatorOekonomiskEffektuering);
 
         Assert.isTrue(!fremsoegOutput.getAntal().isEmpty(), "Antal indeholder elementer");
         Assert.isTrue(fremsoegOutput.getStandardRetur() != null, "StandardRetur er ikke null");
