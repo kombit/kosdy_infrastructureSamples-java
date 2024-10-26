@@ -1,13 +1,13 @@
 package dk.kombit.samples.sagdokumentIndeks;
 
-import java.math.BigInteger;
-import java.util.List;
-
-import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Holder;
-import javax.xml.ws.soap.SOAPFaultException;
-
+import dk.kombit.samples.klassifikation.Klasse;
+import dk.kombit.samples.organisation.Organisation;
+import dk.kombit.samples.organisation.Virksomhed;
+import dk.kombit.samples.utils.ClientProperties;
+import dk.kombit.samples.utils.SoapUtils;
+import dk.kombit.xml.schemas.requestheader._1.RequestHeaderType;
+import dk.stoettesystemerne.sagsogdokumentindeks.SagDokumentIndeksPortType;
+import dk.stoettesystemerne.sagsogdokumentindeks.SagDokumentIndeksService6;
 import oio.sagdok._3_0.AktoerTypeKodeType;
 import oio.sagdok._3_0.LivscyklusKodeType;
 import oio.sagdok._3_0.MultipleOutputType;
@@ -18,26 +18,36 @@ import oio.sagdok._3_0.UnikReturType;
 import oio.sagdok._3_0.VirkningType;
 import oio.sts.generelledefinitioner._6.LokalUdvidelseListeType;
 import oio.sts.generelledefinitioner._6.RelationType;
-import oio.sts.sagdok.dokumentindeks._6.DokumentIndeksType;
-import oio.sts.sagdok.sag._6.*;
-import oio.sts.sagdok.sagdokumentindeks._6.*;
+import oio.sts.sagdok.sag._6.AttributListeType;
+import oio.sts.sagdok.sag._6.EgenskaberType;
+import oio.sts.sagdok.sag._6.FremdriftStatusKodeType;
+import oio.sts.sagdok.sag._6.FremdriftType;
+import oio.sts.sagdok.sag._6.RegistreringType;
+import oio.sts.sagdok.sag._6.RelationListeType;
+import oio.sts.sagdok.sag._6.SagType;
+import oio.sts.sagdok.sag._6.TilstandListeType;
+import oio.sts.sagdok.sagdokumentindeks._6.FjernSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.FremsoegFilterSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.FremsoegSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.FremsoegSagDokumentIndeksOutputType;
+import oio.sts.sagdok.sagdokumentindeks._6.ImporterSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.OpdaterSagDokumentIndeksInputType;
+import oio.sts.sagdok.sagdokumentindeks._6.SagVisFilterType;
+import oio.sts.sagdok.sagdokumentindeks._6.SagVisType;
 import oio.sts.sagdok.sagindeks._6.FoelsomhedType;
 import oio.sts.sagdok.sagindeks._6.SagsaktoerLokalUdvidelseType;
 import oio.sts.sagdok.sagindeks._6.SagsitsystemRelationType;
 import oio.sts.sagdok.sagindeks._6.SagsklasseLokalUdvidelseType;
 import oio.sts.sagdok.sagindeks._6.SagspartLokalUdvidelseType;
-
-import dk.kombit.samples.klassifikation.Klasse;
-import dk.kombit.samples.organisation.Organisation;
-import dk.kombit.samples.organisation.Virksomhed;
-import dk.kombit.samples.utils.ClientProperties;
-import dk.kombit.samples.utils.SoapUtils;
-import dk.kombit.xml.schemas.requestheader._1.RequestHeaderType;
-
-import dk.stoettesystemerne.sagsogdokumentindeks.SagDokumentIndeksPortType;
-import dk.stoettesystemerne.sagsogdokumentindeks.SagDokumentIndeksService6;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.Holder;
+import javax.xml.ws.soap.SOAPFaultException;
+import java.math.BigInteger;
+import java.util.List;
 
 /**
  * Class for handling requests to SagDokumentIndeks
