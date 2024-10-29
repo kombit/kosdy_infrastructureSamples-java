@@ -22,6 +22,7 @@ import oio.sts.sagdok.sag._6.AttributListeType;
 import oio.sts.sagdok.sag._6.EgenskaberType;
 import oio.sts.sagdok.sag._6.FremdriftStatusKodeType;
 import oio.sts.sagdok.sag._6.FremdriftType;
+import oio.sts.sagdok.sag._6.JournalnotatEgenskaberType;
 import oio.sts.sagdok.sag._6.RegistreringType;
 import oio.sts.sagdok.sag._6.RelationListeType;
 import oio.sts.sagdok.sag._6.SagType;
@@ -450,11 +451,11 @@ public class SagDokumentIndeks {
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                 .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
-                                                .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
-                                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                        .withAny(List.of("ÆØÅ"))
-                                                )
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                        )
+                                        .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
+                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
+                                                .withAny(List.of("ÆØÅ")))
                                         )
                                         )
                                 .withDokumentklasse(List.of(new oio.sts.generelledefinitioner._6.RelationType()
@@ -479,7 +480,8 @@ public class SagDokumentIndeks {
                                                                 .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                         .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                                 .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                                )
                                                 .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                         .withAny(List.of("ÆØÅ"))
@@ -509,7 +511,8 @@ public class SagDokumentIndeks {
                                                                 .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                         .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                                 .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                                )
                                                 .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                         .withAny(List.of("ÆØÅ"))
@@ -540,7 +543,8 @@ public class SagDokumentIndeks {
                                                                 .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                         .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                                 .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                                )
                                                 .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                         .withAny(List.of("ÆØÅ"))
@@ -585,6 +589,10 @@ public class SagDokumentIndeks {
                                                 .withTitelAlternativTekst("ÆØÅ"))
                                         .withPrincipielIndikator(Boolean.valueOf("ÆØÅ"))
                                 )
+                                )
+                                .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
+                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
+                                        .withAny(List.of("ÆØÅ"))
                                 )
                         )
                         .withTilstandListe(new oio.sts.sagdok.sag._6.TilstandListeType()
@@ -633,7 +641,8 @@ public class SagDokumentIndeks {
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                 .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                        )
                                         .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                 .withAny(List.of("ÆØÅ"))
@@ -662,7 +671,8 @@ public class SagDokumentIndeks {
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                 .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                        )
                                         .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                 .withAny(List.of("ÆØÅ"))
@@ -691,7 +701,8 @@ public class SagDokumentIndeks {
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                 .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                        )
                                         .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                 .withAny(List.of("ÆØÅ"))
@@ -720,7 +731,8 @@ public class SagDokumentIndeks {
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                 .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                        )
                                         .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                 .withAny(List.of("ÆØÅ"))
@@ -730,6 +742,11 @@ public class SagDokumentIndeks {
                                                 .withOffentlighedUndtaget(new oio.sagdok._3_0.OffentlighedUndtagetType()
                                                         .withOffentlighedUndtagetHjemmelTekst("ÆØÅ")
                                                         .withTitelAlternativTekst("ÆØÅ"))
+                                                .withJournalnotatEgenskaber(new oio.sts.sagdok.sag._6.JournalnotatEgenskaberType()
+                                                        .withFormat("ÆØÅ")
+                                                        .withNotat(new byte[] {})
+                                                        .withTitel("ÆØÅ")
+                                                )
                                         )
                                 )
                                 )
@@ -759,7 +776,8 @@ public class SagDokumentIndeks {
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                 .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                        )
                                         .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                 .withAny(List.of("ÆØÅ"))
@@ -788,7 +806,8 @@ public class SagDokumentIndeks {
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
                                                 .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))                                        )
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ")))
+                                        )
                                         .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                 .withAny(List.of("ÆØÅ"))
@@ -802,9 +821,8 @@ public class SagDokumentIndeks {
                         .withUUIDIdentifikator("ÆØÅ")
                 )
                 );
-        MultipleOutputType multipleOutputType = sagDokumentIndeksPort.opdater(requestHeader, opdaterSagDokumentIndeksInputType);
+        return sagDokumentIndeksPort.opdater(requestHeader, opdaterSagDokumentIndeksInputType);
 
-        return multipleOutputType;
     }
 
     /**
