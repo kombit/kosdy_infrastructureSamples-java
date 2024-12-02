@@ -620,6 +620,7 @@ public class YdelsesIndeks {
                                         ))
 
                                 )
+                                // Metoden skal kunne tage højde for både Aktør Ejer og Aktør Ansvarlig -- det lader til  metoden kun tager højde for én af disse?
                                 .withBevillingsaktoer(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksAktoerRelationType()
                                         .withBrugervendtNoegle("ÆØÅ")
                                         .withFuldtNavn("ÆØÅ")
