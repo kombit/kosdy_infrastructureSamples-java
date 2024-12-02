@@ -444,8 +444,8 @@ public class YdelsesIndeks {
                                 .withEgenskaber(List.of(new oio.sts.ydelse.bevillingindeks._6.EgenskaberType()
                                         .withVirkning(new VirkningType()
                                                 .withFraTidspunkt(new TidspunktType()
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                        .withGraenseIndikator(Boolean.valueOf("ÆØÅ")))
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00"))
+                                                        .withGraenseIndikator(Boolean.valueOf(false))) // Can be True or False depending on scenario, if we know the end date of the Ydelse set to True
                                                 .withTilTidspunkt(new TidspunktType()
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
