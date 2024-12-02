@@ -622,36 +622,35 @@ public class YdelsesIndeks {
                                 )
                                 // Metoden skal kunne tage højde for både Aktør Ejer og Aktør Ansvarlig -- det lader til  metoden kun tager højde for én af disse?
                                 .withBevillingsaktoer(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksAktoerRelationType()
-                                        .withBrugervendtNoegle("ÆØÅ")
-                                        .withFuldtNavn("ÆØÅ")
-                                        .withCVRNr("ÆØÅ")
+                                        .withBrugervendtNoegle() // Blank / If no Ref. UUID to Fælleskommunal Organisation, this must be filled
+                                        .withFuldtNavn("Korsbæk Kommune") // Mandatory / The municipality
+                                        .withCVRNr("11111111") // Identification of the instance 
                                         .withVirkning(new VirkningType()
                                                 .withFraTidspunkt(new TidspunktType()
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                        .withGraenseIndikator(Boolean.valueOf("ÆØÅ")))
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00"))
+                                                        .withGraenseIndikator(Boolean.valueOf(false)))
                                                 .withTilTidspunkt(new TidspunktType()
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                        .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
+                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender())
+                                                        .withGraenseIndikator(Boolean.valueOf(true))
                                                 )
                                                 .withAktoerRef(new UnikIdType()
-                                                        .withUUIDIdentifikator("ÆØÅ")
-                                                        .withURNIdentifikator("ÆØÅ")
+                                                        .withUUIDIdentifikator() // Mandatory / Derived from Fælleskommunal Organisation 
+                                                        .withURNIdentifikator() // URN if the UUID does not exist in Fælleskommunalt Organisationssystem
+
                                                 )
                                         )
                                         .withRolle(new UnikIdType()
-                                                .withUUIDIdentifikator("ÆØÅ")
-                                                .withURNIdentifikator("ÆØÅ")
+                                                .withUUIDIdentifikator("abdf4d3e-f113-4282-b13e-6cd32a82621c") // Mandatory / Derived from Fælleskommunal Klassifikation 
                                         )
                                         .withType(new UnikIdType()
-                                                .withUUIDIdentifikator("ÆØÅ")
-                                                .withURNIdentifikator("ÆØÅ")
+                                                .withUUIDIdentifikator("45b7dafb-d90e-41da-b30e-ba007e577a8a") // Mandatory / Derived from Fælleskommunal Klassifikation
                                         )
-                                        .withIndeks("ÆØÅ")
+                                        .withIndeks() // NOT TO BE FILLED
                                         .withReferenceID(new UnikIdType()
-                                                .withUUIDIdentifikator("ÆØÅ")
-                                                .withURNIdentifikator("ÆØÅ")
+                                                .withUUIDIdentifikator() // Mandatory / Derived from Fælleskommunal Organisation 
+                                                .withURNIdentifikator() // URN if the UUID does not exist in Fælleskommunalt Organisationssystem 
                                         )
-                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType()
+                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                                                 .withAny(List.of("ÆØÅ"))
                                         ))
