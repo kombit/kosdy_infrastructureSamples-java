@@ -218,6 +218,18 @@ This conflict causes the `@XmlRootElement` annotion to be missing from a number 
 
 In order to resolve this a custom binding file is added for SagDokumentIndeks, that specifies the `@XmlRootElement` for the classes that need it. This custom binding will not affect the resulting XML structure but allows the project to compile and XML to be properly serialized.
 
+## 7.0 Validation Tool
+
+To aid developers with the integration to [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470), KOMBIT has developed a validation tool that can be used to validate the XML structure that must be specified as input in calls to the [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470). The purpose of the tool is to help build and understand data structures.
+
+Briefly about the tool:
+
+- The tool takes the same XML structure as the corresponding operation in the integration as input.
+- The tool first performs schema validation, if there are errors, the entire schema error message is returned.
+- The tool validates mandatory fields according to the instructions found in the documents Use of the Case Object in the Common Municipal Case and Document Index and Use of the Document Index in the Common Municipal Case and Document Index
+- The tool returns detailed and informative error messages, including references to the place in the Instructions where the structure/requirements are described.
+
+The tool can be used without having made any premade service agreements. The tool can be called with the same input structure (both with and without Security Token) as existing operations in [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470), by calling against the following endpoint: https://virtualize01.serviceplatformen.dk/testservice/SF1470-Validation/V61
 
 
 
