@@ -22,7 +22,7 @@ The code examples demonstrate how to use the following services and operations:
 | [Organisation (SF1500)](https://digitaliseringskataloget.dk/integration/sf1500)  | VirksomhedService v6.0        | Soeg  |
 | [Organisation (SF1500)](https://digitaliseringskataloget.dk/integration/sf1500) | OrganisationService v6.0      | Soeg, Laes |
 | [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470) | SagDokumentIndeksService v6.0 | Importer, Opdater (IN DEVELOPMENT) Fremsoeg, Fjern |
-| IN DEVELOPMENT [Ydelsesindeks  v6.0 (SF1490)](https://digitaliseringskataloget.dk/integration/sf1490) | YdelsesIndeksService v6.0 | Importer, Opdater, Fremsoeg, Fjern |
+| [Ydelsesindeks  v6.0 (SF1490)](https://digitaliseringskataloget.dk/integration/sf1490) | YdelsesIndeksService v6.0 | Importer, Opdater, Fremsoeg, Fjern | (IN DEVELOPMENT)
 
 [Klassifikation v7.0 (SF1510)](https://digitaliseringskataloget.dk/integration/sf1510), [Organisation v6.0 (SF1500)](https://digitaliseringskataloget.dk/integration/sf1500), [Sags- og Dokumentindeks v6.0 (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470) and [Ydelsesindeks  v6.0 (SF1490)](https://digitaliseringskataloget.dk/integration/sf1490) uses the IDWS Binding (OIO IDWS SOAP profile) and is called directly, i.e. not via Serviceplatformen. The signing of the SOAP Envelope content has been simplified with OIOIDWS. The examples demonstrate how both security profiles can be used in the same context. Read more at [Digitaliseringskataloget](https://digitaliseringskataloget.dk/tekniske_betingelser/adgangsstyring-systemer)
 
