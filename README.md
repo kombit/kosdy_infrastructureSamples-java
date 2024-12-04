@@ -25,6 +25,7 @@ The code examples demonstrate how to use the following services and operations:
 | [Ydelsesindeks  v6.0 (SF1490)](https://digitaliseringskataloget.dk/integration/sf1490) (IN DEVELOPMENT) | YdelsesIndeksService v6.0 | Importer, Opdater, Fremsoeg, Fjern |
 
 [Sags- og Dokumentindeks v5.0 (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470) use Liberty Basic Soap Binding and are called via Serviceplatformen.
+
 [Klassifikation v7.0 (SF1510)](https://digitaliseringskataloget.dk/integration/sf1510), [Organisation v6.0 (SF1500)](https://digitaliseringskataloget.dk/integration/sf1500) and [Ydelsesindeks  v6.0 (SF1490) (IN DEVELOPMENT)](https://digitaliseringskataloget.dk/integration/sf1490) uses the IDWS Binding (OIO IDWS SOAP profile) and is called directly, i.e. not via Serviceplatformen. The signing of the SOAP Envelope content has been simplified with OIOIDWS. The examples demonstrate how both security profiles can be used in the same context. Read more at [Digitaliseringskataloget](https://digitaliseringskataloget.dk/tekniske_betingelser/adgangsstyring-systemer)
 
 [Chapter 4](#4-code-examples) describes the code examples in more detail.
