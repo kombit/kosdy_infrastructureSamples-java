@@ -81,7 +81,7 @@ public class YdelsesIndeks {
                                                         .withAktoerTypeKode(AktoerTypeKodeType.fromValue("Bruger")) // From Valuelist: Either "Bruger" or "ItSystem" //
                                                 )
                                                 .withId("3") // Example Value //
-                                                .withNavn("KontantHjaelp") // Define the title of the "BevilgetYdelse" //
+                                                .withNavn("Grundbeløb - FOP") // Define the title of the "BevilgetYdelse" //
                                                 .withBevilgetYdelseStartdato(SoapUtils.getXmlCalender("2024-01-01")) // Date Format 2024-01-01 //
                                                 .withBevilgetYdelseSlutdato(SoapUtils.getXmlCalender()) // Date Format 2024-01-01 //
                                                 .withTilbagebetalingspligtig() // Optional ; Either True or False
