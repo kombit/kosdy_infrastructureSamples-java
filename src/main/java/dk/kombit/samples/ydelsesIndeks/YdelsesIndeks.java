@@ -14,7 +14,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Holder;
 import java.math.BigInteger;
-import java.util.*;
+import java.util.*;OekonomiskEffektueringsplan
 
 public class YdelsesIndeks {
     private final YdelseIndeksPortType ydelseIndeksPortType;
@@ -1283,10 +1283,10 @@ public class YdelsesIndeks {
                                                                         )))
                                                                 )
                                                         )
-                                                        .withTilstandListe(new oio.sts.ydelse.bevillingindeks._6.TilstandListeType()
+                                                        .withTilstandListe(new oio.sts.ydelse.bevillingindeks._6.TilstandListeType() // FOLLOW UP
                                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType()
-                                                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                        .withAny(List.of("ÆØÅ"))
+                                                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                                        .withAny(List.of())
                                                                 )
                                                         )
                                                         .withRelationListe(new oio.sts.ydelse.bevillingindeks._6.RelationListeType()
