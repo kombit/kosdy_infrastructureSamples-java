@@ -1181,7 +1181,7 @@ public class YdelsesIndeks {
                                 ))
 
                         )
-                        .withOperation(AndOrType.valueOf("ÆØÅ"))
+                        .withOperation(AndOrType.valueOf("ÆØÅ")) // FOLLOW UP
                         .withSoegBevillingIndeksOrSoegOekonomiskEffektueringIndeksOrNOT(new oio.sts.ydelse.ydelseindeks._6.ObjectFactory()
                                 .createSoegUdtrykTypeNOT(new SoegUdtrykType()
                                         .withSoegBevillingIndeksOrSoegOekonomiskEffektueringIndeksOrNOT(List.of(new oio.sts.ydelse.bevillingindeks._6.ObjectFactory()
