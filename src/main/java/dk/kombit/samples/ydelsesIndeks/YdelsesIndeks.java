@@ -112,12 +112,12 @@ public class YdelsesIndeks {
                                                                 .withUUIDIdentifikator("1111aaaa-11aa22bb-33cc111111aaaaaa")
                                                                 .withURNIdentifikator("urn:oio:kmd:sag:administrativenhed:LOSID:012345678")
                                                         )
-                                                        .withIndeks("ÆØÅ") // ??? ///
+                                                        .withIndeks("ÆØÅ") // Follow up
                                                         .withReferenceID(new UnikIdType()
                                                                 .withUUIDIdentifikator("1111aaaa-11aa22bb-33cc111111aaaaaa")
                                                                 .withURNIdentifikator("ÆØÅ_Ydelse_A")
                                                         )
-                                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType()
+                                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("2024-10-23T11:00:00"))
                                                                 .withAny(List.of("ÆØÅ_LIST_LokalUdvidelse"))
                                                         )
