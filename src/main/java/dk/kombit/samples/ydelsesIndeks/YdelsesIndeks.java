@@ -1141,7 +1141,7 @@ public class YdelsesIndeks {
 
                                                 )
                                         )
-                                        .withSoegRegistrering(new SoegRegistreringType()
+                                        .withSoegRegistrering(new SoegRegistreringType() // FOLLOW UP
                                                 .withBrugerRef(new UnikIdType()
                                                         .withUUIDIdentifikator("ÆØÅ")
                                                         .withURNIdentifikator("ÆØÅ"))
@@ -1155,7 +1155,7 @@ public class YdelsesIndeks {
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
                                                 )
                                         )
-                                        .withSoegVirkning(new SoegVirkningType()
+                                        .withSoegVirkning(new SoegVirkningType() // FOLLOW UP
                                                 .withFraTidspunkt(new TidspunktType()
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
                                                         .withGraenseIndikator(Boolean.valueOf("ÆØÅ")))
@@ -1170,7 +1170,7 @@ public class YdelsesIndeks {
                                                 .withAktoerTypeKode(AktoerTypeKodeType.fromValue("ÆØÅ"))
                                                 .withNoteTekst("ÆØÅ")
                                         )
-                                        .withSoegStsFraTidspunkt(new TidspunktType()
+                                        .withSoegStsFraTidspunkt(new TidspunktType() // FOLLOW UP
                                                 .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
                                                 .withGraenseIndikator(Boolean.valueOf("ÆØÅ")))
                                         .withSoegStsTilTidspunkt(new TidspunktType()
