@@ -1045,38 +1045,35 @@ public class YdelsesIndeks {
                                                                 .withAny(List.of())
                                                         ))
                                                 )
-                                                .withBevillingspart(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksPartRelationType()
-                                                        .withBrugervendtNoegle("ÆØÅ")
-                                                        .withFuldtNavn("ÆØÅ")
+                                                .withBevillingspart(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksPartRelationType() // Bevillingsmodtager
+                                                        .withBrugervendtNoegle() // OPTIONAL
+                                                        .withFuldtNavn("Lonnie Pedersen")
                                                         .withVirkning(new VirkningType()
                                                                 .withFraTidspunkt(new TidspunktType()
-                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                        .withGraenseIndikator(Boolean.valueOf("ÆØÅ")))
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00"))
+                                                                        .withGraenseIndikator(Boolean.valueOf(false)))
                                                                 .withTilTidspunkt(new TidspunktType()
-                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                        .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender())
+                                                                        .withGraenseIndikator(Boolean.valueOf(true))
                                                                 )
                                                                 .withAktoerRef(new UnikIdType()
-                                                                        .withUUIDIdentifikator("ÆØÅ")
-                                                                        .withURNIdentifikator("ÆØÅ")
+                                                                        .withUUIDIdentifikator() // Mandatory / Derived from Fælleskommunal Organisation 
+                                                                        .withURNIdentifikator() // Mandatory / URN if the UUID does not exist in Fælleskommunalt Organisationssystem
                                                                 )
                                                         )
                                                         .withRolle(new UnikIdType()
-                                                                .withUUIDIdentifikator("ÆØÅ")
-                                                                .withURNIdentifikator("ÆØÅ")
+                                                                .withUUIDIdentifikator("93af57a7-7658-4fac-98da-9e5ac7a7d9a5") // Derived from Fælleskommunal Klassifikation 
                                                         )
                                                         .withType(new UnikIdType()
-                                                                .withUUIDIdentifikator("ÆØÅ")
-                                                                .withURNIdentifikator("ÆØÅ")
+                                                                .withUUIDIdentifikator("c59f1523-1786-48c7-baff-466de1db3320") // Derived from Fælleskommunal Klassifikation
                                                         )
-                                                        .withIndeks("ÆØÅ")
+                                                        .withIndeks("1") // Mandatory
                                                         .withReferenceID(new UnikIdType()
-                                                                .withUUIDIdentifikator("ÆØÅ")
-                                                                .withURNIdentifikator("ÆØÅ")
+                                                                .withURNIdentifikator("urn:oio:cpr-nr:0123456789") // Mandatory / Always URN
                                                         )
-                                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType()
-                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                .withAny(List.of("ÆØÅ"))
+                                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow Up
+                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                                .withAny(List.of())
                                                         ))
 
                                                 )
