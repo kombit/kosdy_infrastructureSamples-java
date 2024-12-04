@@ -196,8 +196,8 @@ public class YdelsesIndeks {
 
                                                 )
                                                 .withBevillingsaktoer(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksAktoerRelationType()
-                                                        .withFuldtNavn("Korsbæk Kommune") // The owner of the "Bevilling"
-                                                        .withCVRNr("12345678") // Mandatory / String / Max 8 Char
+                                                        .withFuldtNavn("Udbetaling Danmark") // The owner of the "Bevilling"
+                                                        .withCVRNr("33236239") // Mandatory / String / Max 8 Char
                                                         .withVirkning(new VirkningType() // Mandatory
                                                                 .withFraTidspunkt(new TidspunktType()
                                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00")) // DateTime Format 2024-01-01T12:00:00
@@ -213,8 +213,8 @@ public class YdelsesIndeks {
                                                                 .withUUIDIdentifikator("abdf4d3e-f113-4282-b13e-6cd32a82621c") // Developer derive the value from Fælleskommunalt Organisationssystem
                                                         )
                                                         .withType(new UnikIdType() // Mandatory / String / UUID
-                                                                .withUUIDIdentifikator("ÆØÅ") // Developer derive the value from Fælleskommunalt Organisationssystem
-                                                                .withURNIdentifikator("ÆØÅ") // Consider deleting this, as not mentioned in Anvisninger?
+                                                                .withUUIDIdentifikator() // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                .withURNIdentifikator() // Consider deleting this, as not mentioned in Anvisninger?
                                                         )
                                                         .withReferenceID(new UnikIdType() // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().getAktoerRef()) // UUID
@@ -343,8 +343,8 @@ public class YdelsesIndeks {
                                                         )
                                                 ))
                                                 .withAktoer(List.of(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.OekonomiskEffektueringIndeksAktoerRelationType()
-                                                        .withFuldtNavn("Korsbæk Kommune")
-                                                        .withCVRNr("12345678")
+                                                        .withFuldtNavn("Udbetaling Danmark")
+                                                        .withCVRNr("33236239")
                                                         .withVirkning(new VirkningType()
                                                                 .withFraTidspunkt(new TidspunktType() // Mandatory
                                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00")) // Missing Comment
@@ -623,8 +623,8 @@ public class YdelsesIndeks {
                                 // Metoden skal kunne tage højde for både Aktør Ejer og Aktør Ansvarlig -- det lader til  metoden kun tager højde for én af disse?
                                 .withBevillingsaktoer(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksAktoerRelationType()
                                         .withBrugervendtNoegle() // Blank / If no Ref. UUID to Fælleskommunal Organisation, this must be filled
-                                        .withFuldtNavn("Korsbæk Kommune") // Mandatory / The municipality
-                                        .withCVRNr("11111111") // Identification of the instance 
+                                        .withFuldtNavn("Udbetaling Danmark") // Mandatory / The municipality
+                                        .withCVRNr("33236239") // Identification of the instance 
                                         .withVirkning(new VirkningType()
                                                 .withFraTidspunkt(new TidspunktType()
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00"))
@@ -1355,38 +1355,36 @@ public class YdelsesIndeks {
 
                                                                 )
                                                                 .withBevillingsaktoer(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksAktoerRelationType()
-                                                                        .withBrugervendtNoegle("ÆØÅ")
-                                                                        .withFuldtNavn("ÆØÅ")
-                                                                        .withCVRNr("ÆØÅ")
+                                                                        .withBrugervendtNoegle() // Optional
+                                                                        .withFuldtNavn("Udbetaling Danmark")
+                                                                        .withCVRNr("33236239")
                                                                         .withVirkning(new VirkningType()
                                                                                 .withFraTidspunkt(new TidspunktType()
-                                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                                        .withGraenseIndikator(Boolean.valueOf("ÆØÅ")))
+                                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00"))
+                                                                                        .withGraenseIndikator(Boolean.valueOf(false)))
                                                                                 .withTilTidspunkt(new TidspunktType()
-                                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                                        .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
+                                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender())
+                                                                                        .withGraenseIndikator(Boolean.valueOf(true))
                                                                                 )
                                                                                 .withAktoerRef(new UnikIdType()
-                                                                                        .withUUIDIdentifikator("ÆØÅ")
-                                                                                        .withURNIdentifikator("ÆØÅ")
+                                                                                        .withUUIDIdentifikator() // Mandatory / Derived from Fælleskommunal Organisation 
+                                                                                        .withURNIdentifikator() // Mandatory / URN if the UUID does not exist in Fælleskommunalt Organisationssystem
                                                                                 )
                                                                         )
                                                                         .withRolle(new UnikIdType()
-                                                                                .withUUIDIdentifikator("ÆØÅ")
-                                                                                .withURNIdentifikator("ÆØÅ")
+                                                                                .withUUIDIdentifikator("abdf4d3e-f113-4282-b13e-6cd32a82621c")
                                                                         )
                                                                         .withType(new UnikIdType()
-                                                                                .withUUIDIdentifikator("ÆØÅ")
-                                                                                .withURNIdentifikator("ÆØÅ")
+                                                                                .withUUIDIdentifikator("45b7dafb-d90e-41da-b30e-ba007e577a8a")
                                                                         )
-                                                                        .withIndeks("ÆØÅ")
+                                                                        .withIndeks() // Blank / Not to be utilized
                                                                         .withReferenceID(new UnikIdType()
-                                                                                .withUUIDIdentifikator("ÆØÅ")
-                                                                                .withURNIdentifikator("ÆØÅ")
+                                                                                .withUUIDIdentifikator() // Value derived from Fælleskommunalt Organisationssystem
+                                                                                .withURNIdentifikator() // Either UUID or URN
                                                                         )
-                                                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType()
-                                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                                .withAny(List.of("ÆØÅ"))
+                                                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
+                                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                                                .withAny(List.of())
                                                                         ))
                                                                 )
                                                                 .withSikkerhedsprofil(List.of(new oio.sts.ydelse.bevillingindeks._6.SikkerhedsprofilRelationType()
@@ -1548,8 +1546,8 @@ public class YdelsesIndeks {
                                                 ))
                                                 .withAktoer(List.of(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.OekonomiskEffektueringIndeksAktoerRelationType()
                                                         .withBrugervendtNoegle("ÆØÅ")
-                                                        .withFuldtNavn("ÆØÅ")
-                                                        .withCVRNr("ÆØÅ")
+                                                        .withFuldtNavn("Udbetaling Danmark")
+                                                        .withCVRNr("33236239")
                                                         .withVirkning(new VirkningType()
                                                                 .withFraTidspunkt(new TidspunktType()
                                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
