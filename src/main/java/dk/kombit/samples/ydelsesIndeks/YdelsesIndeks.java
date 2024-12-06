@@ -484,11 +484,13 @@ public class YdelsesIndeks {
                                         .withBegrundelse() // Optional
                                         .withTilbagebetalingspligtig(Boolean.valueOf(false)) // Optional / 'true' or 'false'
                                         .withMeddelelse() // NOT TO BE FILLED // TO REMOVED FROM INDEKSERNE 
+                                        
+                                        // The master IT-system (IT-System Master)
                                         .withItSystem(List.of(new oio.sts.ydelse.bevillingindeks._6.ItSystemRelationType()
                                                 .withSystemNavn("UDK Pension") // Mandatory / System which provides the benefit
                                                 .withSystemURI() // Blank / TO TO BE FILLED
                                                 .withRolle(new UnikIdType()
-                                                        .withUUIDIdentifikator("251c24fd-57b0-4afc-9d73-b063d1957eb3") // Mandatory / Not to be changed  
+                                                        .withUUIDIdentifikator(ClientProperties.getInstance().getMasterUuid) // Mandatory 
                                                 )
                                                 .withType(new UnikIdType()
                                                         .withUUIDIdentifikator("29fe1da2-897a-46cd-b635-b9be8e0bffd6") // Mandatory / Not to be changed
@@ -508,7 +510,7 @@ public class YdelsesIndeks {
                                                         .withBrugervendtNoegle("3") // Mandatory
                                                         .withKlassetitel("Folkepension") // Mandatory /
                                                         .withRolle(new UnikIdType()
-                                                                .withUUIDIdentifikator("ea909030-c5fa-4544-9b22-a0010d08ebe1") // Mandatory / Derived from Fælleskommunal Klassifikation
+                                                        .withUUIDIdentifikator("ea909030-c5fa-4544-9b22-a0010d08ebe1") // Mandatory / Derived from Fælleskommunal Klassifikation
                                                         )
                                                         .withType(new UnikIdType()
                                                                 .withUUIDIdentifikator("7c51b9a8-d388-4e83-8c8b-ee3a90458d0b") // Mandatory / Derived from Fælleskommunal Klassifikation
