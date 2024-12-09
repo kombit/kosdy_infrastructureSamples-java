@@ -125,20 +125,20 @@ public class YdelsesIndeks {
                                                         )
                                                 )
                                                 .withOekonomiskEffektueringsplan(List.of(new oio.sts.ydelse.bevillingindeks._6.OekonomiskEffektueringsplanType()
-                                                        .withId("1")
-                                                        .withEffektueringsplanStartdato(SoapUtils.getXmlCalender("2024-01-01T12:00:00")) // DateTime Format 2024-01-01T12:00:00 //
-                                                        .withEffektueringsplanSlutdato(SoapUtils.getXmlCalender()) // DateTime Format 2024-01-01T12:00:00 //
-                                                        .withBeregningsfrekvens("7772f4e3-b06d-4ef8-b599-9134cf3fdee4") // Mandatory ; Values derived from an allowed valuelist in Klassifikation / The example UUID equals Monthly
-                                                        .withForudBagud("Bagud") // Mandatory / String / Max 5 Characters / ; Derived from valuelist ; Either "Forud" or "Bagud" //
-                                                        .withDispositionsdag("Sidste bankdag i måneden") // Mandatory / String / Max 50 Characters / Dispotiondate
-                                                        .withYdelsesbeloeb("6694") // Amount 
-                                                        .withManueltGodkendes(false))) // Either True or False / Manual Verification
+                                                        .withId(ClientProperties.getInstance().effektueringsplanID())
+                                                        .withEffektueringsplanStartdato(SoapUtils.getXmlCalender(ClientProperties.getInstance().effektueringsplanStardato())) // Mandatory
+                                                        .withEffektueringsplanSlutdato(SoapUtils.getXmlCalender(ClientProperties.getInstance().effektueringsplanSlutdato())) // Optional
+                                                        .withBeregningsfrekvens(ClientProperties.getInstance().effektueringsplanBeregningsfrekvens()) // Mandatory ; Values derived from an allowed valuelist in Klassifikation / The example UUID equals Monthly
+                                                        .withForudBagud(ClientProperties.getInstance().effektueringsplanForudBagud()) // Mandatory / String / Max 5 Characters / ; Derived from valuelist ; Either "Forud" or "Bagud" //
+                                                        .withDispositionsdag(ClientProperties.getInstance().effektueringsplanDispositionsdag()) // Mandatory / String / Max 50 Characters / Dispotiondate
+                                                        .withYdelsesbeloeb(ClientProperties.getInstance().effektueringsplanYdelsesbeleob()) // Amount 
+                                                //      .withManueltGodkendes(false))) // Not used in this example / Optional / Either True or False
                                             ))
                                         )
                                         .withTilstandListe(new oio.sts.ydelse.bevillingindeks._6.TilstandListeType() // Follow up
                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType()
-                                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                        .withAny(List.of("ÆØÅ"))
+                                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                        .withAny(List.of())
                                                 )
                                         )
                                         .withRelationListe(new oio.sts.ydelse.bevillingindeks._6.RelationListeType()
