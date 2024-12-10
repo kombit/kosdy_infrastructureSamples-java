@@ -143,126 +143,165 @@ public class YdelsesIndeks {
                                         )
                                         .withRelationListe(new oio.sts.ydelse.bevillingindeks._6.RelationListeType()
                                                 .withBevillingssag(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksSagRelationType()
-                                                        .withBrugervendtNoegle("2020-123456789") // Mandatory / String / Max 50 Char /  
-                                                        .withFuldtNavn("Folkepension") // Mandatory / Case Title / String / Max 256 Char
+                                                        .withBrugervendtNoegle(ClientProperties.getInstance().bevillingssagBrugervendtNoegle()) // Mandatory / String / Max 50 Char /  
+                                                        .withFuldtNavn(ClientProperties.getInstance().bevillingssagFuldNavn()) // Mandatory / Case Title / String / Max 256 Char
                                                         .withVirkning(new VirkningType()
                                                                 .withFraTidspunkt(new TidspunktType()
-                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00")) // Mandatory / DateTime Format 2024-01-01T12:00:00 //
-                                                                        .withGraenseIndikator(false)) // True or False
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingssagStartdato())) // Mandatory
                                                                 .withTilTidspunkt(new TidspunktType()
-                                                                        .withGraenseIndikator(true) // False if the TilTidspunkt TidsstempelDataTid is known; else True //
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingssagSlutdato())) // Optional
+                                                                //      .withGraenseIndikator(true) // False if the TilTidspunkt TidsstempelDataTid is known; else True //
                                                                 )
                                                                 .withAktoerRef(new UnikIdType() // Mandatory / String / Either UUID or URN / if the user has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:<org>:<idtype>:xxxx' / the change is not made by a user, is indicated the master system with a URN with the following structure, where uuid is the IT system instance from the administration module:'urn:oio:it system uuid:<uuid>'.
-                                                                        .withUUIDIdentifikator(ClientProperties.getInstance().getAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                        .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                //      .withURNIdentifikator() // Not used in this example
                                                                 )
                                                         )
-                                                        .withRolle(new UnikIdType() // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem
-                                                                .withUUIDIdentifikator("31237487-787a-424f-8819-56aaedf00643") // 
+                                                        .withRolle(new UnikIdType() 
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingssagRolleUuid()) // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem 
                                                         )
-                                                        .withType(new UnikIdType() // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem
-                                                                .withUUIDIdentifikator("f08a4a13-2567-41d0-bf8d-3af754b03464") //
+                                                        .withType(new UnikIdType() 
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingssagTypeUuid()) // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem
                                                         )
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
-                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ")) // DateTime Format 2024-01-01T12:00:00 //
-                                                                .withAny(List.of("ÆØÅ"))
+                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                                .withAny(List.of())
                                                         ))
                                                 )
                                                 .withBevillingspart(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksPartRelationType()
-                                                        .withBrugervendtNoegle("0123456789") // Optional / String / Max 50 Char
-                                                        .withFuldtNavn("Lonnie Pedersen") // Mandatory / String / Max 256 Char
+                                                        .withBrugervendtNoegle(ClientProperties.getInstance().bevillingspartBrugervendtNoegle()) // Optional / String / Max 50 Char
+                                                        .withFuldtNavn(ClientProperties.getInstance().ydelsesmodtagerFuldtNavn()) // Mandatory / String / Max 256 Char
                                                         .withVirkning(new VirkningType()
                                                                 .withFraTidspunkt(new TidspunktType()
-                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00")) // DateTime Format 2024-01-01T12:00:00 //
-                                                                        .withGraenseIndikator(false)) // Can be True or False depending on scenario, if we know the end date of the Ydelse set to True //
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingspartStartdato()))) // Mandatory
                                                                 .withTilTidspunkt(new TidspunktType()
-                                                                        .withGraenseIndikator(true) //  False if the TilTidspunkt TidsstempelDataTid is known; else True //
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingspartSlutdato())) // Optional
+                                                                //      .withGraenseIndikator(true) //  False if the TilTidspunkt TidsstempelDataTid is known; else True //
                                                                 )
                                                                 .withAktoerRef(new UnikIdType() // Mandatory / String / Either UUID or URN / if the user has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:<org>:<idtype>:xxxx' / the change is not made by a user, is indicated the master system with a URN with the following structure, where uuid is the IT system instance from the administration module:'urn:oio:it system uuid:<uuid>'.
-                                                                        .withUUIDIdentifikator(ClientProperties.getInstance().getAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                        .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                //      .withURNIdentifikator() // Not used in this example
                                                                 )
                                                         )
-                                                        .withRolle(new UnikIdType() // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem
-                                                                .withUUIDIdentifikator("93af57a7-7658-4fac-98da-9e5ac7a7d9a5") // 
+                                                        .withRolle(new UnikIdType() 
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingYdelsesmodtagerRolleUuid()) // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem 
                                                         )
-                                                        .withType(new UnikIdType() // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem
-                                                                .withUUIDIdentifikator("c59f1523-1786-48c7-baff-466de1db3320") // 
+                                                        .withType(new UnikIdType()
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingYdelsesmodtagerTypeUuid()) // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem 
                                                         )
-                                                        .withIndeks("1") // Mandatory / String Max 36 Char / Derived from Fælleskommunalt Klassifikationssystem  
-                                                        .withReferenceID(new UnikIdType() // Mandatory / String Max 256 Char
-                                                                .withURNIdentifikator("urn:oio:cprnr:0123456789") // Mandatory / URN / String Max 256 Char
+                                                        .withIndeks(ClientProperties.getInstance().ydelsesmodtagerIndeks()) // Mandatory / String Max 36 Char / Derived from Fælleskommunalt Klassifikationssystem  
+                                                        .withReferenceID(new UnikIdType() 
+                                                                .withURNIdentifikator(ClientProperties.getInstance().ydelsesmodtagerReferenceId()) // Mandatory / URN / String Max 256 Char
                                                         )
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
-                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                .withAny(List.of("ÆØÅ"))
+                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                                .withAny(List.of())
                                                         ))
 
                                                 )
+                                                // Bevillings Ejer / Benefit Owner
                                                 .withBevillingsaktoer(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksAktoerRelationType()
-                                                        .withFuldtNavn("Udbetaling Danmark") // The owner of the "Bevilling"
-                                                        .withCVRNr("12345678") // Mandatory / String / Max 8 Char
+                                                        .withFuldtNavn(ClientProperties.getInstance().bevillingEjerFultdNavn()) // The owner of the "Bevilling"
+                                                        .withCVRNr(ClientProperties.getInstance().bevillingEjerCvrNr()) // Mandatory / String / Max 8 Char
                                                         .withVirkning(new VirkningType() // Mandatory
                                                                 .withFraTidspunkt(new TidspunktType()
-                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00")) // DateTime Format 2024-01-01T12:00:00
-                                                                        .withGraenseIndikator(false)) // Can be True or False depending on scenario, if we know the end date of the Ydelse set to True //
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingEjerStartdato())) // DateTime Format 2024-01-01T12:00:00
                                                                 .withTilTidspunkt(new TidspunktType()
-                                                                        .withGraenseIndikator(true) //  False if the TilTidspunkt TidsstempelDataTid is known; else True //
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingEjerSlutdato())) // DateTime Format 2024-01-01T12:00:00
+                                                                //      .withGraenseIndikator(true) //  False if the TilTidspunkt TidsstempelDataTid is known; else True //
                                                                 )
                                                                 .withAktoerRef(new UnikIdType() // Mandatory / String / Either UUID or URN / if the user has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:<org>:<idtype>:xxxx' / the change is not made by a user, is indicated the master system with a URN with the following structure, where uuid is the IT system instance from the administration module:'urn:oio:it system uuid:<uuid>'.
-                                                                        .withUUIDIdentifikator(ClientProperties.getInstance().getAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                        .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
                                                                 )
                                                         )
                                                         .withRolle(new UnikIdType() // Mandatory / String / UUID
-                                                                .withUUIDIdentifikator("abdf4d3e-f113-4282-b13e-6cd32a82621c") // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingEjerRolleUuid()) // Developer derive the value from Fælleskommunalt Klassifikation
                                                         )
                                                         .withType(new UnikIdType() // Mandatory / String / UUID
-                                                                .withUUIDIdentifikator("45b7dafb-d90e-41da-b30e-ba007e577a8a") // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingEjerTypeUuid()) // Developer derive the value from Fælleskommunalt Klassifikation
                                                                 
                                                         )
                                                         .withReferenceID(new UnikIdType() // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
-                                                                .withUUIDIdentifikator(ClientProperties.getInstance().getAktoerRef()) // UUID
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingEjerReferenceId()) // UUID
                                                         )
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
-                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                .withAny(List.of("ÆØÅ"))
+                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                                .withAny(List.of())
                                                         ))
                                                 )
-                                                .withSikkerhedsprofil(List.of(new oio.sts.ydelse.bevillingindeks._6.SikkerhedsprofilRelationType() //Consider deleting this
+                                                // Bevillings Ansvarlig / Benefit Responsible
+                                                .withBevillingsaktoer(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksAktoerRelationType()
+                                                        .withFuldtNavn(ClientProperties.getInstance().bevillingAnsvarligFuldtNavn()) // The owner of the "Bevilling"
+                                                        .withCVRNr(ClientProperties.getInstance().bevillingAnsvarligCvrNr()) // Mandatory / String / Max 8 Char
                                                         .withVirkning(new VirkningType() // Mandatory
                                                                 .withFraTidspunkt(new TidspunktType()
-                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender("2024-01-01T12:00:00")) // DateTime format
-                                                                        .withGraenseIndikator(false))
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingAnsvarligStartdato())) // DateTime Format 2024-01-01T12:00:00
                                                                 .withTilTidspunkt(new TidspunktType()
-                                                                        .withGraenseIndikator(true)
+                                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingAnsvarligSlutdato())) // DateTime Format 2024-01-01T12:00:00
+                                                                //      .withGraenseIndikator(true) //  False if the TilTidspunkt TidsstempelDataTid is known; else True //
                                                                 )
-                                                                .withAktoerRef(new UnikIdType() // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
-                                                                        .withUUIDIdentifikator(ClientProperties.getInstance().getAktoerRef()) // UUID / Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                .withAktoerRef(new UnikIdType() // Mandatory / String / Either UUID or URN / if the user has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:<org>:<idtype>:xxxx' / the change is not made by a user, is indicated the master system with a URN with the following structure, where uuid is the IT system instance from the administration module:'urn:oio:it system uuid:<uuid>'.
+                                                                        .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
                                                                 )
                                                         )
                                                         .withRolle(new UnikIdType() // Mandatory / String / UUID
-                                                                .withUUIDIdentifikator("80922b49-bf94-4a2f-a3a6-f7c8ba392c78") // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAnsvarligRolleUuid()) // Developer derive the value from Fælleskommunalt Klassifikation
                                                         )
                                                         .withType(new UnikIdType() // Mandatory / String / UUID
-                                                                .withUUIDIdentifikator("fb57782c-88e6-40ab-a897-9f486b4169b2") // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAnsvarligTypeUuid()) // Developer derive the value from Fælleskommunalt Klassifikation
+                                                                
+                                                        )
+                                                        .withReferenceID(new UnikIdType() // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
+                                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAnsvarligReferenceId()) // UUID
+                                                        )
+                                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
+                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                                .withAny(List.of())
+                                                        ))
+                                                )
+                                        /**
+                                        // Not used in this example
+                                        //      .withSikkerhedsprofil(List.of(new oio.sts.ydelse.bevillingindeks._6.SikkerhedsprofilRelationType() //Consider deleting this
+                                                        .withVirkning(new VirkningType() // Mandatory
+                                                                .withFraTidspunkt(new TidspunktType()
+                                                                //      .withTidsstempelDatoTid(SoapUtils.getXmlCalender()) // DateTime format
+                                                                .withTilTidspunkt(new TidspunktType()
+                                                                //      .withTidsstempelDatoTid(SoapUtils.getXmlCalender()) // DateTime format
+                                                                //      .withGraenseIndikator()
+                                                                )
+                                                                .withAktoerRef(new UnikIdType() // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
+                                                                        .withUUIDIdentifikator() // UUID / Developer derive the value from Fælleskommunalt Organisationssystem
+                                                                )
+                                                        )
+                                                        .withRolle(new UnikIdType() // Mandatory / String / UUID
+                                                                .withUUIDIdentifikator() // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                        )
+                                                        .withType(new UnikIdType() // Mandatory / String / UUID
+                                                                .withUUIDIdentifikator() // Developer derive the value from Fælleskommunalt Organisationssystem
                                                         )
                                                         .withIndeks("2") // Mandatory / String / Max 36 Char
                                                         .withReferenceID(new UnikIdType() // Mandatory / UUID (String) / Developer derive the value from Fælleskommunalt Organisationssystem
-                                                                .withUUIDIdentifikator(ClientProperties.getInstance().getAktoerRef()) // UUID
+                                                                .withUUIDIdentifikator() // UUID
                                                         )
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
-                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                                .withAny(List.of("ÆØÅ"))
+                                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                                .withAny(List.of())
                                                         ))
 
                                                 )
                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
-                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                .withAny(List.of("ÆØÅ"))
+                                                .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
+                                                .withAny(List.of())
                                         ))
+
+                                        // Not used in this example
+                                        */
+
                                         .withStsTidspunkt(SoapUtils.getXmlCalender()) // NOT TO BE FILLED / IS FILLED BY THE INDEX IT SELF
                                         .withTidspunkt(SoapUtils.getXmlCalender()) // Mandatory / Dateformat YYYY-MM-DDThh:mm:ss:ssssTZD / Filled by the 'Fagsystem'
-                                        .withLivscyklusKode(LivscyklusKodeType.fromValue("Importeret")) // Mandatory / String/Enumeration / Always the same value named 'Importeret' - Follow up
+                                        .withLivscyklusKode(LivscyklusKodeType.fromValue(ClientProperties.getInstance().bevillingLivscykluskode())) // Mandatory / String/Enumeration / Always the same value named 'Importeret' - Follow up
                                         .withBrugerRef(new UnikIdType() // Mandatory / URN or String 
-                                                .withUUIDIdentifikator(ClientProperties.getInstance().getAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
+                                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
                                         )
                                 )
                         )
