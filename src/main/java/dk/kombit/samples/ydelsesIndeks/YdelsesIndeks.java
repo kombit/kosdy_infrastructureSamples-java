@@ -47,14 +47,14 @@ public class YdelsesIndeks {
         
         // Import Benefit to the Ydelsesindeks
         ImporterYdelseIndeksInputType importerYdelseIndeksInputType = new ImporterYdelseIndeksInputType()
-                .withBevillingIndeksOrOekonomiskEffektueringIndeks(List.of(new oio.sts.ydelse.bevillingindeks._6.ImportInputType()
+                .withBevillingIndeksOrOekonomiskEffektueringIndeks(List.of(new oio.sts.ydelse.bevillingindeks._6.ImportInputType()))
                         // Bevilling
-                        .withBevillingIndeks(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksType()
+                        .withBevillingIndeks(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksType())
                                 .withUdenNotifikation() // Optional
-                                .withUUIDIdentifikator(uuidIdentifikatorBevilling)
-                                .withRegistrering(List.of(new oio.sts.ydelse.bevillingindeks._6.RegistreringType()
-                                        .withAttributListe(new oio.sts.ydelse.bevillingindeks._6.AttributListeType()
-                                                .withEgenskaber(List.of(new oio.sts.ydelse.bevillingindeks._6.EgenskaberType()
+                                .withUUIDIdentifikator(ClientProperties.getInstance().bevillingUUIDIdentifikator())
+                                .withRegistrering(List.of(new oio.sts.ydelse.bevillingindeks._6.RegistreringType()))
+                                        .withAttributListe(new oio.sts.ydelse.bevillingindeks._6.AttributListeType())
+                                                .withEgenskaber(List.of(new oio.sts.ydelse.bevillingindeks._6.EgenskaberType())
                                                         .withVirkning(new VirkningType()
                                                         .withFraTidspunkt(new TidspunktType()
                                                                 .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevillingsegenskaberVirkningFra())) // Mandatory
@@ -69,7 +69,7 @@ public class YdelsesIndeks {
                                                 )
                                                 .withBrugervendtNoegle(ClientProperties.getInstance().bevillingsegenskaberBrugervendtnoegle()) // Mandatory; Max 50 Characters long 
                                                 .withFoelsomhed(oio.sts.ydelse.bevillingindeks._6.FoelsomhedType.fromValue(ClientProperties.getInstance().bevillingsegenskaberFoelsomhed())))) // Mandatory / From Value List; IKKE_FORTROLIGE_DATA, FORTROLIGE_PERSONOPLYSNINGER, FOELSOMME_PERSONOPLYSNINGER, VIP_SAGER
-                                        .withBevilgetYdelse(List.of(new oio.sts.ydelse.bevillingindeks._6.BevilgetYdelseType()
+                                        .withBevilgetYdelse(List.of(new oio.sts.ydelse.bevillingindeks._6.BevilgetYdelseType())
                                                 .withVirkning(new VirkningType()
                                                         .withFraTidspunkt(new TidspunktType()
                                                                 .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().bevilgetYdelseVirkningFra())) // Mandatory
