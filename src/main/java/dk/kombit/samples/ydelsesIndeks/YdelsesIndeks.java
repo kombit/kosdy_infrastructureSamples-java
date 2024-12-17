@@ -95,9 +95,11 @@ public class YdelsesIndeks {
                                                         .withType(new UnikIdType()
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().ansvarligOrganisationsEnhedTypeUuid) // String / Derived from Fælleskommunalt Klassifikationssystem  
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow-up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                        */
                                                         )
                                                 ))
                                                 .withYdelse(new oio.sts.ydelse.bevillingindeks._6.YdelseRelationType()
@@ -119,9 +121,11 @@ public class YdelsesIndeks {
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingPrimaerKlasseReferenceId()) // Recommended
                                                         //      .withURNIdentifikator() // Not used in this example
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                        */
                                                         )
                                                 )
                                                 .withOekonomiskEffektueringsplan(List.of(new oio.sts.ydelse.bevillingindeks._6.OekonomiskEffektueringsplanType()
@@ -135,12 +139,14 @@ public class YdelsesIndeks {
                                                 //      .withManueltGodkendes(false))) // Not used in this example / Optional / Either True or False
                                             ))
                                         )
+                                        /*
                                         .withTilstandListe(new oio.sts.ydelse.bevillingindeks._6.TilstandListeType() // Follow up
                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType()
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                         .withAny(List.of())
                                                 )
                                         )
+                                        */
                                         .withRelationListe(new oio.sts.ydelse.bevillingindeks._6.RelationListeType()
                                                 .withBevillingssag(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksSagRelationType()
                                                         .withBrugervendtNoegle(ClientProperties.getInstance().bevillingssagBrugervendtNoegle()) // Mandatory / String / Max 50 Char /  
@@ -163,9 +169,11 @@ public class YdelsesIndeks {
                                                         .withType(new UnikIdType() 
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingssagTypeUuid()) // Mandatory / String / Derived from Fælleskommunalt Klassifikationssystem
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                        */
                                                         ))
                                                 )
                                                 .withBevillingspart(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksPartRelationType()
@@ -193,9 +201,11 @@ public class YdelsesIndeks {
                                                         .withReferenceID(new UnikIdType() 
                                                                 .withURNIdentifikator(ClientProperties.getInstance().ydelsesmodtagerReferenceId()) // Mandatory / URN / String Max 256 Char
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                        */
                                                         ))
 
                                                 )
@@ -224,9 +234,11 @@ public class YdelsesIndeks {
                                                         .withReferenceID(new UnikIdType() // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingEjerReferenceId()) // UUID
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                        */
                                                         ))
                                                 )
                                                 // Bevillings Ansvarlig / Benefit Responsible
@@ -254,14 +266,16 @@ public class YdelsesIndeks {
                                                         .withReferenceID(new UnikIdType() // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAnsvarligReferenceId()) // UUID
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                        */
                                                         ))
                                                 )
-                                        /**
-                                        // Not used in this example
-                                        //      .withSikkerhedsprofil(List.of(new oio.sts.ydelse.bevillingindeks._6.SikkerhedsprofilRelationType() //Consider deleting this
+                                                /*
+                                                // Not used in this example
+                                                .withSikkerhedsprofil(List.of(new oio.sts.ydelse.bevillingindeks._6.SikkerhedsprofilRelationType() //Consider deleting this
                                                         .withVirkning(new VirkningType() // Mandatory
                                                                 .withFraTidspunkt(new TidspunktType()
                                                                 //      .withTidsstempelDatoTid(SoapUtils.getXmlCalender()) // DateTime format
@@ -289,13 +303,16 @@ public class YdelsesIndeks {
                                                         ))
 
                                                 )
+                                                */
+                                        /*
                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
+                                        */
                                         ))
 
                                         // Not used in this example
-                                        */
+                                        
 
                                         .withStsTidspunkt(SoapUtils.getXmlCalender()) // NOT TO BE FILLED / IS FILLED BY THE INDEX IT SELF
                                         .withTidspunkt(SoapUtils.getXmlCalender()) // Mandatory / Dateformat YYYY-MM-DDThh:mm:ss:ssssTZD / Filled by the 'Fagsystem'
@@ -335,15 +352,19 @@ public class YdelsesIndeks {
                                                 //      .withSendtTilUdbetalingTekst() // The field is not mandatory, but must be completed in case, where there is a difference between 'BeloebEfterSKATATP' and '
                                                 //      .withUdbetaltTekst() // The field is not mandatory, but must be completed in case, where there is a difference between 'BeloebEfterSKATATP' and 'BeloebSendtTilUdbetaling'
                                                 ))
+                                                /*
                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                         .withAny(List.of())
+                                                */
                                                 )
                                         )
-                                        .withTilstandListe(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.TilstandListeType() // Follow up
+                                        /*
+                                        .withTilstandListe(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.TilstandListeType()
                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType()
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                         .withAny(List.of())
+                                         */
                                                 )
                                         )
                                         .withRelationListe(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.RelationListeType() // Follow up / 3.4 Relation: Økonomisk Ydelseseffektuering
@@ -369,9 +390,11 @@ public class YdelsesIndeks {
                                                         .withReferenceID(new UnikIdType()
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().YdelseseffektueringReferenceId()) // UUID
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender()) // 
                                                                 .withAny(List.of())
+                                                        */
                                                         )
                                                         .withYdelsesperiodeStartdato(SoapUtils.getXmlCalender(ClientProperties.getInstance().YdelseseffektueringYdelsesperiodeStartdato())) // Mandatory / dateTime
                                                         .withYdelsesperiodeSlutdato(SoapUtils.getXmlCalender(ClientProperties.getInstance().YdelseseffektueringYdelsesperiodeSlutdato()))
@@ -406,9 +429,11 @@ public class YdelsesIndeks {
                                                         .withReferenceID(new UnikIdType() // Mandatory / UUID (String) / Developer derive the value from Fælleskommunalt Organisationssystem
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().EffektueringEjerReferenceID()) // UUID derived from Fælleskommunalt Organisationssystem
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                        */
                                                         )
                                                 ))
                                                 .withItSystem(List.of(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.ItSystemRelationType()
@@ -423,9 +448,11 @@ public class YdelsesIndeks {
                                                         .withReferenceID(new UnikIdType() // Mandatory / UUID String / Sender System UUID from Fælleskommunalt Administrationmodul
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().anvenderSystemUuid()) // Always UUID
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                         */
                                                         )
 
                                                 ))
@@ -452,17 +479,21 @@ public class YdelsesIndeks {
                                                         .withReferenceID(new UnikIdType()  // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
                                                                 .withURNIdentifikator(ClientProperties.getInstance().EffektueringsmodtagerReferenceId()) // Ref to Lonnies CPR number
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                                 .withAny(List.of())
+                                                        */
                                                         )
                                                 ))
+                                                /*
                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                         .withAny(List.of())
+                                                 */
                                                 )
                                         )
-                                //      .withTidspunkt(SoapUtils.getXmlCalender()) // Mandatory / Dateformat YYYY-MM-DDThh:mm:ss:ssssTZD / Filled by the 'Fagsystem'
+                                        .withTidspunkt(SoapUtils.getXmlCalender()) // Mandatory / Dateformat YYYY-MM-DDThh:mm:ss:ssssTZD / Filled by the 'Fagsystem'
                                         .withLivscyklusKode(LivscyklusKodeType.fromValue(ClientProperties.getInstance().YdelseLivscyklusKode())) // Mandatory / String/Enumeration / Always the same value named 'Importeret' - Follow up
                                         .withBrugerRef(new UnikIdType() // Mandatory / URN or String 
                                                 .withUUIDIdentifikator(ClientProperties.getInstance().YdelseAktoerRef()) // Developer derive the value from Fælleskommunalt Organisationssystem
@@ -539,9 +570,11 @@ public class YdelsesIndeks {
                                                 .withReferenceID(new UnikIdType()
                                                         .withUUIDIdentifikator(ClientProperties.getInstance().anvenderSystemUuid()) // Derive the UUID from Administrationsmodul
                                                 )
+                                                /*
                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType()
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender()) // Follow up
                                                         .withAny(List.of()) // Follow up
+                                                 */
                                                 )
                                         ))
                                         .withYdelse(new oio.sts.ydelse.bevillingindeks._6.YdelseRelationType()
@@ -559,9 +592,11 @@ public class YdelsesIndeks {
                                                         .withReferenceID(new UnikIdType()
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingPrimaerKlasseReferenceId()) // Mandatory / Derived from Fælleskommunal Klassifikation
                                                         )
+                                                        /*
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType()
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender()) // Follow up
                                                                 .withAny(List.of()) // Follow up
+                                                        */
                                                         )
 
                                                 )
@@ -575,9 +610,11 @@ public class YdelsesIndeks {
                                                 .withReferenceID(new UnikIdType()
                                                         .withUUIDIdentifikator(ClientProperties.getInstance().YdelseReferenceId()) // Mandatory / Derived from Fælleskommunal Klassifikation
                                                 )
+                                                /*
                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType()
                                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender()) // Follow up
                                                         .withAny(List.of()) // Follow up
+                                                */
                                                 )
                                         )
                                         .withOekonomiskEffektueringsplan(List.of(new oio.sts.ydelse.bevillingindeks._6.OekonomiskEffektueringsplanType()
@@ -593,9 +630,11 @@ public class YdelsesIndeks {
                                 )
                         )
                         .withTilstandListe(new oio.sts.ydelse.bevillingindeks._6.TilstandListeType() // Follow up
+                                /*
                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender()) // Follow up
                                         .withAny(List.of()) // Follow up
+                                */
                                 )
                         )
                         .withRelationListe(new oio.sts.ydelse.bevillingindeks._6.RelationListeType()
@@ -624,9 +663,11 @@ public class YdelsesIndeks {
                                         .withReferenceID(new UnikIdType()
                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingssagReferenceID()) // Mandatory
                                         )
-                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
+                                        /*
+                                        withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
+                                        */
                                         ))
                                 )
                                 // Bevillingspart
@@ -654,10 +695,13 @@ public class YdelsesIndeks {
                                         .withReferenceID(new UnikIdType()
                                                 .withURNIdentifikator(ClientProperties.getInstance().ydelsesmodtagerReferenceId()) // Mandatory / Identification structure on the receiver of the benefit
                                         )
+                                        /*
                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
+                                        */
                                         ))
+                                        
 
                                 )
                                 // Bevillings Aktør Ejer
@@ -689,10 +733,13 @@ public class YdelsesIndeks {
                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingEjerReferenceId()) // Mandatory / Derived from Fælleskommunal Organisation 
                                         //      .withURNIdentifikator() // URN if the UUID does not exist in Fælleskommunalt Organisationssystem 
                                         )
+                                        /*
                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
+                                        */
                                         ))
+                                              
                                 )
                                 // Bevillings Aktør Ansvarlig
                                 .withBevillingsaktoerAnsvarlig(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksAktoerRelationType()
@@ -723,10 +770,12 @@ public class YdelsesIndeks {
                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAnsvarligReferenceId()) // Mandatory / Derived from Fælleskommunal Organisation 
                                         //      .withURNIdentifikator() // URN if the UUID does not exist in Fælleskommunalt Organisationssystem 
                                         )
-                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
+                                        /*
+                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType()
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
-                                        ))
+                                        */
+                                        )
                                 )
                                 /*
                                 .withSikkerhedsprofil(List.of(new oio.sts.ydelse.bevillingindeks._6.SikkerhedsprofilRelationType()
@@ -797,16 +846,23 @@ public class YdelsesIndeks {
                                 //      .withSendtTilUdbetalingTekst() // Optional
                                 //      .withUdbetaltTekst() // Optional
                                 ))
+                                /*
                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                         .withAny(List.of())
+                                */
                                 )
+                                
                         )
                         .withTilstandListe(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.TilstandListeType()
+                        
+                        /*
                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow Up
                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                         .withAny(List.of())
+                                */
                                 )
+                        
                         )
                         // Oekonomisk Ydelse Effektuering
                         .withRelationListe(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.RelationListeType()
@@ -833,10 +889,15 @@ public class YdelsesIndeks {
                                         .withReferenceID(new UnikIdType()
                                                 .withUUIDIdentifikator(ClientProperties.getInstance().YdelseseffektueringReferenceId()) // Mandatory
                                         )
+
+                                        /*
                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
+                                        */
                                         )
+                                        
+
                                         .withYdelsesperiodeStartdato(SoapUtils.getXmlCalender(ClientProperties.getInstance().YdelseseffektueringYdelsesperiodeStartdato())) // Mandatory
                                         .withYdelsesperiodeSlutdato(SoapUtils.getXmlCalender(ClientProperties.getInstance().YdelseseffektueringYdelsesperiodeSlutdato())) // Mandatory
                                         .withYdelsesbeloeb(ClientProperties.getInstance().YdelseseffektueringYdelsesbeloeb()) // Mandatory
@@ -875,10 +936,12 @@ public class YdelsesIndeks {
                                                 .withUUIDIdentifikator(ClientProperties.getInstance().EffektueringEjerReferenceID())
                                         //      .withURNIdentifikator()
                                         )
+                                /*
                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
                                         )
+                                */
                                 ))
                                 .withItSystem(List.of(new oio.sts.ydelse.oekonomiskeffektueringindeks._6.ItSystemRelationType()
                                         .withSystemNavn(ClientProperties.getInstance().anvenderSystemNavn())
@@ -893,10 +956,11 @@ public class YdelsesIndeks {
                                         .withReferenceID(new UnikIdType()
                                                 .withUUIDIdentifikator(ClientProperties.getInstance().anvenderSystemUuid())
                                         )
-                                        .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
+                                /*      .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow up
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
                                         )
+                                */
 
                                 ))
                                 // Oekonomisk Effektuerings Part
@@ -926,21 +990,28 @@ public class YdelsesIndeks {
                                         .withReferenceID(new UnikIdType()
                                                 .withURNIdentifikator(ClientProperties.getInstance().EffektueringsmodtagerReferenceId())
                                         )
+                                        
+                                        /*
                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
+                                        */
                                         )
+                                        
 
                                 ))
+
+                                /*
                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType() // Follow
                                         .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                         .withAny(List.of())
+                                */
                                 )
 
                         )
-                //      .withNoteTekst("ÆØÅ")
-                        .withTidspunkt(SoapUtils.getXmlCalender())
-                        .withUUIDIdentifikator(uuidIdentifikatorOekonomiskEffektuering)
+                //      .withNoteTekst()
+                        .withTidspunkt(SoapUtils.getXmlCalender() // Filled by the 'Fagsystem' (Sender system)
+                        .withUUIDIdentifikator(ClientProperties.getInstance().effektueringUUIDIdentifikator())
                 ))
         );
     }
