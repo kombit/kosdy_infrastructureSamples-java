@@ -263,6 +263,7 @@ public class YdelsesIndeks {
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAnsvarligTypeUuid()) // Developer derive the value from Fælleskommunalt Klassifikation
                                                                 
                                                         )
+                                                        .withIndeks(ClientProperties.getInstance().bevillingAnsvarligIndeks()) // Mandatory
                                                         .withReferenceID(new UnikIdType() // Mandatory / String / Either UUID or URN / if the Organisation has not been created in Fælleskommunalt Organisationssystem, then indicate an URN with the following structure: 'urn:oio:cvr-nr:[0-9]{8}'
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().bevillingAnsvarligReferenceId()) // UUID
                                                         )
