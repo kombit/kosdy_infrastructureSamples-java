@@ -1087,8 +1087,8 @@ public class YdelsesIndeks {
                                                                 )
                                                                 /*
                                                                 .withLokalUdvidelseListe(new LokalUdvidelseListeType()
-                                                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender(ClientProperties.getInstance().))
-                                                                        .withAny(List.of(ClientProperties.getInstance().))
+                                                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender(ClientProperties.getInstance().()))
+                                                                        .withAny(List.of(ClientProperties.getInstance().()))
                                                                 ) */
                                                         ))
                                                         .withYdelse(new oio.sts.ydelse.bevillingindeks._6.YdelseRelationType()
