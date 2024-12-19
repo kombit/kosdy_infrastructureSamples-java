@@ -310,10 +310,7 @@ public class YdelsesIndeks {
                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender())
                                                 .withAny(List.of())
                                         */
-                                        ))
-
-                                        // Not used in this example
-                                        
+                                        ))                                        
 
                                         .withStsTidspunkt(SoapUtils.getXmlCalender()) // NOT TO BE FILLED / IS FILLED BY THE INDEX IT SELF
                                         .withTidspunkt(SoapUtils.getXmlCalender()) // Mandatory / Dateformat YYYY-MM-DDThh:mm:ss:ssssTZD / Filled by the 'Fagsystem'
