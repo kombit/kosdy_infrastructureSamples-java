@@ -94,11 +94,11 @@ public class YdelsesIndeksTest {
         String uuidIdentifikatorBevilling ="ÆØÅ";
         String uuidIdentifikatorOekonomiskEffektuering = "ÆØÅ";
 
-        FremsoegYdelseIndeksOutputType fremsoegOutput = ydelsesIndeks.fremsoeg(uuidIdentifikatorBevilling, uuidIdentifikatorOekonomiskEffektuering);
+        FremsoegYdelseIndeksOutputType fremsoegOutput = ydelsesIndeks.fremsoegSimple(uuidIdentifikatorBevilling, uuidIdentifikatorOekonomiskEffektuering);
 
-        Assert.isTrue(!fremsoegOutput.getAntal().isEmpty(), "Antal indeholder elementer");
-        Assert.isTrue(fremsoegOutput.getStandardRetur() != null, "StandardRetur er ikke null");
-        Assert.isTrue(!fremsoegOutput.getBevillingFiltreretOejebliksbillede().isEmpty(), "BevillingFiltreretOejebliksbillede indeholder elementer");
-        Assert.isTrue(!fremsoegOutput.getOekonomiskEffektueringFiltreretOejebliksbillede().isEmpty(), "OekonomiskEffektueringFiltreretOejebliksbillede indeholder elementer");
+        Assert.isTrue(fremsoegOutput.getAntal().isEmpty(), "Antal indeholder elementer");
+        Assert.isTrue(fremsoegOutput.getStandardRetur() != null, "StandardRetur er null");
+        Assert.isTrue(fremsoegOutput.getBevillingFiltreretOejebliksbillede().isEmpty(), "BevillingFiltreretOejebliksbillede indeholder elementer");
+        Assert.isTrue(fremsoegOutput.getOekonomiskEffektueringFiltreretOejebliksbillede().isEmpty(), "OekonomiskEffektueringFiltreretOejebliksbillede indeholder elementer");
     }
 }
