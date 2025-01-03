@@ -195,6 +195,84 @@ public class ClientProperties {
 
     private static final String EFFEKTUERING_EGENSKABER_AKTOER_REF = "effektueringEgenskaberAktoerRef";
 
+    private static final String EFFEKTUERING_EGENSKABER_BRUGERVENDT_NOEGLE = "effektueringEgenskaberBrugervendtNoegle";
+
+    private static final String EFFEKTUERING_EGENSKABER_STARTDATO = "effektueringEgenskaberStartdato";
+
+    private static final String EFFEKTUERING_EGENSKABER_SLUTDATO = "effektueringEgenskaberSlutdato";
+
+    private static final String EFFEKTUERING_EGENSKABER_SAMLET_BRUTTOBELOEB = "effektueringEgenskaberSamletBruttobeloeb";
+
+    private static final String EFFEKTUERING_EGENSKABER_DISPOSITIONSDATO = "effektueringEgenskaberDispositionsdato";
+
+    private static final String EFFEKTUERING_EGENSKABER_BELOEB_EFTER_SKAT_ATP = "effektueringEgenskaberBeloebEfterSkatATP";
+
+    private static final String EFFEKTUERING_EGENSKABER_BELOEB_SENDT_TIL_UDBETALING = "effektueringEgenskaberBeloebSendtTilUdbetaling";
+
+    private static final String EFFEKTUERING_EGENSKABER_UDBETALINGSAFDELING = "effektueringEgenskaberUdbetalingsafdeling";
+
+    private static final String YDELSEEFFEKTUERING_VIRKNING_FRA = "ydelseseffektueringVirkningFra";
+
+    private static final String YDELSEEFFEKTUERING_AKTOER_REF = "ydelseseffektueringAktoerRef";
+
+    private static final String YDELSEEFFEKTUERING_ROLLE_UUID = "ydelseseffektueringRolleUuid";
+
+    private static final String YDELSEEFFEKTUERING_TYPE_UUID = "ydelseseffektueringTypeUuid";
+
+    private static final String YDELSEEFFEKTUERING_INDEKS = "ydelseseffektueringIndeks";
+
+    private static final String YDELSEEFFEKTUERING_REFERENCE_ID = "ydelseseffektueringReferenceId";
+
+    private static final String YDELSEEFFEKTUERING_YDELSESPERIODE_STARTDATO = "ydelseseffektueringYdelsesperiodeStartdato";
+
+    private static final String YDELSEEFFEKTUERING_YDELSESPERIODE_SLUTDATO = "ydelseseffektueringYdelsesperiodeSlutdato";
+
+    private static final String YDELSEEFFEKTUERING_YDELSESBELOEB = "ydelseseffektueringYdelsesbeloeb";
+
+    private static final String YDELSEEFFEKTUERING_KLASSIFIKATIONSBESKRIVELSE = "ydelseseffektueringKlassifikationsbeskrivelse";
+
+    private static final String YDELSEEFFEKTUERING_BEVILGET_YDELSE_REF_UUID_IDENTIFIKATOR = "ydelseseffektueringBevilgetYdelseRefUUIDIdentifikator";
+
+    private static final String YDELSEEFFEKTUERING_BEVILGET_YDELSE_REF_BEVILGET_YDELSE_ID = "ydelseseffektueringBevilgetYdelseRefBevilgetYdelseId";
+
+    private static final String EFFEKTUERING_EJER_FULDT_NAVN = "effektueringEjerFuldtNavn";
+
+    private static final String EFFEKTUERING_EJER_CVR_NR = "effektueringEjerCVRNr";
+
+    private static final String EFFEKTUERING_EJER_VIRKNING_FRA = "effektueringEjerVirkningFra";
+
+    private static final String EFFEKTUERING_EJER_AKTOER_REF = "effektueringEjerAktoerRef";
+
+    private static final String EFFEKTUERING_EJER_ROLLE_UUID = "effektueringEjerRolleUuid";
+
+    private static final String EFFEKTUERING_EJER_TYPE_UUID = "effektueringEjerTypeUuid";
+
+    private static final String EFFEKTUERING_EJER_REFERENCE_ID = "effektueringEjerReferenceID";
+
+    private static final String EFFEKTUERINGS_MODTAGER_FULDT_NAVN = "effektueringsmodtagerFuldtNavn";
+
+    private static final String EFFEKTUERINGS_MODTAGER_VIRKNING_FRA = "effektueringsmodtagerVirkningfra";
+
+    private static final String EFFEKTUERINGS_MODTAGER_AKTOER_REF = "effektueringsmodtagerAktoerRef";
+
+    private static final String EFFEKTUERINGS_MODTAGER_ROLLE_UUID = "effektueringModtagerRolleUuid";
+
+    private static final String EFFEKTUERINGS_MODTAGER_TYPE_UUID = "effektueringModtagerTypeUuid";
+
+    private static final String EFFEKTUERINGS_MODTAGER_REFERENCE_ID = "effektueringsmodtagerReferenceId";
+
+    private static final String YDELSE_LIVSCYKLUS_KODE = "ydelseLivscyklusKode";
+
+    private static final String YDELSE_AKTOER_REF = "ydelseAktoerRef";
+
+    private static final String YDELSE_ROLLE_UUID = "YdelseRolleUuid";
+
+    private static final String YDELSE_TYPE_UUID = "YdelseTypeUuid";
+
+    private static final String YDELSE_INDEKS = "ydelseIndeks";
+
+    private static final String YDELSE_REFERENCE_ID = "YdelseReferenceId";
+
 
 
     /**
@@ -497,4 +575,82 @@ public class ClientProperties {
     public String getEffektueringEgenskaberVirkningFra() { return properties.getProperty(EFFEKTUERING_EGENSKABER_VIRKNING_FRA); }
 
     public String getEffektueringEgenskaberAktoerRef() { return properties.getProperty(EFFEKTUERING_EGENSKABER_AKTOER_REF); }
+
+    public String getEffektueringEgenskaberBrugervendtNoegle() { return properties.getProperty(EFFEKTUERING_EGENSKABER_BRUGERVENDT_NOEGLE); }
+
+    public String getEffektueringEgenskaberStartdato() { return properties.getProperty(EFFEKTUERING_EGENSKABER_STARTDATO); }
+
+    public String getEffektueringEgenskaberSlutdato() { return properties.getProperty(EFFEKTUERING_EGENSKABER_SLUTDATO); }
+
+    public String getEffektueringEgenskaberSamletBruttobeloeb() { return properties.getProperty(EFFEKTUERING_EGENSKABER_SAMLET_BRUTTOBELOEB); }
+
+    public String getEffektueringEgenskaberDispositionsdato() { return properties.getProperty(EFFEKTUERING_EGENSKABER_DISPOSITIONSDATO); }
+
+    public String getEffektueringEgenskaberBeloebEfterSkatATP() { return properties.getProperty(EFFEKTUERING_EGENSKABER_BELOEB_EFTER_SKAT_ATP); }
+
+    public String getEffektueringEgenskaberBeloebSendtTilUdbetaling() { return properties.getProperty(EFFEKTUERING_EGENSKABER_BELOEB_SENDT_TIL_UDBETALING); }
+
+    public String getEffektueringEgenskaberUdbetalingsafdeling() { return properties.getProperty(EFFEKTUERING_EGENSKABER_UDBETALINGSAFDELING); }
+
+    public String getYdelseseffektueringVirkningFra() { return properties.getProperty(YDELSEEFFEKTUERING_VIRKNING_FRA); }
+
+    public String getYdelseseffektueringAktoerRef() { return properties.getProperty(YDELSEEFFEKTUERING_AKTOER_REF); }
+
+    public String getYdelseseffektueringRolleUuid() { return properties.getProperty(YDELSEEFFEKTUERING_ROLLE_UUID); }
+
+    public String getYdelseseffektueringTypeUuid() { return properties.getProperty(YDELSEEFFEKTUERING_TYPE_UUID); }
+
+    public String getYdelseseffektueringIndeks() { return properties.getProperty(YDELSEEFFEKTUERING_INDEKS); }
+
+    public String getYdelseseffektueringReferenceId() { return properties.getProperty(YDELSEEFFEKTUERING_REFERENCE_ID); }
+
+    public String getYdelseseffektueringYdelsesperiodeStartdato() { return properties.getProperty(YDELSEEFFEKTUERING_YDELSESPERIODE_STARTDATO); }
+
+    public String getYdelseseffektueringYdelsesperiodeSlutdato() { return properties.getProperty(YDELSEEFFEKTUERING_YDELSESPERIODE_SLUTDATO); }
+
+    public String getYdelseseffektueringYdelsesbeloeb() { return properties.getProperty(YDELSEEFFEKTUERING_YDELSESBELOEB); }
+
+    public String getYdelseseffektueringKlassifikationsbeskrivelse() { return properties.getProperty(YDELSEEFFEKTUERING_KLASSIFIKATIONSBESKRIVELSE); }
+
+    public String getYdelseseffektueringBevilgetYdelseRefUUIDIdentifikator() { return properties.getProperty(YDELSEEFFEKTUERING_BEVILGET_YDELSE_REF_UUID_IDENTIFIKATOR); }
+
+    public String getYdelseseffektueringBevilgetYdelseRefBevilgetYdelseId() { return properties.getProperty(YDELSEEFFEKTUERING_BEVILGET_YDELSE_REF_BEVILGET_YDELSE_ID); }
+
+    public String getEffektueringEjerFuldtNavn() { return properties.getProperty(EFFEKTUERING_EJER_FULDT_NAVN); }
+
+    public String getEffektueringEjerCVRNr() { return properties.getProperty(EFFEKTUERING_EJER_CVR_NR); }
+
+    public String getEffektueringEjerVirkningFra() { return properties.getProperty(EFFEKTUERING_EJER_VIRKNING_FRA); }
+
+    public String getEffektueringEjerAktoerRef() { return properties.getProperty(EFFEKTUERING_EJER_AKTOER_REF); }
+
+    public String getEffektueringEjerRolleUuid() { return properties.getProperty(EFFEKTUERING_EJER_ROLLE_UUID); }
+
+    public String getEffektueringEjerTypeUuid() { return properties.getProperty(EFFEKTUERING_EJER_TYPE_UUID); }
+
+    public String getEffektueringEjerReferenceID() { return properties.getProperty(EFFEKTUERING_EJER_REFERENCE_ID); }
+
+    public String getEffektueringsmodtagerFuldtNavn() { return properties.getProperty(EFFEKTUERINGS_MODTAGER_FULDT_NAVN); }
+
+    public String getEffektueringsmodtagerVirkningfra() { return properties.getProperty(EFFEKTUERINGS_MODTAGER_VIRKNING_FRA); }
+
+    public String getEffektueringsmodtagerAktoerRef() { return properties.getProperty(EFFEKTUERINGS_MODTAGER_AKTOER_REF); }
+
+    public String getEffektueringModtagerRolleUuid() { return properties.getProperty(EFFEKTUERINGS_MODTAGER_ROLLE_UUID); }
+
+    public String getEffektueringModtagerTypeUuid() { return properties.getProperty(EFFEKTUERINGS_MODTAGER_TYPE_UUID); }
+
+    public String getEffektueringsmodtagerReferenceId() { return properties.getProperty(EFFEKTUERINGS_MODTAGER_REFERENCE_ID); }
+
+    public String getYdelseLivscyklusKode() { return properties.getProperty(YDELSE_LIVSCYKLUS_KODE); }
+
+    public String getYdelseAktoerRef() { return properties.getProperty(YDELSE_AKTOER_REF); }
+
+    public String getYdelseRolleUuid() { return properties.getProperty(YDELSE_ROLLE_UUID); }
+
+    public String getYdelseTypeUuid() { return properties.getProperty(YDELSE_TYPE_UUID); }
+
+    public String getYdelseIndeks() { return properties.getProperty(YDELSE_INDEKS); }
+
+    public String getYdelseReferenceId() { return properties.getProperty(YDELSE_REFERENCE_ID); }
 }
