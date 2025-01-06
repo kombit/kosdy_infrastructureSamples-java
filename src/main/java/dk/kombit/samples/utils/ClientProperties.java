@@ -273,6 +273,34 @@ public class ClientProperties {
 
     private static final String YDELSE_REFERENCE_ID = "YdelseReferenceId";
 
+    private static final String EFFEKTUERINGS_PLAN_STARTDATO = "effektueringsplanStardato";
+
+    private static final String EFFEKTUERINGS_PLAN_SLUTDATO = "effektueringsplanSlutdato";
+
+    private static final String EFFEKTUERINGS_PLAN_BEREGNINGSFREKVENS = "effektueringsplanBeregningsfrekvens";
+
+    private static final String EFFEKTUERINGS_PLAN_FORUD_BAGUD = "effektueringsplanForudBagud";
+
+    private static final String EFFEKTUERINGS_PLAN_DISPOSITIONSDAG = "effektueringsplanDispositionsdag";
+
+    private static final String EFFEKTUERINGS_PLAN_YDELSESBELOEB = "effektueringsplanYdelsesbeloeb";
+
+    private static final String BEVILLINGS_SAG_VIRKNING_FRA = "bevillingssagVirkningFra";
+
+    private static final String BEVILLINGS_SAG_AKTOER_REF = "bevillingssagAktoerRef";
+
+    private static final String BEVILLINGS_SAG_REFERENCE_ID = "bevillingssagReferenceID";
+
+    private static final String BEVILLING_EJER_BRUGERVENDT_NOEGLE = "bevillingEjerBrugervendtNoegle";
+
+    private static final String BEVILLING_EJER_VIRKNING_FRA = "bevillingEjerVirkningFra";
+
+    private static final String BEVILLING_EJER_AKTOER_REF = "bevillingEjerAktoerRef";
+
+    private static final String BEVILLING_ANSVARLIG_VIRKNING_FRA = "bevillingAnsvarligVirkningFra";
+
+    private static final String BEVILLING_ANSVARLIG_AKTOER_REF = "bevillingAnsvarligAktoerRef";
+
 
 
     /**
@@ -653,4 +681,32 @@ public class ClientProperties {
     public String getYdelseIndeks() { return properties.getProperty(YDELSE_INDEKS); }
 
     public String getYdelseReferenceId() { return properties.getProperty(YDELSE_REFERENCE_ID); }
+
+    public String getEffektueringsplanStardato() { return properties.getProperty(EFFEKTUERINGS_PLAN_STARTDATO); }
+
+    public String getEffektueringsplanSlutdato() { return properties.getProperty(EFFEKTUERINGS_PLAN_SLUTDATO); }
+
+    public String getEffektueringsplanBeregningsfrekvens() { return properties.getProperty(EFFEKTUERINGS_PLAN_BEREGNINGSFREKVENS); }
+
+    public String getEffektueringsplanForudBagud() { return properties.getProperty(EFFEKTUERINGS_PLAN_FORUD_BAGUD); }
+
+    public String getEffektueringsplanDispositionsdag() { return properties.getProperty(EFFEKTUERINGS_PLAN_DISPOSITIONSDAG); }
+
+    public String getEffektueringsplanYdelsesbeloeb() { return properties.getProperty(EFFEKTUERINGS_PLAN_YDELSESBELOEB); }
+
+    public String getBevillingssagVirkningFra() { return properties.getProperty(BEVILLINGS_SAG_VIRKNING_FRA); }
+
+    public String getBevillingssagAktoerRef() { return properties.getProperty(BEVILLINGS_SAG_AKTOER_REF); }
+
+    public String getBevillingssagReferenceID() { return properties.getProperty(BEVILLINGS_SAG_REFERENCE_ID); }
+
+    public String getBevillingEjerBrugervendtNoegle() { return properties.getProperty(BEVILLING_EJER_BRUGERVENDT_NOEGLE); }
+
+    public String getBevillingEjerVirkningFra() { return properties.getProperty(BEVILLING_EJER_VIRKNING_FRA); }
+
+    public String getBevillingEjerAktoerRef() { return properties.getProperty(BEVILLING_EJER_AKTOER_REF); }
+
+    public String getBevillingAnsvarligVirkningFra() { return properties.getProperty(BEVILLING_ANSVARLIG_VIRKNING_FRA); }
+
+    public String getBevillingAnsvarligAktoerRef() { return properties.getProperty(BEVILLING_ANSVARLIG_AKTOER_REF); }
 }
