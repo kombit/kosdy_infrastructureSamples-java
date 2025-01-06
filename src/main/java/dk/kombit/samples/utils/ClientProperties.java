@@ -105,7 +105,7 @@ public class ClientProperties {
 
     private static final String BEVILGET_YDELSE_AKTOER_TYPE_KODE = "bevilgetYdelseAktoerTypeKode";
 
-    private static final String BEVILGET_YDELSE_ID = "bevigetYdelseID";
+    private static final String BEVILGET_YDELSE_ID = "bevilgetYdelseID";
 
     private static final String BEVILGET_YDELSE_NAVN = "bevilgetYdelseNavn";
 
