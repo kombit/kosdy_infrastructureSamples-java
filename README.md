@@ -1,3 +1,12 @@
+## 0. Prerequisites
+
+[Before beginngg the coding journey, please see Tilslutningsguide - Danish only](https://digitaliseringskataloget.dk/tilslutningsguide)
+
+For non-Danish
+As a specialist system supplier, it can be difficult to understand how to get started developing and implementing an integration into the infrastructure. In addition to administrative procedures, such as creation in the Administration Module for suppliers, certain integrations may be prerequisites for others. There may be a need for business clarifications in relation to the customer's IT, and in some cases, you as a supplier also need to complete a compliance test before your specialist system is released into the joint municipal infrastructure.
+
+
+
 ## 1. Introduction
 
 These code examples are made to help you build integrations using
