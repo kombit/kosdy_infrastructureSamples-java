@@ -265,13 +265,13 @@ public class ClientProperties {
 
     private static final String YDELSE_AKTOER_REF = "ydelseAktoerRef";
 
-    private static final String YDELSE_ROLLE_UUID = "YdelseRolleUuid";
+    private static final String YDELSE_ROLLE_UUID = "ydelseRolleUuid";
 
-    private static final String YDELSE_TYPE_UUID = "YdelseTypeUuid";
+    private static final String YDELSE_TYPE_UUID = "ydelseTypeUuid";
 
     private static final String YDELSE_INDEKS = "ydelseIndeks";
 
-    private static final String YDELSE_REFERENCE_ID = "YdelseReferenceId";
+    private static final String YDELSE_REFERENCE_ID = "ydelseReferenceId";
 
     private static final String EFFEKTUERINGS_PLAN_STARTDATO = "effektueringsplanStardato";
 
@@ -301,6 +301,23 @@ public class ClientProperties {
 
     private static final String BEVILLING_ANSVARLIG_AKTOER_REF = "bevillingAnsvarligAktoerRef";
 
+    private static final String BEVILLINGS_SAG_AKTOER_TYPE_KODE = "bevillingssagAktoerTypeKode";
+
+    private static final String BEVILLINGS_PART_AKTOER_TYPE_KODE = "bevillingspartAktoerTypeKode";
+
+    private static final String BEVILLING_EJER_AKTOER_TYPE_KODE = "bevillingEjerAktoerTypeKode";
+
+    private static final String BEVILLING_ANSVARLIG_AKTOER_TYPE_KODE = "bevillingAnsvarligAktoerTypeKode";
+
+    private static final String EFFEKTUERING_EGENSKABER_AKTOER_TYPE_KODE = "effektueringEgenskaberAktoerTypeKodeType";
+
+    private static final String YDELSEEFFEKTUERING_AKTOER_TYPE_KODE = "ydelseseffektueringAktoerTypeKode";
+
+    private static final String EFFEKTUERING_EJER_AKTOER_TYPE_KODE = "effektueringEjerAktoerTypeKode";
+
+    private static final String EFFEKTUERINGS_MODTAGER_AKTOER_TYPE_KODE = "effektueringsmodtagerAktoerTypeKode";
+
+    private static final String YDELSESMODTAGER_AKTOER_TYPE_KODE = "ydelsesmodtagerAktoerTypeKode";
 
 
     /**
@@ -709,4 +726,22 @@ public class ClientProperties {
     public String getBevillingAnsvarligVirkningFra() { return properties.getProperty(BEVILLING_ANSVARLIG_VIRKNING_FRA); }
 
     public String getBevillingAnsvarligAktoerRef() { return properties.getProperty(BEVILLING_ANSVARLIG_AKTOER_REF); }
+
+    public String getBevillingssagAktoerTypeKode() { return properties.getProperty(BEVILLINGS_SAG_AKTOER_TYPE_KODE); }
+
+    public String getBevillingspartAktoerTypeKode() { return properties.getProperty(BEVILLINGS_PART_AKTOER_TYPE_KODE); }
+
+    public String getBevillingEjerAktoerTypeKode() { return properties.getProperty(BEVILLING_EJER_AKTOER_TYPE_KODE); }
+
+    public String getBevillingAnsvarligAktoerTypeKode() { return properties.getProperty(BEVILLING_ANSVARLIG_AKTOER_TYPE_KODE); }
+
+    public String getEffektueringEgenskaberAktoerTypeKodeType() { return properties.getProperty(EFFEKTUERING_EGENSKABER_AKTOER_TYPE_KODE); }
+
+    public String getYdelseseffektueringAktoerTypeKode() { return properties.getProperty(YDELSEEFFEKTUERING_AKTOER_TYPE_KODE); }
+
+    public String getEffektueringEjerAktoerTypeKode() { return properties.getProperty(EFFEKTUERING_EJER_AKTOER_TYPE_KODE); }
+
+    public String getEffektueringsmodtagerAktoerTypeKode() { return properties.getProperty(EFFEKTUERINGS_MODTAGER_AKTOER_TYPE_KODE); }
+
+    public String getYdelsesmodtagerAktoerTypeKode() { return properties.getProperty(YDELSESMODTAGER_AKTOER_TYPE_KODE); }
 }
