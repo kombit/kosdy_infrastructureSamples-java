@@ -119,7 +119,7 @@ public class ClientProperties {
 
     private static final String BEVILLING_PRIMAER_KLASSE_KlASSETITEL = "bevillingPrimaerKlasseKlassetitel";
 
-    private static final String BEVILLING_PRIMAER_KLASSE_ROlLE_UUID = "bevillingPrimaerKlasseRolleUuid";
+    private static final String BEVILLING_PRIMAER_KLASSE_ROLLE_UUID = "bevillingPrimaerKlasseRolleUuid";
 
     private static final String BEVILLING_KLASSE_TYPE_UUID = "bevillingKlasseTypeUuid";
 
@@ -545,7 +545,7 @@ public class ClientProperties {
 
     public String getBevillingPrimaerKlasseKlassetitel() { return properties.getProperty(BEVILLING_PRIMAER_KLASSE_KlASSETITEL); }
 
-    public String getBevillingPrimaerKlasseRolleUuid() { return properties.getProperty(BEVILLING_PRIMAER_KLASSE_ROlLE_UUID); }
+    public String getBevillingPrimaerKlasseRolleUuid() { return properties.getProperty(BEVILLING_PRIMAER_KLASSE_ROLLE_UUID); }
 
     public String getBevillingKlasseTypeUuid() { return properties.getProperty(BEVILLING_KLASSE_TYPE_UUID); }
 
