@@ -1194,6 +1194,7 @@ public class YdelsesIndeks {
                                                         */
                                                         ))
                                                 )
+                                                /*
                                                 .withSikkerhedsprofil(List.of(new oio.sts.ydelse.bevillingindeks._6.SikkerhedsprofilRelationType()
                                                         .withVirkning(new VirkningType()
                                                                 .withFraTidspunkt(new TidspunktType()
@@ -1222,13 +1223,13 @@ public class YdelsesIndeks {
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().)
                                                                 .withURNIdentifikator(ClientProperties.getInstance().)
                                                         )
-                                                        /*
+                                                        
                                                         .withLokalUdvidelseListe(new LokalUdvidelseListeType()
                                                                 .withSenestAendretTidspunkt(SoapUtils.getXmlCalender(ClientProperties.getInstance().))
                                                                 .withAny(List.of(ClientProperties.getInstance().))
-                                                        )*/)
+                                                        ))
 
-                                                )
+                                                ) */
                                         )
                                         .withSoegRegistrering(new SoegRegistreringType()
                                                 .withBrugerRef(new UnikIdType()
