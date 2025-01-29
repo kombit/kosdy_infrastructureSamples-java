@@ -1032,7 +1032,7 @@ public class YdelsesIndeks {
                                                                 ) */
                                                         ))
                                                         .withYdelse(new oio.sts.ydelse.bevillingindeks._6.YdelseRelationType()
-                                                                .withYdelsesnavn(ClientProperties.getInstance().)
+                                                                .withYdelsesnavn(ClientProperties.getInstance().getYdelseYdelsesnavn())
                                                                 .withKlassifikation(new oio.sts.ydelse.bevillingindeks._6.BevillingsklasseRelationType()
                                                                         .withBrugervendtNoegle(ClientProperties.getInstance().getBevillingPrimaerKlasseBrugervendtNoegle())
                                                                         .withKlassetitel(ClientProperties.getInstance().getBevillingPrimaerKlasseKlassetitel())
@@ -1177,7 +1177,7 @@ public class YdelsesIndeks {
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().getBevillingEjerTypeUuid())
                                                         //      .withURNIdentifikator(ClientProperties.getInstance().)
                                                         )
-                                                        .withIndeks(ClientProperties.getInstance().)
+                                                        .withIndeks(ClientProperties.getInstance().getBevillingAnsvarligIndeks())
                                                         .withReferenceID(new UnikIdType()
                                                                 .withUUIDIdentifikator(ClientProperties.getInstance().getBevillingEjerReferenceId())
                                                         //      .withURNIdentifikator(ClientProperties.getInstance().)
