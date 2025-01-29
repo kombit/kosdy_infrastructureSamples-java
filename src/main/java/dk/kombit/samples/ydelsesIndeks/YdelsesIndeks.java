@@ -1256,7 +1256,7 @@ public class YdelsesIndeks {
                                         //      .withNoteTekst(ClientProperties.getInstance().)
                                         )
                                         .withSoegStsFraTidspunkt(new TidspunktType()
-                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().)))
+                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().getBevillingsegenskaberVirkningFra())))
                                         //      .withGraenseIndikator(Boolean.valueOf(ClientProperties.getInstance().)))
                                         .withSoegStsTilTidspunkt(new TidspunktType()
                                         //      .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().))
@@ -1266,7 +1266,7 @@ public class YdelsesIndeks {
                                 ))
 
                         )
-                        .withOperation(AndOrType.valueOf(ClientProperties.getInstance().))
+                //      .withOperation(AndOrType.valueOf(ClientProperties.getInstance().)) // Usikker på hvordan denne anvendes?
                         .withSoegBevillingIndeksOrSoegOekonomiskEffektueringIndeksOrNOT(new oio.sts.ydelse.ydelseindeks._6.ObjectFactory()
                                 .createSoegUdtrykTypeNOT(new SoegUdtrykType()
                                         .withSoegBevillingIndeksOrSoegOekonomiskEffektueringIndeksOrNOT(List.of(new oio.sts.ydelse.bevillingindeks._6.ObjectFactory()
@@ -1802,7 +1802,7 @@ public class YdelsesIndeks {
                                         //      .withNoteTekst(ClientProperties.getInstance().)
                                         )
                                         .withSoegStsFraTidspunkt(new TidspunktType()
-                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().)))
+                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().getBevillingsegenskaberVirkningFra())))
                                         //      .withGraenseIndikator(Boolean.valueOf(ClientProperties.getInstance().)))
                                         .withSoegStsTilTidspunkt(new TidspunktType()
                                         //      .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().))
@@ -1812,6 +1812,7 @@ public class YdelsesIndeks {
                                 ))
                         )
                 )
+                /*
                 // Below purposely not filled
                 .withFilter(new FremsoegFilterYdelseIndeksInputType()
                         .withBevillingVisOrOekonomiskEffektueringVisOrBevillingInkluder(List.of(
@@ -1833,6 +1834,7 @@ public class YdelsesIndeks {
                                         .withSekvens(BigInteger.valueOf(Long.parseLong(ClientProperties.getInstance().))) // Sets the sequence number for sorting operations?
                         ))
                 )
+                */
         );
 
     }
