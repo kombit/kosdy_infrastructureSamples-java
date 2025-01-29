@@ -1,8 +1,8 @@
 ## 0. Prerequisites
 
-[Before beginngg the coding journey, please see Tilslutningsguide - Danish only](https://digitaliseringskataloget.dk/tilslutningsguide)
+Before beginning the integration, please see ['Tilslutningsguide'](https://digitaliseringskataloget.dk/tilslutningsguide)
 
-For non-Danish
+#### For non-Danish
 As a specialist system supplier, it can be difficult to understand how to get started developing and implementing an integration into the infrastructure. In addition to administrative procedures, such as creation in the Administration Module for suppliers, certain integrations may be prerequisites for others. There may be a need for business clarifications in relation to the customer's IT, and in some cases, you as a supplier also need to complete a compliance test before your specialist system is released into the joint municipal infrastructure.
 
 
@@ -30,12 +30,12 @@ The code examples demonstrate how to use the following services and operations:
 | [Klassifikation (SF1510)](https://digitaliseringskataloget.dk/integration/sf1510) | KlasseService v7.0            | Soeg, List |
 | [Organisation (SF1500)](https://digitaliseringskataloget.dk/integration/sf1500)  | VirksomhedService v6.0        | Soeg  |
 | [Organisation (SF1500)](https://digitaliseringskataloget.dk/integration/sf1500) | OrganisationService v6.0      | Soeg, Laes |
-| [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470) | SagDokumentIndeksService v6.0 | Importer, Opdater (IN DEVELOPMENT) Fremsoeg, Fjern |
-| [Ydelsesindeks  v6.0 (SF1490)](https://digitaliseringskataloget.dk/integration/sf1490) (IN DEVELOPMENT) | YdelsesIndeksService v6.0 | Importer, Opdater, Fremsoeg, Fjern |
+| [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470) | SagDokumentIndeksService v6.1 | 'Importer', *'Opdater' (IN DEVELOPMENT)*, 'Fremsoeg', 'Fjern' |
+| [Ydelsesindeks (SF1490)](https://digitaliseringskataloget.dk/integration/sf1490) | YdelsesIndeksService v6.0 | 'Importer' (*IN DEVELOPMENT*), 'Opdater' (*IN DEVELOPMENT*), 'Fremsoeg' (*IN DEVELOPMENT*), 'Fjern' (*IN DEVELOPMENT*) |
 
-[Sags- og Dokumentindeks v5.0 (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470) use Liberty Basic Soap Binding and are called via Serviceplatformen.
+[Klassifikation v7.0 (SF1510)](https://digitaliseringskataloget.dk/integration/sf1510), [Organisation v6.0 (SF1500)](https://digitaliseringskataloget.dk/integration/sf1500), [Sags- og Dokumentindeks v6.1 (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470) and [Ydelsesindeks  v6.0 (SF1490)](https://digitaliseringskataloget.dk/integration/sf1490) uses the IDWS Binding (OIO IDWS SOAP profile) and is called directly.
 
-[Klassifikation v7.0 (SF1510)](https://digitaliseringskataloget.dk/integration/sf1510), [Organisation v6.0 (SF1500)](https://digitaliseringskataloget.dk/integration/sf1500) and [Ydelsesindeks  v6.0 (SF1490) (IN DEVELOPMENT)](https://digitaliseringskataloget.dk/integration/sf1490) uses the IDWS Binding (OIO IDWS SOAP profile) and is called directly, i.e. not via Serviceplatformen. The signing of the SOAP Envelope content has been simplified with OIOIDWS. The examples demonstrate how both security profiles can be used in the same context. Read more at [Digitaliseringskataloget](https://digitaliseringskataloget.dk/tekniske_betingelser/adgangsstyring-systemer)
+The signing of the SOAP Envelope content has been simplified with OIOIDWS. The examples demonstrate how both security profiles can be used in the same context. Read more at [Digitaliseringskataloget](https://digitaliseringskataloget.dk/tekniske_betingelser/adgangsstyring-systemer)
 
 [Chapter 4](#4-code-examples) describes the code examples in more detail.
 
@@ -82,9 +82,9 @@ Once the certificates are obtained, use a tool such as Java Keytool or Keystore 
 
 In order for the code examples to work, you will need service agreements which must include the following services:
 
-* Sags- og dokumentindeks v. 6.0 (Required roles: Rediger and Udstil)
-* Organisation v. 6.0 (Required roles: Udstil)
 * Klassifikation v. 7.0 (Required roles: Udstil)
+* Organisation v. 6.0 (Required roles: Udstil)
+* Sags- og dokumentindeks v. 6.1 (Required roles: Rediger and Udstil)
  
 [Read more about how to create the service agreements](https://docs.kombit.dk/komponent/administrationsmodul/betingelse)
 
@@ -232,7 +232,9 @@ In order to resolve this a custom binding file is added for SagDokumentIndeks, t
 
 ## 7.0 Validation Tool
 
-To aid developers with the integration to [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470), KOMBIT has developed a validation tool that can be used to validate the XML structure that must be specified as input in calls to the [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470). The purpose of the tool is to help build and understand data structures.
+To aid developers with the integration to [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470), KOMBIT has developed a validation tool that can be used to validate the XML structure that must be specified as input in calls to the [Sags- og Dokumentindeks (SF1470)](https://digitaliseringskataloget.dk/integration/sf1470). 
+
+The purpose of the tool is to help build and understand data structures.
 
 Briefly about the tool:
 
