@@ -319,6 +319,10 @@ public class ClientProperties {
 
     private static final String YDELSESMODTAGER_AKTOER_TYPE_KODE = "ydelsesmodtagerAktoerTypeKode";
 
+    private static final String BEVILLING_TIDSPUNKT = "bevillingTidspunkt";
+
+
+
 
     /**
      * Method creates a new instance of ClientProperties
@@ -744,4 +748,6 @@ public class ClientProperties {
     public String getEffektueringsmodtagerAktoerTypeKode() { return properties.getProperty(EFFEKTUERINGS_MODTAGER_AKTOER_TYPE_KODE); }
 
     public String getYdelsesmodtagerAktoerTypeKode() { return properties.getProperty(YDELSESMODTAGER_AKTOER_TYPE_KODE); }
+
+    public String getBevillingTidspunkt() { return properties.getProperty(BEVILLING_TIDSPUNKT); }
 }
