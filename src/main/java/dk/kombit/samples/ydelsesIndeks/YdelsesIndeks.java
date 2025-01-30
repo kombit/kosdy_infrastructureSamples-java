@@ -120,6 +120,7 @@ public class YdelsesIndeks {
                                                 ))
 
                                         ))
+                                        .withTilstandListe(new oio.sts.ydelse.bevillingindeks._6.TilstandListeType())
                                         .withRelationListe(new oio.sts.ydelse.bevillingindeks._6.RelationListeType()
                                                 .withBevillingssag(List.of(new oio.sts.ydelse.bevillingindeks._6.BevillingIndeksSagRelationType()
                                                         .withBrugervendtNoegle(ClientProperties.getInstance().getBevillingssagBrugervendtNoegle()) // Mandatory / String / Max 50 Char /  
@@ -231,6 +232,7 @@ public class YdelsesIndeks {
                                                         )
 
                                                         ))
+
 
                                         )
 
