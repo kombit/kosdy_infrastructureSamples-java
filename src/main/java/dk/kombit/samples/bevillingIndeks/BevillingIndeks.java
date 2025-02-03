@@ -41,8 +41,10 @@ public class BevillingIndeks {
         return bevillingIndeks;
     }
 
-    public BasicOutputType fjern(UuidNoteInputType uuidNoteInputType) {
+    public BasicOutputType fjern() {
         Holder<RequestHeaderType> requestHeader = SoapUtils.getRequestHeader();
+
+        UuidNoteInputType uuidNoteInputType = new UuidNoteInputType().withUUIDIdentifikator(ClientProperties.getInstance().getBevillingUUIDIdentifikator());
 
         return bevillingPortType.fjern(requestHeader, uuidNoteInputType);
     }

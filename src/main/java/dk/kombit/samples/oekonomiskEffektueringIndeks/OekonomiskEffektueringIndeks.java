@@ -41,8 +41,10 @@ public class OekonomiskEffektueringIndeks {
         return oekonomiskEffektueringIndeks;
     }
 
-    public BasicOutputType fjern(UuidNoteInputType uuidNoteInputType) {
+    public BasicOutputType fjern() {
         Holder<RequestHeaderType> requestHeader = SoapUtils.getRequestHeader();
+
+        UuidNoteInputType uuidNoteInputType = new UuidNoteInputType().withUUIDIdentifikator(ClientProperties.getInstance().getEffektueringUUIDIdentifikator());
 
         return oekonomiskEffektueringPortType.fjern(requestHeader, uuidNoteInputType);
     }
