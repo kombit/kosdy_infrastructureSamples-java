@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dk.kombit</groupId>
-    <artifactId>Kombit.InfrastructureSamples</artifactId>
+    <artifactId>InfrastructureSamplesYdelse</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -124,6 +124,10 @@
                             <!-- TODO: Add WSDL files here-->
                             <wsdlOptions>
                                 <wsdlOption>
+                                    <wsdl>${resources}/${wsdl.YdelseIndeks}</wsdl>
+                                    <wsdlLocation>classpath:${wsdl.YdelseIndeks}</wsdlLocation>
+                                </wsdlOption>
+                                <wsdlOption>
                                     <wsdl>${resources}/${wsdl.SagDokumentIndeks}</wsdl>
                                     <wsdlLocation>classpath:${wsdl.SagDokumentIndeks}</wsdlLocation>
                                     <bindingFiles>
@@ -138,10 +142,7 @@
                                     <wsdl>${resources}/${wsdl.OekonomiskEffektueringIndeks}</wsdl>
                                     <wsdlLocation>classpath:${wsdl.OekonomiskEffektueringIndeks}</wsdlLocation>
                                 </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${resources}/${wsdl.YdelseIndeks}</wsdl>
-                                    <wsdlLocation>classpath:${wsdl.YdelseIndeks}</wsdlLocation>
-                                </wsdlOption>
+
                                 <wsdlOption>
                                     <wsdl>${resources}/${wsdl.Organisation}</wsdl>
                                     <wsdlLocation>classpath:${wsdl.Organisation}</wsdlLocation>
