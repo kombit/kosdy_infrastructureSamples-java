@@ -124,25 +124,12 @@
                             <!-- TODO: Add WSDL files here-->
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${resources}/${wsdl.YdelseIndeks}</wsdl>
-                                    <wsdlLocation>classpath:${wsdl.YdelseIndeks}</wsdlLocation>
-                                </wsdlOption>
-                                <wsdlOption>
                                     <wsdl>${resources}/${wsdl.SagDokumentIndeks}</wsdl>
                                     <wsdlLocation>classpath:${wsdl.SagDokumentIndeks}</wsdlLocation>
                                     <bindingFiles>
                                         <bindingFile>${basedir}/src/main/resources/wsdl/binding/SagDokumentIndeks.xjb</bindingFile>
                                     </bindingFiles>
                                 </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${resources}/${wsdl.BevillingIndeks}</wsdl>
-                                    <wsdlLocation>classpath:${wsdl.BevillingIndeks}</wsdlLocation>
-                                </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${resources}/${wsdl.OekonomiskEffektueringIndeks}</wsdl>
-                                    <wsdlLocation>classpath:${wsdl.OekonomiskEffektueringIndeks}</wsdlLocation>
-                                </wsdlOption>
-
                                 <wsdlOption>
                                     <wsdl>${resources}/${wsdl.Organisation}</wsdl>
                                     <wsdlLocation>classpath:${wsdl.Organisation}</wsdlLocation>

@@ -97,25 +97,4 @@
         </jaxws:properties>
     </jaxws:client>
 
-    <jaxws:client name="{http://stoettesystemerne.dk/ydelsesindeks}YdelseIndeks"
-                  createdFromAPI="true" bus="soap12bus">
-        <jaxws:properties>
-            <entry key="security.sts.applies-to" value="http://entityid.kombit.dk/service/ydi/ydelseindeks/6"/>
-        </jaxws:properties>
-    </jaxws:client>
-
-    <jaxws:client name="{http://stoettesystemerne.dk/ydelsesindeks}BevillingIndeks"
-                  createdFromAPI="true" bus="soap12bus">
-        <jaxws:properties>
-            <entry key="security.sts.applies-to" value="http://entityid.kombit.dk/service/ydi/ydelseindeks/6"/>
-        </jaxws:properties>
-    </jaxws:client>
-
-    <jaxws:client name="{http://stoettesystemerne.dk/ydelsesindeks}OekonomiskEffektueringIndeks"
-                  createdFromAPI="true" bus="soap12bus">
-        <jaxws:properties>
-            <entry key="security.sts.applies-to" value="http://entityid.kombit.dk/service/ydi/ydelseindeks/6"/>
-        </jaxws:properties>
-    </jaxws:client>
-
 </beans>
