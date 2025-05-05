@@ -373,17 +373,19 @@ public class SagDokumentIndeks {
                 .withOpdaterDokumentIndeksOrOpdaterSagIndeks(List.of(new oio.sts.sagdok.sagdokumentindeks._6.OpdaterDokumentIndeksInputType()
                         .withAttributListe(new oio.sts.sagdok.dokumentindeks._6.AttributListeType()
                                 .withEgenskaber(List.of(new oio.sts.sagdok.dokumentindeks._6.EgenskaberType()
+                                        .withBrugervendtNoegle(ClientProperties.getInstance().getSagsNummer())
+                                        .withSagsnummer(ClientProperties.getInstance().getSagsNummer())
+
                                 //      .withBeskrivelse("ÆØÅ")
                                         .withType(oio.sts.sagdok.dokumentindeks._6.Type.fromValue("ÆØÅ"))
                                 //      .withKassationskode("ÆØÅ")
-                                        .withBrugervendtNoegle(ClientProperties.getInstance().getSagsNummer())
-                                        .withFoelsomhed(oio.sts.sagdok.dokumentindeks._6.FoelsomhedType.fromValue("ÆØÅ"))
-                                        .withBrevDato(SoapUtils.getXmlCalender("ÆØÅ"))
-                                        .withDokumentnummer("ÆØÅ")
-                                        .withOffentlighedUndtaget(new oio.sagdok._3_0.OffentlighedUndtagetType()
-                                                .withOffentlighedUndtagetHjemmelTekst("ÆØÅ")
-                                                .withTitelAlternativTekst("ÆØÅ"))
-                                        .withTitel("ÆØÅ")
+                                        .withFoelsomhed(oio.sts.sagdok.dokumentindeks._6.FoelsomhedType.fromValue(ClientProperties.getInstance().getIKKE_FORTROLIGE_DATA()))
+                                //      .withBrevDato(SoapUtils.getXmlCalender("ÆØÅ"))
+                                //      .withDokumentnummer("ÆØÅ")
+                                //      .withOffentlighedUndtaget(new oio.sagdok._3_0.OffentlighedUndtagetType()
+                                        //      .withOffentlighedUndtagetHjemmelTekst("ÆØÅ")
+                                        //      .withTitelAlternativTekst("ÆØÅ"))
+                                        .withTitel(ClientProperties.getInstance().getsagsTitel())
                                         .withUnderversionIdentifikator(BigInteger.valueOf(Long.parseLong("ÆØÅ")))
                                         .withVersionIdentifikator(BigInteger.valueOf(Long.parseLong("ÆØÅ")))
                                         .withVirkning(new oio.sagdok._3_0.VirkningType()
@@ -451,7 +453,7 @@ public class SagDokumentIndeks {
                                         //      .withNoteTekst("ÆØÅ")
                                                 .withAktoerTypeKode(oio.sagdok._3_0.AktoerTypeKodeType.fromValue("ÆØÅ"))
                                                 .withAktoerRef(new oio.sagdok._3_0.UnikIdType()
-                                                        .withURNIdentifikator("ÆØÅ")
+                                                //      .withURNIdentifikator("ÆØÅ")
                                                         .withUUIDIdentifikator("ÆØÅ"))
                                                 .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
                                                         .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().getSagOprettet()))
@@ -574,56 +576,57 @@ public class SagDokumentIndeks {
                                 ) */
                         )
                 //      .withNoteTekst("ÆØÅ")
-                        .withUUIDIdentifikator("ÆØÅ")
-                        .withTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
+                //      .withUUIDIdentifikator("ÆØÅ")
+                //      .withTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
                 )
                 )
                 .withOpdaterDokumentIndeksOrOpdaterSagIndeks(List.of(new oio.sts.sagdok.sagdokumentindeks._6.OpdaterSagIndeksInputType()
                         .withAttributListe(new oio.sts.sagdok.sag._6.AttributListeType()
                                 .withEgenskaber(List.of(new oio.sts.sagdok.sag._6.EgenskaberType()
-                                        .withBrugervendtNoegle("ÆØÅ")
-                                        .withBeskrivelse("ÆØÅ")
-                                        .withKassationskode("ÆØÅ")
-                                        .withTitel("ÆØÅ")
-                                        .withVirkning(new oio.sagdok._3_0.VirkningType()
-                                        //      .withNoteTekst("ÆØÅ")
-                                                .withAktoerTypeKode(oio.sagdok._3_0.AktoerTypeKodeType.fromValue("ÆØÅ"))
-                                                .withAktoerRef(new oio.sagdok._3_0.UnikIdType()
-                                                        .withURNIdentifikator("ÆØÅ")
-                                                        .withUUIDIdentifikator("ÆØÅ"))
-                                                .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
-                                                        .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().getSagOprettet()))
+                                        .withBrugervendtNoegle(ClientProperties.getInstance().(getcasecharacteristicsUserFriendlyKey())) // Phase Out / To Be Legacy
+                                        .withSagsnummer(ClientProperties.getInstance().getcasecharacteristicsCaseNumber())
+                                        .withTitel(ClientProperties.getInstance().getcasecharacteristicsTitle())
+                                        .withBeskrivelse(ClientProperties.getInstance().getcasecharacteristicsDescription()) // Optional
+                                //      .withHjemmelSpecifikation("ÆØÅ") // Phase Out / To Be Legacy
+                                //      .withKassationskode("ÆØÅ") // Phase Out / To Be Legacy
+                                //      .withAfleveretIndikator(Boolean.valueOf("ÆØÅ")) // Phase Out / To Be Legacy
+                                //      .withOffentlighedUndtaget(new oio.sagdok._3_0.OffentlighedUndtagetType() // Phase Out / To Be Legacy
+                                        //      .withOffentlighedUndtagetHjemmelTekst("ÆØÅ") // Phase Out / To Be Legacy
+                                        //      .withTitelAlternativTekst("ÆØÅ")) // Phase Out / To Be Legacy
+                                //      .withPrincipielIndikator(Boolean.valueOf("ÆØÅ")) // Phase Out / To Be Legacy
+                                //      .withVirkning(new oio.sagdok._3_0.VirkningType() // Phase Out / To Be Legacy
+                                        //      .withNoteTekst("ÆØÅ") // Phase Out / To Be Legacy
+                                        //      .withAktoerTypeKode(oio.sagdok._3_0.AktoerTypeKodeType.fromValue(ClientProperties.getInstance().getBruger())) // Phase Out / To Be Legacy
+                                        //      .withAktoerRef(new oio.sagdok._3_0.UnikIdType() // Phase Out / To Be Legacy
+                                                //      .withURNIdentifikator("ÆØÅ") // Phase Out / To Be Legacy
+                                                //      .withUUIDIdentifikator("ÆØÅ")) // Phase Out / To Be Legacy
+                                        //      .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType() // Phase Out / To Be Legacy
+                                                //      .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().getsagsTidspunkt())) // Phase Out / To Be Legacy
                                                 //      .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
                                                 )
-                                                .withTilTidspunkt(new oio.sagdok._3_0.TidspunktType()
+                                        //      .withTilTidspunkt(new oio.sagdok._3_0.TidspunktType() // Phase Out / To Be Legacy
                                                 //      .withTidsstempelDatoTid(SoapUtils.getXmlCalender("ÆØÅ"))
-                                                        .withGraenseIndikator(Boolean.valueOf(true))
+                                                //      .withGraenseIndikator(Boolean.valueOf(true)) // Phase Out / To Be Legacy
                                                 )
-                                        .withSagsnummer("ÆØÅ")
-                                        .withAfleveretIndikator(Boolean.valueOf("ÆØÅ"))
-                                        .withHjemmelSpecifikation("ÆØÅ")
-                                        .withOffentlighedUndtaget(new oio.sagdok._3_0.OffentlighedUndtagetType()
-                                                .withOffentlighedUndtagetHjemmelTekst("ÆØÅ")
-                                                .withTitelAlternativTekst("ÆØÅ"))
-                                        .withPrincipielIndikator(Boolean.valueOf("ÆØÅ"))
+
                                 )
                                 )
-/*                                 .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType()
-                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ"))
-                                        .withAny(List.of("ÆØÅ"))
+/*                                 .withLokalUdvidelseListe(new oio.sts.generelledefinitioner._6.LokalUdvidelseListeType() // Phase Out / To Be Legacy
+                                        .withSenestAendretTidspunkt(SoapUtils.getXmlCalender("ÆØÅ")) // Phase Out / To Be Legacy
+                                        .withAny(List.of("ÆØÅ")) // Phase Out / To Be Legacy
                                 ) */
                         )
                         .withTilstandListe(new oio.sts.sagdok.sag._6.TilstandListeType()
                                 .withFremdrift(List.of(new oio.sts.sagdok.sag._6.FremdriftType()
-                                                .withFremdriftStatusKode(oio.sts.sagdok.sag._6.FremdriftStatusKodeType.fromValue("ÆØÅ"))
+                                                .withFremdriftStatusKode(oio.sts.sagdok.sag._6.FremdriftStatusKodeType.fromValue(ClientProperties.getInstance().getcasestateProgress()))
                                                 .withVirkning(new oio.sagdok._3_0.VirkningType()
                                                 //      .withNoteTekst("")
-                                                        .withAktoerTypeKode(oio.sagdok._3_0.AktoerTypeKodeType.fromValue("ÆØÅ"))
+                                                        .withAktoerTypeKode(oio.sagdok._3_0.AktoerTypeKodeType.fromValue(ClientProperties.getInstance().getgenerelAktoerTypeKodeBruger()))
                                                         .withAktoerRef(new oio.sagdok._3_0.UnikIdType()
-                                                                .withURNIdentifikator("ÆØÅ")
+                                                        //      .withURNIdentifikator("ÆØÅ")
                                                                 .withUUIDIdentifikator("ÆØÅ"))
                                                         .withFraTidspunkt(new oio.sagdok._3_0.TidspunktType()
-                                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().getSagOprettet()))
+                                                                .withTidsstempelDatoTid(SoapUtils.getXmlCalender(ClientProperties.getInstance().getgenerelcaseUpdateDateTime()))
                                                         //      .withGraenseIndikator(Boolean.valueOf("ÆØÅ"))
                                                         )
                                                         .withTilTidspunkt(new oio.sagdok._3_0.TidspunktType()
